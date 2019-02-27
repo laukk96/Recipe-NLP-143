@@ -1,10 +1,12 @@
 class Recipe:
-    def __init__(self):
+    def __init__(self, ingredients, steps):
         print('I am a recipe')
-
+        self.ingredients = ingredients
+        self.steps = steps
 
 def main():
-    Recipe()
+    pass
+    # Recipe()
 
 
 if __name__ == "__main__":

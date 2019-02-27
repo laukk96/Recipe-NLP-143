@@ -1,27 +1,35 @@
 import requests
 from bs4 import BeautifulSoup
 
+from src.recipe import Recipe
+
 
 def scrape(url):
     print(url)
     page = requests.get(url)
     if page.status_code == 200:
         soup = BeautifulSoup(page.content, 'html.parser')
-        # print(soup.prettify())
-        # print(list(soup.children))
         tmp_lst = soup.find_all(class_="checkList__line")
         ingredients = set()
         for item in tmp_lst:
-            tmp = tmp_lst[0].text.lstrip().rstrip()
-            ingredients.add(tmp)
-
+            tmp = item.text.strip()
+            if len(tmp) > 0:
+                ingredients.add(tmp)
         print(ingredients)
 
-        # print(tmp_lst[0])
-        print(type(soup))
+        step_lst = soup.find_all(class_="recipe-directions__list--item")
+        directions = set()
+        for step in step_lst:
+            entry = step.text.strip()
+            if len(entry) > 0:
+                directions.add(entry)
+        print(directions)
+        recep = Recipe(ingredients, directions)
+        return recep
+
     else:
         print('BAD REQUEST status:{1} WITH URL {0}'.format(url, page.status_code))
-
+        return None
 
 def main():
     list_of_urls = [
