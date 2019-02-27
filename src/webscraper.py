@@ -7,9 +7,18 @@ def scrape(url):
     page = requests.get(url)
     if page.status_code == 200:
         soup = BeautifulSoup(page.content, 'html.parser')
-        print(soup.prettify())
+        # print(soup.prettify())
         # print(list(soup.children))
+        tmp_lst = soup.find_all(class_="checkList__line")
+        ingredients = set()
+        for item in tmp_lst:
+            tmp = tmp_lst[0].text.lstrip().rstrip()
+            ingredients.add(tmp)
 
+        print(ingredients)
+
+        # print(tmp_lst[0])
+        print(type(soup))
     else:
         print('BAD REQUEST status:{1} WITH URL {0}'.format(url, page.status_code))
 
