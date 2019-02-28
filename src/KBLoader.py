@@ -140,10 +140,28 @@ def get_all_fruits():
         print('FILE NOT FOUND, please run get_kb_lists()')
 
 
+def get_kaggle_foods():
+    fp = open('all_food_list.txt')
+    all_foods = set()
+    for line in fp:
+        all_foods.add(line.strip())
+    return all_foods
+
+
+def get_kaggle_food_with_cusine():
+    fp = open('all_food_with_cuisine.txt')
+    all_foods = set()
+    for line in fp:
+        all_foods.add(line.strip())
+    return all_foods
+
+
 if __name__ == "__main__":
-    get_kb_lists()
-    print('FRUITS: {}'.format(get_all_fruits()))
-    print('VEGGIES: {}'.format(get_all_vegetables()))
-    print('MEATS: {}'.format(get_all_meats()))
-    print('INGREDIENTS: {}'.format(get_all_ingredients()))
-    print('ALLFOOD: {}'.format(get_all_foods()))
+    # get_kb_lists()
+    # print('FRUITS: {}'.format(get_all_fruits()))
+    # print('VEGGIES: {}'.format(get_all_vegetables()))
+    # print('MEATS: {}'.format(get_all_meats()))
+    # print('INGREDIENTS: {}'.format(get_all_ingredients()))
+    # print('ALLFOOD: {}'.format(get_all_foods()))
+    print(len(get_kaggle_foods()))
+    print(len(get_kaggle_food_with_cusine()))
