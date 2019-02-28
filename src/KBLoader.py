@@ -6,50 +6,50 @@ import unidecode
 
 def get_kb_lists():
     all_food_query = '''SELECT DISTINCT ?foodLabel ?countryLabel
-                        WHERE 
+                        WHERE
                         {
                           ?food wdt:P279 wd:Q2095 .
                           OPTIONAL{?food wdt:P361 ?country}.
-                        
+
                           SERVICE wikibase:label { bd:serviceParam wikibase:language "[AUTO_LANGUAGE],en". }
                         }'''
 
     food_ingredient_query = '''SELECT DISTINCT ?food ?foodLabel ?country ?countryLabel
-                        WHERE 
+                        WHERE
                         {
                           ?food wdt:P31 wd:Q25403900 .
                           OPTIONAL{?food wdt:P361 ?country}
-                          
-                        
+
+
                           SERVICE wikibase:label { bd:serviceParam wikibase:language "[AUTO_LANGUAGE],en". }
                         }'''
 
     meats_query = '''SELECT DISTINCT ?food ?foodLabel ?country ?countryLabel
-                        WHERE 
+                        WHERE
                         {
                           ?food wdt:P279 wd:Q10990 .
                           OPTIONAL{?food wdt:P361 ?country}
-                          
-                        
+
+
                           SERVICE wikibase:label { bd:serviceParam wikibase:language "[AUTO_LANGUAGE],en". }
                         }'''
     vegetable_query = '''SELECT DISTINCT ?food ?foodLabel ?country ?countryLabel
-                        WHERE 
+                        WHERE
                         {
                         ?food wdt:P279 wd:Q11004 .
                         OPTIONAL{?food wdt:P361 ?country}
-                        
-                        
+
+
                         SERVICE wikibase:label { bd:serviceParam wikibase:language "[AUTO_LANGUAGE],en". }
                         }'''
 
     fruit_query = '''SELECT DISTINCT ?food ?foodLabel ?country ?countryLabel
-                    WHERE 
+                    WHERE
                     {
                       ?food wdt:P279 wd:Q3314483 .
                       OPTIONAL{?food wdt:P361 ?country}
-                      
-                    
+
+
                       SERVICE wikibase:label { bd:serviceParam wikibase:language "[AUTO_LANGUAGE],en". }
                     }'''
 
@@ -90,6 +90,33 @@ def get_all_foods():
     except:
         print('FILE NOT FOUND, please run get_kb_lists()')
 
+def get_all_foods_dic():
+    all_food = dict()
+    all_food['NO_COUNTRY'] = []
+    try:
+        file_pointer = open('all_food.json')
+        all_food_json = json.load(file_pointer)
+        # print(all_food_json)
+        for item in all_food_json['results']['bindings']:
+            print ("Here")
+            foodlabel = unidecode.unidecode(item['foodLabel']['value'].lower())
+            if 'countryLabel' in item:
+                print("in")
+                country_key = unidecode.unidecode(item['countryLabel']['value'].lower())
+                if country_key in all_food.keys():
+                    print("inner if")
+                    all_food[country_key].append(foodlabel)
+                else:
+                    print("inner else")
+                    all_food[country_key] = [foodlabel]
+            else:
+                print("outer else")
+                all_food['NO_COUNTRY'].append(foodlabel)
+                print("pass")
+
+        return all_food
+    except:
+        print('FILE NOT FOUND, please run get_kb_lists()')
 
 def get_all_ingredients():
     all_food = set()
@@ -142,8 +169,8 @@ def get_all_fruits():
 
 if __name__ == "__main__":
     get_kb_lists()
-    print('FRUITS: {}'.format(get_all_fruits()))
-    print('VEGGIES: {}'.format(get_all_vegetables()))
-    print('MEATS: {}'.format(get_all_meats()))
-    print('INGREDIENTS: {}'.format(get_all_ingredients()))
-    print('ALLFOOD: {}'.format(get_all_foods()))
+    # print('FRUITS: {}'.format(get_all_fruits()))
+    # print('VEGGIES: {}'.format(get_all_vegetables()))
+    # print('MEATS: {}'.format(get_all_meats()))
+    # print('INGREDIENTS: {}'.format(get_all_ingredients()))
+    print('ALLFOOD: {}'.format(get_all_foods_dic()))
