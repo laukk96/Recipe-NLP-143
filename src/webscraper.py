@@ -20,11 +20,17 @@ def scrape(url):
         step_lst = soup.find_all(class_="recipe-directions__list--item")
         directions = []
         for step in step_lst:
-            entry = step.text.strip()
+            entry = step.text.lower().strip()
             if len(entry) > 0:
                 directions.append(entry)
         # print(directions)
         recep = Recipe(ingredients, directions)
+        print(recep)
+        print('vegie')
+        recep = recep.transform_to_vegetarian()
+        print(recep)
+        print('back_to_meat')
+        recep = recep.transform_to_nonvegetarian()
         print(recep)
         return recep
 
