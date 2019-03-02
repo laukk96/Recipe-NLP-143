@@ -146,20 +146,30 @@ def get_kaggle_foods():
         all_foods = set()
         for line in fp:
             all_foods.add(line.strip().lower())
+        fp.close()
         return all_foods
     except:
         print('FILE {} NOT FOUND'.format('all_food_list.txt'))
+        return None
 
 
 def get_kaggle_food_with_cusine():
     try:
         fp = open('all_food_with_cuisine.txt')
-        all_foods = set()
+        all_foods = {}
         for line in fp:
-            all_foods.add(line.strip().lower())
+            # print(line)
+            lst_splitted = line.strip().lower().split('#')
+            if lst_splitted[0] in all_foods:
+                all_foods[lst_splitted[0]].add(lst_splitted[1])
+            else:
+                all_foods[lst_splitted[0]] = set()
+                all_foods[lst_splitted[0]].add(lst_splitted[1])
+        fp.close()
         return all_foods
     except:
         print('FILE {} NOT FOUND'.format('all_food_with_cuisine.txt'))
+        return None
 
 if __name__ == "__main__":
     # get_kb_lists()
@@ -169,4 +179,5 @@ if __name__ == "__main__":
     # print('INGREDIENTS: {}'.format(get_all_ingredients()))
     # print('ALLFOOD: {}'.format(get_all_foods()))
     # print(len(get_kaggle_foods()))
-    print(len(get_kaggle_food_with_cusine()))
+    # print(len(get_kaggle_food_with_cusine()))
+    print(get_kaggle_food_with_cusine())

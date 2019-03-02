@@ -1,3 +1,4 @@
+import random
 import re
 
 from src import KBLoader
@@ -101,6 +102,13 @@ class Recipe:
                     self.tools.add(val)
         [print(i) for i in self.recipe_steps]
 
+    def delete_ingredient(self, ingr):
+        new_ingredients = []
+        for i in range(len(self.ingredients)):
+            if self.ingredients[i] != ingr:
+                new_ingredients.append(self.ingredients[i])
+        self.ingredients = new_ingredients
+
     def transform_to_vegetarian(self):  # REQUIRED
         if len(self.meats) > 0:
             for i in range(len(self.ingredients)):
@@ -127,9 +135,27 @@ class Recipe:
         else:
             return self
 
+    def _get_indian_ingredient(self):
+        indian_spice = ['tikka', 'masala', 'yogurt', 'milk', 'gopi cream', 'red chilli powder', 'turmeric']
+        return random.choice(indian_spice)
 
     def transform_to_indian(self):  # REQUIRED
-        pass
+        food_with_cusine_map = KBLoader.get_kaggle_food_with_cusine()
+
+        print('print ingredients that are indian')
+        for i in range(len(self.ingredients)):
+            if self.ingredients[i].ingr in food_with_cusine_map:
+                if 'indian' in food_with_cusine_map[self.ingredients[i].ingr]:
+                    print('--', self.ingredients[i].ingr)
+                else:
+                    print('--------- not indian: ', self.ingredients[i].ingr)
+                    ingredient_to_replace = self.ingredients[i].ingr
+                    self.delete_ingredient(ingredient_to_replace)
+                    for j in range(len(self.recipe_steps)):
+                        self.recipe_steps[j] = re.sub(ingredient_to_replace, self._get_indian_ingredient(),
+                                                      self.recipe_steps[j])
+
+        return self
 
     def transform_to_chinese(self):  # OPTIONAL
         pass

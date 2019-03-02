@@ -25,13 +25,18 @@ def scrape(url):
                 directions.append(entry)
         # print(directions)
         recep = Recipe(ingredients, directions)
-        print(recep)
-        print('vegie')
-        recep = recep.transform_to_vegetarian()
-        print(recep)
-        print('back_to_meat')
-        recep = recep.transform_to_nonvegetarian()
-        print(recep)
+        # print(recep)
+        # print(recep)
+        # print('vegie')
+        # recep = recep.transform_to_vegetarian()
+        # print(recep)
+        # print('back_to_meat')
+        # recep = recep.transform_to_nonvegetarian()
+        # print(recep)
+        #
+
+        recep = recep.transform_to_indian()
+        # print(recep)
         return recep
 
     else:
