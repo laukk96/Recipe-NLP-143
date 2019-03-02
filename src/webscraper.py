@@ -10,21 +10,33 @@ def scrape(url):
     if page.status_code == 200:
         soup = BeautifulSoup(page.content, 'html.parser')
         tmp_lst = soup.find_all(class_="checkList__line")
-        ingredients = set()
+        ingredients = []
         for item in tmp_lst:
             tmp = item.text.strip()
-            if len(tmp) > 0:
-                ingredients.add(tmp)
-        print(ingredients)
+            if len(tmp) > 0 and tmp != 'Add all ingredients to list':
+                ingredients.append(tmp)
+        # print(ingredients)
 
         step_lst = soup.find_all(class_="recipe-directions__list--item")
-        directions = set()
+        directions = []
         for step in step_lst:
-            entry = step.text.strip()
+            entry = step.text.lower().strip()
             if len(entry) > 0:
-                directions.add(entry)
-        print(directions)
+                directions.append(entry)
+        # print(directions)
         recep = Recipe(ingredients, directions)
+        # print(recep)
+        # print(recep)
+        # print('vegie')
+        # recep = recep.transform_to_vegetarian()
+        # print(recep)
+        # print('back_to_meat')
+        # recep = recep.transform_to_nonvegetarian()
+        # print(recep)
+        #
+
+        recep = recep.transform_to_indian()
+        print(recep)
         return recep
 
     else:
