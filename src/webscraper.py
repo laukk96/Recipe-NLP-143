@@ -36,7 +36,7 @@ def scrape(url):
         #
 
         recep = recep.transform_to_indian()
-        # print(recep)
+        print(recep)
         return recep
 
     else:

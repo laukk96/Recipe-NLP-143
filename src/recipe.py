@@ -45,6 +45,7 @@ class Recipe:
         self._populate_methods_and_tools()
 
     def _populate_ingredients(self):
+        # print(self.recipe_ingredients)
         for ingredient in self.recipe_ingredients:
             ingredient = ingredient.split(',')[0]
             ingredient = re.sub(' \(.*\)', '', ingredient)
@@ -53,6 +54,7 @@ class Recipe:
             key_word_search = None
             for i in range(len(lst_key_words)):
                 key_word_search = ' '.join(lst_key_words[i:len(lst_key_words)])
+                # print('####{}'.format(key_word_search))
                 if key_word_search in self.KBfoods:
                     amount_quan_list = lst_key_words[0:i]
                     for val in key_word_search.split(' '):
@@ -163,7 +165,7 @@ class Recipe:
     def transform_to_healthy(self):  # REQUIRED
         pass
 
-    def transform_to_stirfry(self):  # REQUIRED
+    def transform_to_stirfry(self):  # OPTIONAL
         pass
 
     def __str__(self):
