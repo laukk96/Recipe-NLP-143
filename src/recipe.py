@@ -180,6 +180,7 @@ class Recipe:
         [print(m) for m in self.secondary_methods]
         print('TOOLS: ')
         [print(m) for m in self.tools]
+        # sub's psh
         return ''
 
 def main():
