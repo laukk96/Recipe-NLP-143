@@ -163,6 +163,7 @@ class Recipe:
         pass
 
     def transform_to_healthy(self):  # REQUIRED
+        #healthy
         pass
 
     def transform_to_stirfry(self):  # OPTIONAL
