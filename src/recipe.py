@@ -1,7 +1,7 @@
 import random
 import re
 
-from src import KBLoader
+import KBLoader
 
 
 class Ingredient:
@@ -141,6 +141,11 @@ class Recipe:
         indian_spice = ['tikka', 'masala', 'yogurt', 'milk', 'gopi cream', 'red chilli powder', 'turmeric']
         return random.choice(indian_spice)
 
+    def _get_chinese_ingredient(self):
+        chinese_spice = ['red sichuan peppercorn', 'green sichuan peppercorn', 'five spice powder', 'duce sauce', 'oyster sauce', 'hoisin sauce', 'black bean and garlic sauce','xo sauce','sweet and saur sauce', 'soy sauce', 'chinese black vinegar', 'sesame oil', 'rice wine']
+        return random.choice(chinese_spice)
+
+    
     def transform_to_indian(self):  # REQUIRED
         food_with_cusine_map = KBLoader.get_kaggle_food_with_cusine()
 
@@ -160,7 +165,21 @@ class Recipe:
         return self
 
     def transform_to_chinese(self):  # OPTIONAL
-        pass
+        print('print ingredients that are chinese:')
+        food_with_cusine_map = KBLoader.get_kaggle_food_with_cusine()
+        for i in range(len(self.ingredients)):
+            if self.ingredients[i].ingr in food_with_cusine_map:
+                if 'chinese' in food_with_cusine_map[self.ingredients[i].ingr]:
+                    print('--', self.ingredients[i].ingr)
+                else:
+                    print('--------- not chinese: ', self.ingredients[i].ingr)
+                    ingredient_to_replace = self.ingredients[i].ingr
+                    self.delete_ingredient(ingredient_to_replace)
+                    for j in range(len(self.recipe_steps)):
+                        self.recipe_steps[j] = re.sub(ingredient_to_replace, self._get_chinese_ingredient(),
+                                                      self.recipe_steps[j])
+                                                      
+        return self
 
     def transform_to_healthy(self):  # REQUIRED
         #healthy
@@ -184,7 +203,7 @@ class Recipe:
 
 def main():
     pass
-    # Recipe()
+    #Recipe()
 
 
 if __name__ == "__main__":

@@ -1,7 +1,7 @@
 import requests
 from bs4 import BeautifulSoup
-
-from src.recipe import Recipe
+import copy
+from recipe import Recipe
 
 
 def scrape(url):
@@ -25,19 +25,19 @@ def scrape(url):
                 directions.append(entry)
         # print(directions)
         recep = Recipe(ingredients, directions)
-        # print(recep)
-        # print(recep)
-        # print('vegie')
-        # recep = recep.transform_to_vegetarian()
-        # print(recep)
-        # print('back_to_meat')
-        # recep = recep.transform_to_nonvegetarian()
-        # print(recep)
-        #
+        original_recep = copy.deepcopy(recep)        
 
-        recep = recep.transform_to_indian()
-        print(recep)
-        return recep
+        indian_recep = recep.transform_to_indian()
+
+        recep = copy.deepcopy(original_recep)
+        chinese_recap = recep.transform_to_chinese()
+        print('indian recipe: \n')
+        print(indian_recep)
+
+        print('chinese recipe: \n')
+        print(chinese_recap)
+
+        return indian_recep
 
     else:
         print('BAD REQUEST status:{1} WITH URL {0}'.format(url, page.status_code))
@@ -52,7 +52,8 @@ def main():
         'https://www.allrecipes.com/recipe/12009/creamy-cajun-chicken-pasta/?internalSource=hub%20recipe&referringContentType=Search&clickId=cardslot%202']
 
     for url in list_of_urls[1:2]:
-        scrape(url)
+        recipe = scrape(url)
+        print(recipe)
 
 
 if __name__ == "__main__":
