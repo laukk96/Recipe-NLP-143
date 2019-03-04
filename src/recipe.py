@@ -188,17 +188,18 @@ class Recipe:
                         new_ingr = re.sub(inx,new_ingr_sel,ing.ingr)
                         print("----------Changing ingredient " + ing.ingr + " with " + new_ingr)
                         ing.ingr = new_ingr
-                        if new_ingr_sel+inx in applied_new:
-                            continue
-                        for i,step in enumerate(self.recipe_steps):
-                            split_list = list([inx.split()[-1]]+[inx])
-                            print (split_list)
-                            for chunk in split_list:
-                                if re.search(chunk, step):
-                                    new_step = re.sub(chunk,new_ingr_sel,step)
-                                    self.recipe_steps[i] = new_step
-                                    applied_new.add(new_ingr_sel + inx)
-                                    break
+                        # if new_ingr_sel+inx in applied_new:
+                        #     continue
+
+                        split_list = list([inx]+ [inx.split()[-1]])
+                        # print (split_list)
+                        for chunk in split_list:
+                            if chunk not in applied_new:
+                                print (applied_new)
+                                self.recipe_steps = [re.sub(chunk,new_ingr_sel,step) for step in self.recipe_steps]
+                                applied_new.add(chunk)
+                                break
+
                         break
         for ing in self.ingredients:
             print(ing)
