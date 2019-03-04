@@ -164,20 +164,15 @@ class Recipe:
         pass
 
     def transform_to_healthy(self):  # REQUIRED
-        #healthy'bison meat', 'minced meat', 'white meat', 'dog meat', 'reptile meat', 'q3556745', 'chicken', 'dried meat', 'pastrami',
-        # 'q3409075', 'q36269836', 'ambelopoulia', 'ttavas', 'turkey meat', 'horse meat', 'squab', 'calf head', 'salt-cured meat', 'q10865379',
-        # 'goat meat', 'seal meat', 'steak frites', 'whale meat', 'q17442381', 'alligator meat', 'q10498626', 'pork', 'bushmeat', 'kutha meat',
-        # 'kangaroo meat', 'confit', 'kassler', 'shank', 'rabbit meat', 'in vitro meat', 'pse meat', 'cat meat', 'salmon', 'iguana meat', 'ventresca',
-        # 'jhatka', 'primal cut', 'escalope', 'red meat', 'bat', 'brisket', 'smoked meat', 'quail meat', 'duck meat', 'elephant meat', 'camel meat',
-        # 'meat on the bone', 'jerky', 'veal', 'game', 'mutton', 'shawarma', 'wild boar meat', 'raw meat', 'beef', 'canned meat', 'q4241583', 'poultry',
-        #  'q46976697'
+
         dic = {frozenset({'chicken','turkey'}):{'meat', 'beef', 'brisket','pork','steak','lamb'},
-               frozenset({'avocado oil', 'olive oil', 'coconut oil'}):{'butter', 'vegetable oil', 'canola oil'},
+               frozenset({'avocado oil', 'olive oil', 'coconut oil'}):{'vegetable oil', 'canola oil'},
                frozenset({'substitute sugar', 'coconut sugar'}):{'white sugar', 'icing sugar', 'castor sugar'},
                frozenset({'oat flour', 'almond flour', 'whole-wheat flour', 'coconut flour', 'spelt flour'}):{'bread flour', 'all-purpose flour', 'self-raising flour', 'maida'},
                frozenset({'whole-wheat pasta', 'spinach pasta'}):{'pasta'},
                frozenset({'fat-free milk'}):{'milk'},
-               frozenset({'cheese (low-fat)'}):{'cheese'}
+               frozenset({'cheese (low-fat)'}):{'cheese'},
+               frozenset({'butter (low-fat)', 'coconut butter', 'butter (low-sodium)', 'butter (dairy-free)'}):{'butter'}
                         }
         applied_new = {''}
         for ing in self.ingredients:
@@ -194,7 +189,7 @@ class Recipe:
                         split_list = list([inx]+ [inx.split()[-1]])
                         # print (split_list)
                         for chunk in split_list:
-                            if chunk not in applied_new:
+                            if chunk not in applied_new and any(re.search(chunk,step) for step in self.recipe_steps):
                                 print (applied_new)
                                 self.recipe_steps = [re.sub(chunk,new_ingr_sel,step) for step in self.recipe_steps]
                                 applied_new.add(chunk)
