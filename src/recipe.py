@@ -1,8 +1,9 @@
 import random
 import re
 
-from src import KBLoader
+import KBLoader
 
+from usda.client import UsdaClient
 
 class Ingredient:
     def __init__(self, amount, measure_type, ingr, ingredient_type=None):
@@ -13,9 +14,9 @@ class Ingredient:
 
     def __str__(self):
         if self.ingredient_type != None:
-            return self.amount + ' ' + self.measure_type + ' ' + self.ingredient_type + ' ' + self.ingr
+            return self.amount + '^^^' + self.measure_type + '^^^' + self.ingredient_type + '^^^' + self.ingr
         else:
-            return self.amount + ' ' + self.measure_type + ' ' + self.ingr
+            return str(self.amount) + '^^^' + str(self.measure_type) + '^^^' + str(self.ingr)
 
         # print('------------------------')
         # print('ingredient_type: {}'.format(self.ingredient_type))
@@ -102,7 +103,7 @@ class Recipe:
                     self.secondary_methods.add(val)
                 if val in primary_cooking_methods:
                     self.tools.add(val)
-        [print(i) for i in self.recipe_steps]
+        # [print(i) for i in self.recipe_steps]
 
     def delete_ingredient(self, ingr):
         new_ingredients = []
@@ -163,8 +164,48 @@ class Recipe:
         pass
 
     def transform_to_healthy(self):  # REQUIRED
-        #healthy
-        pass
+        #healthy'bison meat', 'minced meat', 'white meat', 'dog meat', 'reptile meat', 'q3556745', 'chicken', 'dried meat', 'pastrami',
+        # 'q3409075', 'q36269836', 'ambelopoulia', 'ttavas', 'turkey meat', 'horse meat', 'squab', 'calf head', 'salt-cured meat', 'q10865379',
+        # 'goat meat', 'seal meat', 'steak frites', 'whale meat', 'q17442381', 'alligator meat', 'q10498626', 'pork', 'bushmeat', 'kutha meat',
+        # 'kangaroo meat', 'confit', 'kassler', 'shank', 'rabbit meat', 'in vitro meat', 'pse meat', 'cat meat', 'salmon', 'iguana meat', 'ventresca',
+        # 'jhatka', 'primal cut', 'escalope', 'red meat', 'bat', 'brisket', 'smoked meat', 'quail meat', 'duck meat', 'elephant meat', 'camel meat',
+        # 'meat on the bone', 'jerky', 'veal', 'game', 'mutton', 'shawarma', 'wild boar meat', 'raw meat', 'beef', 'canned meat', 'q4241583', 'poultry',
+        #  'q46976697'
+        dic = {frozenset({'chicken','turkey'}):{'meat', 'beef', 'brisket','pork','steak','lamb'},
+               frozenset({'avocado oil', 'olive oil', 'coconut oil'}):{'butter', 'vegetable oil', 'canola oil'},
+               frozenset({'substitute sugar', 'coconut sugar'}):{'white sugar', 'icing sugar', 'castor sugar'},
+               frozenset({'oat flour', 'almond flour', 'whole-wheat flour', 'coconut flour', 'spelt flour'}):{'bread flour', 'all-purpose flour', 'self-raising flour', 'maida'},
+               frozenset({'whole-wheat pasta', 'spinach pasta'}):{'pasta'},
+               frozenset({'fat-free milk'}):{'milk'},
+               frozenset({'cheese (low-fat)'}):{'cheese'}
+                        }
+        applied_new = {''}
+        for ing in self.ingredients:
+            for key,val in dic.items():
+                for inx in val:
+                    if re.search(inx, ing.ingr):
+                        new_ingr_sel = random.sample(key,1)[0]
+                        new_ingr = re.sub(inx,new_ingr_sel,ing.ingr)
+                        print("----------Changing ingredient " + ing.ingr + " with " + new_ingr)
+                        ing.ingr = new_ingr
+                        if new_ingr_sel+inx in applied_new:
+                            continue
+                        for i,step in enumerate(self.recipe_steps):
+                            split_list = list([inx.split()[-1]]+[inx])
+                            print (split_list)
+                            for chunk in split_list:
+                                if re.search(chunk, step):
+                                    new_step = re.sub(chunk,new_ingr_sel,step)
+                                    self.recipe_steps[i] = new_step
+                                    applied_new.add(new_ingr_sel + inx)
+                                    break
+                        break
+        for ing in self.ingredients:
+            print(ing)
+        print("----------------------------------------------- Method Ends Here -----------------------------------------------")
+        return self
+
+
 
     def transform_to_stirfry(self):  # OPTIONAL
         pass
