@@ -36,7 +36,7 @@ def scrape(url):
         #
 
         # recep = recep.transform_to_indian()
-        print(recep.transform_to_healthy())
+        print(recep.transform_to_unhealthy())
         # print(recep)
         return recep
 
@@ -51,7 +51,10 @@ def main():
         'https://www.allrecipes.com/recipe/21176/baked-dijon-salmon/?internalSource=staff%20pick&referringId=1642&referringContentType=Recipe%20Hub',
         'https://www.allrecipes.com/recipe/25016/coconut-macaroon-brownies/?internalSource=streams&referringId=838&referringContentType=Recipe%20Hub&clickId=st_trending_b',
         'https://www.allrecipes.com/recipe/12009/creamy-cajun-chicken-pasta/?internalSource=hub%20recipe&referringContentType=Search&clickId=cardslot%202',
-        'https://www.allrecipes.com/recipe/26655/smothered-meatballs/?internalSource=popular&referringContentType=Homepage&clickId=cardslot%208']
+        'https://www.allrecipes.com/recipe/26655/smothered-meatballs/?internalSource=popular&referringContentType=Homepage&clickId=cardslot%208',
+        'https://www.allrecipes.com/recipe/265432/lemon-cheesecake-bars/?internalSource=previously%20viewed&referringContentType=Homepage&clickId=cardslot%2016',
+        'https://www.allrecipes.com/recipe/85138/great-green-salad/?internalSource=streams&referringId=213&referringContentType=Recipe%20Hub&clickId=st_trending_s',
+        'https://www.allrecipes.com/recipe/214080/kale-swiss-chard-chicken-and-feta-salad/']
 
     for url in list_of_urls[:]:
         scrape(url)
