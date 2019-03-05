@@ -15,7 +15,6 @@ def scrape(url):
             tmp = item.text.strip()
             if len(tmp) > 0 and tmp != 'Add all ingredients to list':
                 ingredients.append(tmp)
-        # print(ingredients)
 
         step_lst = soup.find_all(class_="recipe-directions__list--item")
         directions = []
@@ -23,21 +22,8 @@ def scrape(url):
             entry = step.text.lower().strip()
             if len(entry) > 0:
                 directions.append(entry)
-        # print(directions)
         recep = Recipe(ingredients, directions)
-        original_recep = copy.deepcopy(recep)        
-
-        indian_recep = recep.transform_to_indian()
-
-        recep = copy.deepcopy(original_recep)
-        chinese_recap = recep.transform_to_chinese()
-        print('indian recipe: \n')
-        print(indian_recep)
-
-        print('chinese recipe: \n')
-        print(chinese_recap)
-
-        return indian_recep
+        return recep
 
     else:
         print('BAD REQUEST status:{1} WITH URL {0}'.format(url, page.status_code))
@@ -53,6 +39,7 @@ def main():
 
     for url in list_of_urls[1:2]:
         recipe = scrape(url)
+        
         print(recipe)
 
 
