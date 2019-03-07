@@ -1,6 +1,6 @@
 import random
 import re
-
+from fractions import Fraction
 import KBLoader
 
 
@@ -12,21 +12,10 @@ class Ingredient:
         self.ingr = ingr
 
     def __str__(self):
-        if self.ingredient_type != None:
+        if self.ingredient_type != None and self.amount != None and self.measure_type != None:
             return self.amount + ' ' + self.measure_type + ' ' + self.ingredient_type + ' ' + self.ingr
         else:
-            return self.amount + ' ' + self.measure_type + ' ' + self.ingr
-
-        # print('------------------------')
-        # print('ingredient_type: {}'.format(self.ingredient_type))
-        # print('ingredient: {}'.format(self.ingr))
-        # print('amount: {}'.format(self.amount))
-        # print('measure_type: {}'.format(self.measure_type))
-        # print('------------------------#')
-        # return ''
-
-
-
+           return self.ingr
 
 
 class Recipe:
@@ -145,6 +134,12 @@ class Recipe:
         chinese_spice = ['red sichuan peppercorn', 'green sichuan peppercorn', 'five spice powder', 'duce sauce', 'oyster sauce', 'hoisin sauce', 'black bean and garlic sauce','xo sauce','sweet and saur sauce', 'soy sauce', 'chinese black vinegar', 'sesame oil', 'rice wine']
         return random.choice(chinese_spice)
 
+    def transform_by_scale_factor(self, factor):
+        for ingredient in self.ingredients:
+            if ingredient is not None and ingredient.amount is not None:
+                ingredient.amount = str(Fraction(ingredient.amount) * factor)        
+        return self
+
     
     def transform_to_indian(self):  # REQUIRED
         food_with_cusine_map = KBLoader.get_kaggle_food_with_cusine()
@@ -190,7 +185,7 @@ class Recipe:
 
     def __str__(self):
         print('INGREDIENTS:')
-        [print(ingr) for ingr in self.ingredients]
+        [print(ingr) if ingr is not None else print('') for ingr in self.ingredients]
         print('STEPS:')
         [print(step) for step in self.recipe_steps]
         print('PRIMARY_COOKING_METHOD: ')

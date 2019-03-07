@@ -20,6 +20,7 @@ def main():
         print('4 to convert to un-healthy')
         print('5 to convert to Indian')
         print('6 to convert to Chinese')
+        print('7 to convert the scale')
         print('9 to enter new url')
         
         user_input = input()
@@ -40,6 +41,12 @@ def main():
         elif user_input == '6':
             chinese_recipe = recipe.transform_to_chinese()
             print(chinese_recipe)    
+        elif user_input == '7':
+            print('enter a factor by which you would like to transform the recipe scale:')
+            factor_input = input()
+            float_input = float(factor_input)
+            scaled_recipe = recipe.transform_by_scale_factor(float_input)
+            print(scaled_recipe)
         elif user_input == '9':
             url = user_input
             recipe = scrape(url)
