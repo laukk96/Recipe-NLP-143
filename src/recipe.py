@@ -1,9 +1,13 @@
 import random
 import re
 
-import KBLoader
+# import KBLoader
 
 from usda.client import UsdaClient
+
+# import KBLoader
+import KBLoader
+
 
 class Ingredient:
     def __init__(self, amount, measure_type, ingr, ingredient_type=None):
@@ -77,31 +81,40 @@ class Recipe:
     def _populate_methods_and_tools(self):
         primary_cooking_methods = {'bake', 'fry', 'roast', 'grill', 'steam', 'poach', 'simmer', 'broil',
                                    'blanch', 'braise', 'stew', 'saute', 'stir-fry', 'stirfry', 'sear', 'boil',
-                                   'barbeque', 'baste', 'smoke', 'brine', 'heat'}
+                                   'barbeque', 'baste', 'smoke', 'brine', 'heat', 'whisk'}
+        primary_cooking_mapping = {'heat': 'stirfry'}
         secondary_cooking_methods = {'al dente', 'bake', 'barbecue', 'batter', 'beat', 'blend', 'caramelize',
-                                     'chop', 'clarify', 'cream', 'cure', 'deglaze', 'degrease', 'dice', 'dissolve',
+                                     'chop', 'clarify', 'cure', 'deglaze', 'degrease', 'dice', 'dissolve',
                                      'dredge', 'drizzle', 'dust', 'fillet', 'flake', 'flambe', 'fold', 'fricassee',
                                      'garnish', 'glaze', 'grate', 'gratin', 'grind', 'julienne', 'knead', 'marinate',
                                      'meuniere', 'mince', 'mix', 'parboil', 'pare', 'peel', 'pickle', 'pinch', 'pit',
                                      'planked', 'plump', 'poach', 'puree', 'reduce', 'refresh', 'render', 'scald',
                                      'scallop', 'score', 'shred', 'sift', 'skim', 'steep', 'sterilize', 'stir', 'toss',
-                                     'truss', 'whip'}
-        primary_tools = {'pan', 'dish', 'board', 'knife', 'spoon', 'fork', 'opener', 'bowl', 'colander', 'peeler'
-                                                                                                         'masher',
+                                     'truss', 'whip', 'mixture'}
+        secondary_cooking_mapping = {'mixture':'mix'}
+        primary_tools = {'pan', 'dish', 'board', 'knife', 'spoon', 'fork', 'opener', 'bowl', 'colander', 'peeler','masher',
                          'whisker', 'spinner', 'grater', 'scissors', 'shears', 'juicer', 'press', 'rod',
                          'skillet', 'saucepan', 'pot', 'instapot', 'stockpot', 'spatula', 'tongs', 'ladle', 'mitts',
                          'trivet', 'guard', 'thermometer', 'blender', 'scale', 'container', 'foil', 'paper', 'towels',
-                         'towel',
-                         'sponge', 'rack', 'tray'}
+                         'towel','sponge', 'rack', 'tray', 'brush', 'oven'}
         for step in self.recipe_steps:
             step_lst = step.lower().split(' ')
             for i in range(len(step_lst)):
                 val = step_lst[i]
+                val = re.sub('[^\w\s]','',val)
                 if val in primary_cooking_methods:
-                    self.primary_methods.add(val)
+                    if val in primary_cooking_mapping:
+                        if len(self.primary_methods) == 0:
+                            self.primary_methods.add(primary_cooking_mapping[val])
+                    else:
+                        if len(self.primary_methods) == 0:
+                            self.primary_methods.add(val)
                 if val in secondary_cooking_methods:
-                    self.secondary_methods.add(val)
-                if val in primary_cooking_methods:
+                        if val in secondary_cooking_mapping:
+                            self.secondary_methods.add(secondary_cooking_mapping[val])
+                        else:
+                            self.secondary_methods.add(val)
+                if val in primary_tools:
                     self.tools.add(val)
         # [print(i) for i in self.recipe_steps]
 
@@ -243,17 +256,15 @@ class Recipe:
         pass
 
     def __str__(self):
+        print('ACTUAL INGREDIENTS')
+        [print(ingr) for ingr in self.recipe_ingredients]
         print('INGREDIENTS:')
         [print(ingr) for ingr in self.ingredients]
         print('STEPS:')
         [print(step) for step in self.recipe_steps]
-        print('PRIMARY_COOKING_METHOD: ')
-        [print(m) for m in self.primary_methods]
-        print('SECONDARY_COOKING_METHOD: ')
-        [print(m) for m in self.secondary_methods]
-        print('TOOLS: ')
-        [print(m) for m in self.tools]
-        # sub's psh
+        print('PRIMARY_COOKING_METHOD: {}'.format(self.primary_methods))
+        print('SECONDARY_COOKING_METHOD: {}'.format([m for m in self.secondary_methods]))
+        print('TOOLS: {}'.format([m for m in self.tools]))
         return ''
 
 def main():

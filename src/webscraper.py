@@ -34,10 +34,8 @@ def scrape(url):
         # recep = recep.transform_to_nonvegetarian()
         # print(recep)
         #
-
         # recep = recep.transform_to_indian()
-        print(recep.transform_to_unhealthy())
-        # print(recep)
+        print(recep)
         return recep
 
     else:
