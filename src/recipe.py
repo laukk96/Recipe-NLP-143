@@ -3,8 +3,6 @@ import re
 
 import KBLoader
 
-from usda.client import UsdaClient
-
 class Ingredient:
     def __init__(self, amount, measure_type, ingr, ingredient_type=None):
         self.amount = amount

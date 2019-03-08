@@ -3,6 +3,7 @@ import json
 import requests
 import unidecode
 
+from pymongo import MongoClient
 
 def get_kb_lists():
     all_food_query = '''SELECT DISTINCT ?foodLabel ?countryLabel
@@ -61,6 +62,11 @@ def get_kb_lists():
     vegetables_json = requests.get(url, params={'query': vegetable_query, 'format': 'json'}).json()
     fruit_json = requests.get(url, params={'query': fruit_query, 'format': 'json'}).json()
 
+    client = MongoClient('mongodb+srv://adminuser:nlpRecipe@recipe-cluster-907d3.mongodb.net/test?retryWrites=true')
+    db = client.RecipeMeters
+    # db.Ingredients.insert({'ingr_type':'meats', 'ingredients':meats_json})
+    # db.Ingredients.insert({'ingr_type':'vegetables', 'ingredients':vegetables_json})
+
     with open('all_food.json', 'w') as outfile:
         json.dump(all_food_json, outfile)
     with open('food_ingredients.json', 'w') as outfile:
@@ -71,6 +77,8 @@ def get_kb_lists():
         json.dump(vegetables_json, outfile)
     with open('fruits.json', 'w') as outfile:
         json.dump(fruit_json, outfile)
+
+    print(list(db.Ingredients.find({'ingr_type':'meats'}))[0]['ingredients'])
 
 
 def get_all_foods():
@@ -98,21 +106,15 @@ def get_all_foods_dic():
         all_food_json = json.load(file_pointer)
         # print(all_food_json)
         for item in all_food_json['results']['bindings']:
-            print ("Here")
             foodlabel = unidecode.unidecode(item['foodLabel']['value'].lower())
             if 'countryLabel' in item:
-                print("in")
                 country_key = unidecode.unidecode(item['countryLabel']['value'].lower())
                 if country_key in all_food.keys():
-                    print("inner if")
                     all_food[country_key].append(foodlabel)
                 else:
-                    print("inner else")
                     all_food[country_key] = [foodlabel]
             else:
-                print("outer else")
                 all_food['NO_COUNTRY'].append(foodlabel)
-                print("pass")
 
         return all_food
     except:
@@ -199,7 +201,7 @@ def get_kaggle_food_with_cusine():
         return None
 
 if __name__ == "__main__":
-    # get_kb_lists()
+    get_kb_lists()
     # print('FRUITS: {}'.format(get_all_fruits()))
     # print('VEGGIES: {}'.format(get_all_vegetables()))
     # print('MEATS: {}'.format(get_all_meats()))
@@ -207,4 +209,4 @@ if __name__ == "__main__":
     # print('ALLFOOD: {}'.format(get_all_foods()))
     # print(len(get_kaggle_foods()))
     # print(len(get_kaggle_food_with_cusine()))
-    print(get_kaggle_food_with_cusine())
+    # print(get_kaggle_food_with_cusine())
