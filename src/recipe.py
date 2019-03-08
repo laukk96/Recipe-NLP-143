@@ -165,8 +165,8 @@ class Recipe:
 
     def transform_to_healthy(self):  # REQUIRED
 
-        dic = {frozenset({'chicken','turkey'}):{'meat', 'beef', 'brisket','pork','steak','lamb'},
-               frozenset({'avocado oil', 'olive oil', 'coconut oil'}):{'vegetable oil', 'canola oil'},
+        dic = {frozenset({'chicken','turkey'}):{'meat', 'beef', 'brisket','pork','steak','lamb', 'bacon'},
+               frozenset({'avocado oil', 'olive oil', 'coconut oil'}):{'vegetable oil', 'canola oil', 'bacon fat', 'peanut oil'},
                frozenset({'maple sugar','substitute low-kcal sugar', 'coconut sugar'}):{'white sugar', 'icing sugar', 'castor sugar'},
                frozenset({'oat flour', 'almond flour', 'whole-wheat flour', 'coconut flour', 'spelt flour'}):{'bread flour', 'all-purpose flour', 'self-raising flour', 'maida'},
                frozenset({'whole-wheat pasta', 'spinach pasta'}):{'pasta'},
@@ -204,10 +204,11 @@ class Recipe:
 
     def transform_to_unhealthy(self):
         dic = {
-               frozenset({'vegetable oil', 'canola oil'}):{'avocado oil', 'olive oil', 'coconut oil'},
-               frozenset({'white sugar', 'icing sugar', 'castor sugar'}):{'substitute low-kcal sugar', 'coconut sugar', 'honey', 'maple sugar'},
-               frozenset({'bread flour', 'all-purpose flour', 'self-raising flour', 'maida'}):{'oat flour', 'almond flour', 'whole-wheat flour', 'coconut flour', 'spelt flour'},
-               frozenset({'pasta'}):{'whole-wheat pasta', 'spinach pasta'},
+                frozenset({'vegetable oil', 'canola oil', 'bacon fat'}):{'avocado oil', 'olive oil', 'coconut oil'},
+                frozenset({'bacon', 'pork', 'beef'}):{'turkey', 'chicken', 'bison'},
+                frozenset({'white sugar', 'icing sugar', 'castor sugar'}):{'substitute low-kcal sugar', 'coconut sugar', 'honey', 'maple sugar'},
+                frozenset({'bread flour', 'all-purpose flour', 'self-raising flour', 'maida'}):{'oat flour', 'almond flour', 'whole-wheat flour', 'coconut flour', 'spelt flour'},
+                frozenset({'pasta'}):{'whole-wheat pasta', 'spinach pasta'},
                 frozenset({'full-fat milk', 'milk'}):{'fat-free milk', 'skimmed milk', '2% milk', 'almond milk', 'coconut milk', 'soy milk'},
                 frozenset({'cheese'}):{'cheese (low-fat)', 'cashew cheese', 'cheese (low-sodium)', 'low-sodium cheese', 'low-fat cheese'},
                 frozenset({'butter'}):{'butter (low-fat)', 'coconut butter', 'unsalted butter', 'butter (dairy-free)'}
