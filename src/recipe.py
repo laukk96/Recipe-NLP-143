@@ -17,18 +17,10 @@ class Ingredient:
         self.ingr = ingr
 
     def __str__(self):
-        if self.ingredient_type != None:
-            return self.amount + '^^^' + self.measure_type + '^^^' + self.ingredient_type + '^^^' + self.ingr
-        else:
-            return str(self.amount) + '^^^' + str(self.measure_type) + '^^^' + str(self.ingr)
 
-        # print('------------------------')
-        # print('ingredient_type: {}'.format(self.ingredient_type))
-        # print('ingredient: {}'.format(self.ingr))
-        # print('amount: {}'.format(self.amount))
-        # print('measure_type: {}'.format(self.measure_type))
-        # print('------------------------#')
-        # return ''
+        return 'Amount = {0}, MeasureType = {1}, IngredientType = {2}, Ingredient = {3} '.format(self.amount,
+                                                                               self.measure_type, self.ingredient_type,
+                                                                               self.ingr)
 
 
 
@@ -50,31 +42,51 @@ class Recipe:
         self._populate_methods_and_tools()
 
     def _populate_ingredients(self):
-        # print(self.recipe_ingredients)
         for ingredient in self.recipe_ingredients:
-            ingredient = ingredient.split(',')[0]
+            print('INGREDIENT: {}'.format(ingredient))
+            # ingredient = re.sub('[,]', '', ingredient)
+            tmp_ingredients = ingredient.split(',')
+            if len(tmp_ingredients) > 1:
+                if len(ingredient.split(',')[1]) < len(ingredient.split(',')[0]):
+                    ingredient = ingredient.split(',')[0]
+            else:
+                ingredient = ingredient.split(',')[0]
             ingredient = re.sub(' \(.*\)', '', ingredient)
             lst_key_words = ingredient.lower().split(' ')
+            # print('-----keyword search list: {}'.format(lst_key_words))
             amount_quan_list = []
             key_word_search = None
             for i in range(len(lst_key_words)):
                 key_word_search = ' '.join(lst_key_words[i:len(lst_key_words)])
-                # print('####{}'.format(key_word_search))
+                list_of_matches = [] #This is to match with the longest phrase in the list.
                 if key_word_search in self.KBfoods:
+                    # print('---matched with {}'.format(key_word_search))
                     amount_quan_list = lst_key_words[0:i]
                     for val in key_word_search.split(' '):
                         if val in self.KBmeats:
+                            print('-------------------------meats matched: {}'.format(val))
                             self.meats.add(val)
                             break
+
                     break
             amount = None
             measure_type = None
             ingredient_type = None
-            if len(amount_quan_list) > 1:
+
+            # print('------{}'.format(amount_quan_list))
+            if len(amount_quan_list) !=0:
                 amount = amount_quan_list[0]
-                measure_type = amount_quan_list[1]
-            if len(amount_quan_list) > 2:
-                ingredient_type = ' '.join(amount_quan_list[1:])
+                if len(amount_quan_list) > 2:
+                    ingredient_type = ' '.join(amount_quan_list[1:])
+                else:
+                    if len(amount_quan_list) > 1:
+                        measure_type = amount_quan_list[1]
+
+            print('Amount: {}'.format(amount))
+            print('measure_type: {}'.format(measure_type))
+            print('ingredient_type: {}'.format(ingredient_type))
+            print('matched_word: {}'.format(key_word_search))
+
             ingr = Ingredient(amount, measure_type, key_word_search, ingredient_type)
             self.ingredients.append(ingr)
 

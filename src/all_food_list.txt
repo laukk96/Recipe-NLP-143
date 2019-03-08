@@ -3911,6 +3911,7 @@ uncooked ziti
 turkey legs
 pastis
 black cumin seeds
+cumin seeds
 Shaoxing wine
 jelly
 sweet white miso paste
@@ -4426,6 +4427,7 @@ lemon grass
 whole wheat cereal
 fresh parsley leaves
 whole garam masala
+kashmiri garam masala
 flounder
 gai lan
 bread and butter pickle slices
@@ -6712,3 +6714,6 @@ yuca
 sambal ulek
 chuck steaks
 Crisco Pure Canola Oil
+fresh ginger root, peeled and grated
+long, green fresh chile peppers
+green fresh chile peppers
