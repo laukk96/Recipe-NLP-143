@@ -64,28 +64,44 @@ def get_kb_lists():
 
     client = MongoClient('mongodb+srv://adminuser:nlpRecipe@recipe-cluster-907d3.mongodb.net/test?retryWrites=true')
     db = client.RecipeMeters
-    # db.Ingredients.insert({'ingr_type':'meats', 'ingredients':meats_json})
-    # db.Ingredients.insert({'ingr_type':'vegetables', 'ingredients':vegetables_json})
+    if len(list(db.Ingredients.find({'ingr_type':'meats'}))) == 0:
+        db.Ingredients.insert({'ingr_type':'meats', 'ingredients':meats_json})
+        print("Successfully added meats")
+    if len(list(db.Ingredients.find({'ingr_type':'vegetables'}))) == 0:
+        db.Ingredients.insert({'ingr_type':'vegetables', 'ingredients':vegetables_json})
+        print("Successfully added vegetables")
 
-    with open('all_food.json', 'w') as outfile:
-        json.dump(all_food_json, outfile)
-    with open('food_ingredients.json', 'w') as outfile:
-        json.dump(food_ingredients_json, outfile)
-    with open('meats.json', 'w') as outfile:
-        json.dump(meats_json, outfile)
-    with open('vegetables.json', 'w') as outfile:
-        json.dump(vegetables_json, outfile)
-    with open('fruits.json', 'w') as outfile:
-        json.dump(fruit_json, outfile)
+    if len(list(db.Ingredients.find({'ingr_type':'fruits'}))) == 0:
+        db.Ingredients.insert({'ingr_type':'fruits', 'ingredients':fruit_json})
+        print("Successfully added fruits")
 
-    print(list(db.Ingredients.find({'ingr_type':'meats'}))[0]['ingredients'])
+    if len(list(db.Ingredients.find({'ingr_type':'all'}))) == 0:
+        db.Ingredients.insert({'ingr_type':'all', 'ingredients':all_food_json})
+        print("Successfully added all ingredients")
+
+
+
+    # with open('all_food.json', 'w') as outfile:
+    #     json.dump(all_food_json, outfile)
+    # with open('food_ingredients.json', 'w') as outfile:
+    #     json.dump(food_ingredients_json, outfile)
+    # with open('meats.json', 'w') as outfile:
+    #     json.dump(meats_json, outfile)
+    # with open('vegetables.json', 'w') as outfile:
+    #     json.dump(vegetables_json, outfile)
+    # with open('fruits.json', 'w') as outfile:
+    #     json.dump(fruit_json, outfile)
+
+    # print(list(db.Ingredients.find({'ingr_type':'meats'}))[0]['ingredients'])
 
 
 def get_all_foods():
+    client = MongoClient('mongodb+srv://adminuser:nlpRecipe@recipe-cluster-907d3.mongodb.net/test?retryWrites=true')
+    db = client.RecipeMeters
     all_food = set()
     try:
-        file_pointer = open('all_food.json')
-        all_food_json = json.load(file_pointer)
+        file_pointer = list(db.Ingredients.find({'ingr_type':'meats'}))[0]['ingredients']
+        # all_food_json = json.load(file_pointer)
         # print(all_food_json)
         for item in all_food_json['results']['bindings']:
             foodlabel = unidecode.unidecode(item['foodLabel']['value'].lower())
