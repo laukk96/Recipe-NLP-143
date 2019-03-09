@@ -213,6 +213,7 @@ class Recipe:
                             self.recipe_steps[j] = re.sub(look_up_phrase[u], repl , self.recipe_steps[j])
                             self.recipe_steps[j] = re.sub('bones', repl , self.recipe_steps[j])
                             self.recipe_steps[j] = re.sub('skin', repl , self.recipe_steps[j])
+                            self.recipe_steps[j] = re.sub(' fat', '', self.recipe_steps[j])
                         new_step = self._clean_dup_step(self.recipe_steps[j])
                         self.recipe_steps[j] = new_step
                             # break;
@@ -221,11 +222,19 @@ class Recipe:
         else:
             return self
 
+    def _get_nonveg_ingredient(self):
+        amount = random.choice([1,2,3,4])
+        type_ingr = random.choice(['cups', 'ounces'])
+        meat = random.choice(['cooked crab','pulled pork', 'pan-fried bacon', 'cooked sausages', 'grilled chicken', 'fried shrimp',
+                              'prosciutto', 'pan-seared fish'])
+        return Ingredient(amount, type_ingr, meat)
+
     def transform_to_nonvegetarian(self):  # REQUIRED
         if len(self.meats) == 0:
-            self.ingredients.append(Ingredient('3', 'cups', 'shrimp'))
+            ingr = self._get_nonveg_ingredient()
+            self.ingredients.append(ingr)
             lhs_ingredient = self.ingredients[0].ingr
-            repl_string = lhs_ingredient + ' and the ' + 'shrimp '
+            repl_string = lhs_ingredient + ' and the ' + ingr.ingr
             for j in range(len(self.recipe_steps)):
                 self.recipe_steps[j] = re.sub(lhs_ingredient, repl_string, self.recipe_steps[j])
             return self
