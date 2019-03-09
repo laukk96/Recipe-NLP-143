@@ -131,15 +131,29 @@ def get_all_ingredients():
 
 
 def get_all_meats():
-    all_food = set()
     try:
-        file_pointer = open('meats.json')
-        all_food_json = json.load(file_pointer)
-        for item in all_food_json['results']['bindings']:
-            all_food.add(unidecode.unidecode(item['foodLabel']['value'].lower()))
-        return all_food
+        fp = open('all_meats.txt')
+        all_foods = set()
+        for line in fp:
+            all_foods.add(line.strip())
+        return all_foods
     except:
-        'FILE NOT FOUND, please run get_kb_lists()'
+        print('FILE NOT FOUND: {}'.format('all_meats.txt'))
+
+    # To query for new meats. Don't do this unless all_meats.txt is missing.
+
+    # all_food = set()
+    # try:
+    #     file_pointer = open('meats.json')
+    #     all_food_json = json.load(file_pointer)
+    #     for item in all_food_json['results']['bindings']:
+    #         all_food.add(unidecode.unidecode(item['foodLabel']['value'].lower()))
+    #     with open('all_meats.txt', 'w') as f:
+    #         for item in all_food:
+    #             f.write("%s\n" % item)
+    #     return all_food
+    # except:
+    #     'FILE NOT FOUND, please run get_kb_lists()'
 
 
 def get_all_vegetables():
@@ -199,6 +213,7 @@ def get_kaggle_food_with_cusine():
         return None
 
 if __name__ == "__main__":
+    pass
     # get_kb_lists()
     # print('FRUITS: {}'.format(get_all_fruits()))
     # print('VEGGIES: {}'.format(get_all_vegetables()))
@@ -207,4 +222,4 @@ if __name__ == "__main__":
     # print('ALLFOOD: {}'.format(get_all_foods()))
     # print(len(get_kaggle_foods()))
     # print(len(get_kaggle_food_with_cusine()))
-    print(get_kaggle_food_with_cusine())
+    # print(get_kaggle_food_with_cusine())
