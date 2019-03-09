@@ -19,11 +19,6 @@ class Ingredient:
         return 'Amount = {0}, MeasureType = {1}, IngredientType = {2}, Ingredient = {3} '.format(self.amount,
                                                                                self.measure_type, self.ingredient_type,
                                                                                self.ingr)
-
-
-
-
-
 class Recipe:
     def __init__(self, ingredients, steps):
         self.recipe_ingredients = ingredients
@@ -163,16 +158,64 @@ class Recipe:
                 new_ingredients.append(self.ingredients[i])
         self.ingredients = new_ingredients
 
+    def _get_meat_substitute(self, name):
+        meat_dict = {
+            'lamb':['tofu', 'tempeh', 'seitan'],
+            'chicken': ['potatoes', 'tempeh', 'jackfruit'],
+            'goat': ['jackfruit', 'tempeh', 'seitan'],
+            'pork': ['tofu', 'tempeh', 'seitan'],
+            'meat': ['tofu', 'tempeh', 'seitan'],
+            'buffalo': ['tofu', 'tempeh', 'seitan'],
+            'salmon': ['seitan', 'tempeh'],
+            'beef': ['seitan', 'tempeh', 'jackfruit'],
+            'shrimp': ['tofu','jackfruit'],
+            'sausage': ['tofu','seitan', 'potatoes']
+        }
+        for val in name.split(' '):
+            if val in meat_dict:
+                return random.choice(meat_dict[val])
+            else:
+                return random.choice(['tofu','seitan', 'potatoes'])
+    def _clean_dup_step(self,step):
+        filtered_list = []
+        search = step.split(' ')
+        for i in range(len(search)-1):
+            lhs = search[i]
+            rhs = search[i+1]
+            search_vallhs = re.sub('[^\w\s]', '', lhs)
+            search_valrhs = re.sub('[^\w\s]', '', rhs)
+            if search_vallhs != search_valrhs:
+                filtered_list.append(lhs)
+        if re.sub('[^\w\s]', '', filtered_list[-1]) != re.sub('[^\w\s]', '', search[-1]):
+            filtered_list.append(search[-1])
+        return ' '.join(filtered_list)
+
     def transform_to_vegetarian(self):  # REQUIRED
         if len(self.meats) > 0:
             for i in range(len(self.ingredients)):
                 search_list = self.ingredients[i].ingr.split(' ')
-                if any(i in self.meats for i in search_list):
+                if any(k in self.meats for k in search_list):
                     tmp_ingr = self.ingredients[i].ingr
-                    self.ingredients[i].ingr = 'potato'
+                    print('--------------',tmp_ingr)
+                    repl = self._get_meat_substitute(tmp_ingr)
+                    self.ingredients[i].ingr = repl
                     for j in range(len(self.recipe_steps)):
-                        for val in tmp_ingr.split(' '):
-                            self.recipe_steps[j] = re.sub(val, 'potato', self.recipe_steps[j])
+                        look_up_phrase = tmp_ingr.split(' ')
+                        matched_word = None
+                        for u in range(len(look_up_phrase)):
+                            key_word_search = ' '.join(look_up_phrase[u:len(look_up_phrase)])
+                            print('##keywordsearch: ',key_word_search)
+                            self.recipe_steps[j] = re.sub(key_word_search, repl, self.recipe_steps[j])
+                            self.recipe_steps[j] = re.sub(' meat\.', ' '+repl+'.', self.recipe_steps[j])
+                            self.recipe_steps[j] = re.sub(' meat','',self.recipe_steps[j])
+                            self.recipe_steps[j] = re.sub(' no longer pink and', '',self.recipe_steps[j])
+                            self.recipe_steps[j] = re.sub('skin and bones', 'veggie scraps', self.recipe_steps[j])
+                            self.recipe_steps[j] = re.sub(look_up_phrase[u], repl , self.recipe_steps[j])
+                            self.recipe_steps[j] = re.sub('bones', repl , self.recipe_steps[j])
+                            self.recipe_steps[j] = re.sub('skin', repl , self.recipe_steps[j])
+                        new_step = self._clean_dup_step(self.recipe_steps[j])
+                        self.recipe_steps[j] = new_step
+                            # break;
             self.meats = set()
             return self
         else:

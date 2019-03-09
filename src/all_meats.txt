@@ -71,3 +71,30 @@ cow
 shrimp
 fish
 meat
+pork sausage
+sausage
+crab
+lobster
+shellfish
+oysters
+venison
+bacon
+ham
+salami
+duck
+pheasant
+turkey
+rabbit
+boar
+wild boar
+ribs
+sheep
+goose
+veal
+jamon
+prosciutto
+lamb chops
+pork chops
+
+
+
