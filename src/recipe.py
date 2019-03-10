@@ -242,8 +242,8 @@ class Recipe:
             return self
 
     def _get_indian_ingredient(self):
-        indian_spice = ['tikka-masala', 'garam-masala', 'gopi-cream', 'red-chilli-powder', 'turmeric-powder', 'ginger',
-                        'fennel','ajwain', 'tamarind-sauce', 'basil', 'gooseberry', 'mustard',
+        indian_spice = ['tikka-masala', 'garam-masala', 'red-chilli-powder', 'turmeric-powder', 'ginger',
+                        'fennel','ajwain', 'tamarind-sauce', 'gooseberry', 'mustard',
                         'curry-powder']
 
         # if 'soy' in toReplace.split(' '):
@@ -276,7 +276,7 @@ class Recipe:
                     self.ingredients[i].ingr = repl
                     for j in range(len(self.recipe_steps)):
                         key_search = ingredient_to_replace.split(' ')
-                        print('REPLACE: ', key_search)
+                        # print('REPLACE: ', key_search)
                         # for k in range(len(key_search)):
                         self.recipe_steps[j] = re.sub(ingredient_to_replace, repl, self.recipe_steps[j])
                             # break;

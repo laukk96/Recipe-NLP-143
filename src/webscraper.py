@@ -27,8 +27,8 @@ def scrape(url):
                 directions.append(entry)
         # print(directions)
         recep = Recipe(ingredients, directions)
-        # print(recep)
-        # print('CONVERSION TO VEGETARIAN')
+        print(recep)
+        print('CONVERSION TO VEGETARIAN')
         # print(recep)
         # print(recep)
         # print('vegie')
@@ -40,9 +40,10 @@ def scrape(url):
         #
         # recep = recep.transform_to_indian()
         # print(recep)
+        recep = recep.transform_to_unhealthy()
         # print('##################################################TRANSFORMING')
         #comment6
-        recep = recep.transform_to_indian()
+        # recep = recep.transform_to_indian()
         print(recep)
         return recep
 
