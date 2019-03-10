@@ -242,25 +242,45 @@ class Recipe:
             return self
 
     def _get_indian_ingredient(self):
-        indian_spice = ['tikka', 'masala', 'yogurt', 'milk', 'gopi cream', 'red chilli powder', 'turmeric']
-        return random.choice(indian_spice)
+        indian_spice = ['tikka-masala', 'garam-masala', 'gopi-cream', 'red-chilli-powder', 'turmeric-powder', 'ginger',
+                        'fennel','ajwain', 'tamarind-sauce', 'basil', 'gooseberry', 'mustard',
+                        'curry-powder']
+
+        # if 'soy' in toReplace.split(' '):
+        #     return (gen for gen in ['tamarind sauce']+random.shuffle(indian_spice))
+        # if 'olive oil' == toReplace:
+        #     return (gen for gen in ['ghee']+random.shuffle(indian_spice))
+        random.shuffle(indian_spice)
+        lst_to_return = ['ghee']+ indian_spice
+        # indian_oil = {'ghee'}
+        # indian_meat = {'goat', 'lamb', 'chicken'}
+        # indian_cream = ['amla milk', 'gopi cream']
+        # indian_spice = {'tikka', 'masala', 'milk', 'gopi cream', 'red chilli powder', 'turmeric', 'ginger'}
+        return (n for n in lst_to_return)
 
     def transform_to_indian(self):  # REQUIRED
         food_with_cusine_map = KBLoader.get_kaggle_food_with_cusine()
-
         print('print ingredients that are indian')
+        gen = self._get_indian_ingredient()
         for i in range(len(self.ingredients)):
             if self.ingredients[i].ingr in food_with_cusine_map:
                 if 'indian' in food_with_cusine_map[self.ingredients[i].ingr]:
                     print('--', self.ingredients[i].ingr)
                 else:
                     print('--------- not indian: ', self.ingredients[i].ingr)
+                    try:
+                        repl = next(gen)
+                    except StopIteration:
+                        repl = 'ghee'
                     ingredient_to_replace = self.ingredients[i].ingr
-                    self.delete_ingredient(ingredient_to_replace)
+                    self.ingredients[i].ingr = repl
                     for j in range(len(self.recipe_steps)):
-                        self.recipe_steps[j] = re.sub(ingredient_to_replace, self._get_indian_ingredient(),
-                                                      self.recipe_steps[j])
-
+                        key_search = ingredient_to_replace.split(' ')
+                        print('REPLACE: ', key_search)
+                        # for k in range(len(key_search)):
+                        self.recipe_steps[j] = re.sub(ingredient_to_replace, repl, self.recipe_steps[j])
+                            # break;
+                        self.recipe_steps[j] = self._clean_dup_step(self.recipe_steps[j])
         return self
 
     def transform_to_chinese(self):  # OPTIONAL
