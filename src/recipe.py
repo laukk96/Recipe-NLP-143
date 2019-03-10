@@ -163,14 +163,14 @@ class Recipe:
 
     def transform_to_healthy(self):  # REQUIRED
 
-        dic = {frozenset({'chicken','turkey'}):{'meat', 'beef', 'brisket','pork','steak','lamb', 'bacon'},
-               frozenset({'avocado oil', 'olive oil', 'coconut oil'}):{'vegetable oil', 'canola oil', 'bacon fat', 'peanut oil'},
+        dic = {frozenset({'chicken','turkey'}):{'meat', 'beef', 'brisket','pork','steak','lamb', 'bacon', 'ham'},
+               frozenset({'avocado oil', 'olive oil', 'coconut oil'}):{'vegetable oil', 'canola oil', 'bacon fat', 'peanut oil' , 'lard'},
                frozenset({'maple sugar','substitute low-kcal sugar', 'coconut sugar'}):{'white sugar', 'icing sugar', 'castor sugar'},
                frozenset({'oat flour', 'almond flour', 'whole-wheat flour', 'coconut flour', 'spelt flour'}):{'bread flour', 'all-purpose flour', 'self-raising flour', 'maida'},
                frozenset({'whole-wheat pasta', 'spinach pasta'}):{'pasta'},
                frozenset({'fat-free milk', 'skimmed milk', '2% milk', 'almond milk', 'coconut milk', 'soy milk'}):{'milk'},
                frozenset({'cheese (low-fat)', 'cheese (low-sodium)'}):{'cheese'},
-               frozenset({'butter (low-fat)', 'coconut butter', 'unsalted butter', 'butter (dairy-free)'}):{'butter'},
+               frozenset({'butter (low-fat)', 'coconut butter', 'unsalted butter', 'butter (dairy-free)'}):{'butter' , 'lard'},
                frozenset({'light cream'}):{'heavy cream'}
                         }
         applied_new = {''}
@@ -200,17 +200,25 @@ class Recipe:
         print("----------------------------------------------- Method Ends Here -----------------------------------------------")
         return self
 
+    def _get_unhealthy_ingredient(self):
+        amount = random.choice([1,2,3,4])
+        type_ingr = random.choice(['cups', 'ounces'])
+        meat = random.choice(['pan-fried bacon','cooked sausages', 'bacon-bits'])
+        amount_f = random.choice([1,2,3,4])
+        type_ingr_f = random.choice(['cups', 'ounces'])
+        fat = random.choice(['butter', 'bacon fat', 'lard'])
+        return Ingredient(amount, type_ingr, meat),Ingredient(amount_f, type_ingr_f,fat)
+
     def transform_to_unhealthy(self):
         dic = {
-                frozenset({'vegetable oil', 'canola oil', 'bacon fat'}):{'avocado oil', 'olive oil', 'coconut oil'},
-                frozenset({'bacon', 'pork', 'beef'}):{'turkey', 'chicken', 'bison'},
-                frozenset({'white sugar', 'icing sugar', 'castor sugar'}):{'substitute low-kcal sugar', 'coconut sugar', 'honey', 'maple sugar'},
-                frozenset({'bread flour', 'all-purpose flour', 'self-raising flour', 'maida'}):{'oat flour', 'almond flour', 'whole-wheat flour', 'coconut flour', 'spelt flour'},
-                frozenset({'pasta'}):{'whole-wheat pasta', 'spinach pasta'},
-                frozenset({'full-fat milk', 'milk'}):{'fat-free milk', 'skimmed milk', '2% milk', 'almond milk', 'coconut milk', 'soy milk'},
-                frozenset({'cheese'}):{'cheese (low-fat)', 'cashew cheese', 'cheese (low-sodium)', 'low-sodium cheese', 'low-fat cheese'},
-                frozenset({'butter'}):{'butter (low-fat)', 'coconut butter', 'unsalted butter', 'butter (dairy-free)'}
-                        }
+               frozenset({'vegetable oil', 'canola oil'}):{'avocado oil', 'olive oil', 'coconut oil'},
+               frozenset({'white sugar', 'castor sugar'}):{'substitute low-kcal sugar', 'coconut sugar', 'honey', 'maple sugar'},
+               frozenset({'bread flour', 'all-purpose flour', 'self-raising flour', 'maida'}):{'oat flour', 'almond flour', 'whole-wheat flour', 'coconut flour', 'spelt flour'},
+               frozenset({'pasta'}):{'whole-wheat pasta', 'spinach pasta'},
+               frozenset({'full-fat milk'}):{'fat-free milk', 'skimmed milk', '2% milk', 'almond milk', 'coconut milk', 'soy milk', 'milk'},
+               frozenset({'full-fat cheese'}):{'cheese (low-fat)', 'cashew cheese', 'cheese (low-sodium)', 'low-sodium cheese', 'low-fat cheese', 'cheese'},
+               frozenset({'whole butter','lard'}):{'butter (low-fat)', 'coconut butter', 'unsalted butter', 'butter (dairy-free)'}
+               }
         applied_new = {''}
         for ing in self.ingredients:
             for key,val in dic.items():
@@ -233,6 +241,54 @@ class Recipe:
                                 break
 
                         break
+        ingr, _ = self._get_unhealthy_ingredient()
+
+        if len(self.meats) == 0:
+            self.ingredients.append(ingr)
+            lhs_ingredient = self.ingredients[0].ingr
+            repl_string = lhs_ingredient + ', ' + ingr.ingr
+            print ("Adding in some:", ingr.ingr)
+            for j in range(len(self.recipe_steps)):
+                for strn in list([lhs_ingredient] + [lhs_ingredient.split()[-1]]):
+                    self.recipe_steps[j], n_rep = re.subn(strn, repl_string, self.recipe_steps[j])
+                    if n_rep > 0:
+                        break
+
+        i = 0
+        q = False
+        db = False
+
+        from fractions import Fraction
+        while q != True:
+            _, fat = self._get_unhealthy_ingredient()
+            for j,ing in enumerate(self.ingredients):
+                if ing.ingr != fat.ingr:
+                    q=True
+                else:
+                    q=False
+                    if db != True:
+                        self.ingredients[j].amount = float(sum(Fraction(s) for s in self.ingredients[j].amount.split()))*2
+                        print ("Doubling amount of ", ing.ingr)
+                        db = True
+                    break
+            i += 1
+            if i == 7 and q != True:
+                fat = None
+                q = True
+
+
+        if fat != None:
+            self.ingredients.append(fat)
+
+            lhs_ingredient = self.ingredients[0].ingr
+            repl_string = lhs_ingredient + ', ' + fat.ingr
+            print ("Adding in some:", fat.ingr)
+            for j in range(len(self.recipe_steps)):
+                for strn in list([lhs_ingredient] + [lhs_ingredient.split()[-1]]):
+                    self.recipe_steps[j], n_rep = re.subn(strn, repl_string, self.recipe_steps[j])
+                    if n_rep > 0:
+                        break
+
         for ing in self.ingredients:
             print(ing)
         print("----------------------------------------------- Method Ends Here -----------------------------------------------")
