@@ -17,9 +17,10 @@ class Ingredient:
                                                                                self.measure_type, self.ingredient_type,
                                                                                self.ingr)
 class Recipe:
-    def __init__(self, ingredients, steps):
+    def __init__(self, ingredients, steps, title):
         self.recipe_ingredients = ingredients
         self.recipe_steps = steps
+        self.title = title
         self.ingredients = []
         self.meats = set()
         self.tools = set()
@@ -385,9 +386,99 @@ class Recipe:
         return self
 
     def transform_to_stirfry(self):  # OPTIONAL
-        pass
+        liquid = ''
+        method = ['stir-fry', 'saute', 'cook']
+        cook = random.choice(method)
+        for i in self.recipe_ingredients:
+            if re.match(".*oil.*", i):
+                liquid = 'with oil as required'
+                break;
+            if re.match(".*butter.*", i):
+                liquid = 'with butter as required'
+                break;
+            if re.match(".*ghee.*", i):
+                liquid = 'with ghee as required'
+                break;
+        change_cooking = dict([
+            (
+            "place the (aluminum roasting pan|aluminium pan|roasting pan|pan|baking dish) on the (grill's grate|grills grate|grill grate|grill|grate|oven)",
+            "place the pan on the stovetop"),
+            ("place the pan on the .* grill .* grate", "place the pan on the stovetop"),
+            ("in a pot style grill.* the bottom of grill", ""),
+            ("in a lightly greased .* baking dish", "in a lightly greased skillet"),
+            ("in a greased .* baking dish", "in a greased skillet"),
+            ("line a baking sheet with aluminum foil", ""),
+            ("prepare an outdoor grill with coals about [0-9] inches from the grate", "preheat the skillet " + liquid),
+            ("preheat.*oven to (300|[0-2][0-9]?[0-9]?) degree(s|) f.*c[/)]",
+             "preheat the skillet " + liquid + "  in low heat"),
+            ("preheat.*oven to (400|[3][0-9][0-9]) degree(s|) f.*c[/)]",
+             "preheat the skillet " + liquid + "  in medium heat"),
+            ("preheat.*oven to ([4-9][0-9][0-9]) degree(s|) f.*c[/)]",
+             "preheat the skillet " + liquid + " in high heat"),
+            ("(preheat|heat).*oven to (300|[0-2][0-9]?[0-9]?) degree(s|).",
+             "preheat the skillet " + liquid + "  in low heat"),
+            ("(preheat|heat).*oven to (400|[3][0-9][0-9]) degree(s|).",
+             "preheat the skillet " + liquid + "  in medium heat"),
+            ("(preheat|heat).*oven to ([4-9][0-9][0-9]) degree(s|).",
+             "preheat the skillet " + liquid + "  in high heat"),
+            ("preheat your oven's broiler", "preheat the skillet " + liquid + " "),
+            ("reduce heat to ([0-9][0-9][0-9]) degree(s|) f [/(]([0-9][0-9][0-9]) degree(s|) c[/)]", "reduce heat"),
+            ("reduce heat to ([0-9][0-9][0-9]) degree(s|)", "reduce heat"),
+            ("increase heat to ([0-9][0-9][0-9]) degree(s|) f [/(]([0-9][0-9][0-9]) degree(s|) c[/)]", "increase heat"),
+            ("increase heat to ([0-9][0-9][0-9]) degree(s|)", "increase heat"),
+            ("preheat.*grill.*medium-low heat", "preheat the skillet " + liquid + "  in medium-low heat"),
+            ("preheat.*grill.*low-medium heat", "preheat the skillet " + liquid + "  in low-medium heat"),
+            ("preheat.*grill.*medium-high heat", "preheat the skillet " + liquid + "  in medium-high heat"),
+            ("preheat.*grill.*high-medium heat", "preheat the skillet " + liquid + "  in high-medium heat"),
+            ("preheat.*grill.*medium heat", "preheat the skillet " + liquid + "  in medium heat"),
+            ("preheat.*grill.*low heat", "preheat the skillet " + liquid + "  in low heat"),
+            ("preheat.*grill.*high heat", "preheat the skillet " + liquid + "  in high heat"),
+            ("place (on|in)( the|) (top|middle|center)( oven|) rack", "place on stove"),
+            ("(lightly|) grease.*baking dish", ""),
+            (
+            "((and |)lightly oil the grill grate|(and |)lightly oil grill grate|(and |)lightly oil the grate|(and |)lightly oil grate|(and |)lightly oil the grill|(and |)lightly oil grill)",
+            ""),
+            ("grease a broiling pan or line pan with aluminum foil", ""),
+            ("with (foil|aluminum foil)", "with lid"),
+            ("remove (foil|aluminum foil)", "remove lid"),
+            ("preheat oven.*c[/)][/.]", ''),
+            ("grease.*baking pan[., ]", ""),
+            ("preheat.*grill.*heat[., ]", ""),
+            ("cover the grill with the lid and open the vents.", ''),
+            ("[0-9]-quart", ""),
+            ("adjust oven rack to lowest position", ""),
+            ("[0-9] inches from coals", ''),
+            ("(outdoor|charcoal)", ""),
+            ("(preheated oven|preheated grill grate|preheated grill)", "preheated skillet"),
+            (
+            '([0-9]-inch round baking dish|[0-9][0-9]?x[0-9][0-9]?-inch baking dish|round baking dish|baking dish|baking sheet)',
+            'skillet'),
+            ("(grilled|baked|roasted|broiled|barbequed|smoked)", "stir-fried"),
+            ("(grilling|baking|roasting|broiling|barbequing|smoking)", "cooking"),
+            ("(deep-fryer|slow cooker)", "skillet"),
+            ("(grill the|^grill|[/.] grill|[/.]  grill|broil[., ]|bake|barbeque|smoke)", cook),
+            ("(grill's grate|grill grate|grate|grill)", "skillet"),
+            ('oven', 'stove')
+        ])
+        for r in range(len(self.recipe_steps)):
+            cook = random.choice(method)
+            for i, j in change_cooking.items():
+                self.recipe_steps[r] = re.sub(i, j, self.recipe_steps[r])
+
+        change_title = dict([
+            ("(baking|roasting|grilling|broiling|barbequing|smoking)", "Stir-Frying"),
+            ("(baked|roasted|grilled|broiled|barbequed|smoked)", "Stir-Fried"),
+            ("(bake|roast|grill|broil|barbeque|smoke)", "Stir-Fry")
+        ])
+        for i, j in change_title.items():
+            tmp_title = re.sub(i, j, self.title, flags=re.IGNORECASE)
+            if len(tmp_title) > 0:
+                self.title = tmp_title
+        return self
 
     def __str__(self):
+        print('TITLE:')
+        [print(self.title)]
         print('ACTUAL INGREDIENTS')
         [print(ingr) for ingr in self.recipe_ingredients]
         print('INGREDIENTS:')
