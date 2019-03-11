@@ -547,17 +547,31 @@ class Recipe:
         return self
 
     def __str__(self):
-        print('PREVIOUS INGREDIENTS')
+        print('ORIGINAL INGREDIENTS')
         [print(ingr) for ingr in self.recipe_ingredients]
         print('INGREDIENTS:')
         [print(ingr) if ingr is not None else print('') for ingr in self.ingredients]
         print('STEPS:')
         [print(step) for step in self.recipe_steps]
-        print('PRIMARY_COOKING_METHOD: {}'.format(self.primary_methods))
-        print('SECONDARY_COOKING_METHOD: {}'.format([m for m in self.secondary_methods]))
-        print('TOOLS: {}'.format([m for m in self.tools]))
-        return ''
+        print('PRIMARY_COOKING_METHOD: {}'.format(self.print_list(list(self.primary_methods))))
 
+        print('SECONDARY_COOKING_METHOD: {}'.format(self.print_list([m for m in self.secondary_methods])))
+        print('TOOLS: {}'.format(self.print_list([m for m in self.tools])))
+        return ''
+    def print_list(self, lst):
+        return ', '.join(lst)
+        # print(lst)
+        # print(len(lst))
+        # returnstr = ''
+        # for i in range(len(lst)):
+        #     print('i:',i)
+        #     print(lst[i])
+        #
+        #     if i < len(lst):
+        #         returnstr = returnstr + ' ' + lst[i] + ','
+        #     else:
+        #         returnstr = returnstr + ' ' + lst[i]
+        # return returnstr
 def main():
     pass
     #Recipe()
