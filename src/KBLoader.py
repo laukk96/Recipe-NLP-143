@@ -3,7 +3,7 @@ import json
 import requests
 import unidecode
 
-from pymongo import MongoClient
+# from pymongo import MongoClient
 
 def get_kb_lists():
     all_food_query = '''SELECT DISTINCT ?foodLabel ?countryLabel
@@ -62,42 +62,42 @@ def get_kb_lists():
     vegetables_json = requests.get(url, params={'query': vegetable_query, 'format': 'json'}).json()
     fruit_json = requests.get(url, params={'query': fruit_query, 'format': 'json'}).json()
 
-    client = MongoClient('mongodb+srv://adminuser:nlpRecipe@recipe-cluster-907d3.mongodb.net/test?retryWrites=true')
-    db = client.RecipeMeters
-    if len(list(db.Ingredients.find({'ingr_type':'meats'}))) == 0:
-        db.Ingredients.insert({'ingr_type':'meats', 'ingredients':meats_json})
-        print("Successfully added meats")
-    if len(list(db.Ingredients.find({'ingr_type':'vegetables'}))) == 0:
-        db.Ingredients.insert({'ingr_type':'vegetables', 'ingredients':vegetables_json})
-        print("Successfully added vegetables")
+#     client = MongoClient('mongodb+srv://adminuser:nlpRecipe@recipe-cluster-907d3.mongodb.net/test?retryWrites=true')
+#     db = client.RecipeMeters
+#     if len(list(db.Ingredients.find({'ingr_type':'meats'}))) == 0:
+#         db.Ingredients.insert({'ingr_type':'meats', 'ingredients':meats_json})
+#         print("Successfully added meats")
+#     if len(list(db.Ingredients.find({'ingr_type':'vegetables'}))) == 0:
+#         db.Ingredients.insert({'ingr_type':'vegetables', 'ingredients':vegetables_json})
+#         print("Successfully added vegetables")
 
-    if len(list(db.Ingredients.find({'ingr_type':'fruits'}))) == 0:
-        db.Ingredients.insert({'ingr_type':'fruits', 'ingredients':fruit_json})
-        print("Successfully added fruits")
+#     if len(list(db.Ingredients.find({'ingr_type':'fruits'}))) == 0:
+#         db.Ingredients.insert({'ingr_type':'fruits', 'ingredients':fruit_json})
+#         print("Successfully added fruits")
 
-    if len(list(db.Ingredients.find({'ingr_type':'all'}))) == 0:
-        db.Ingredients.insert({'ingr_type':'all', 'ingredients':all_food_json})
-        print("Successfully added all ingredients")
+#     if len(list(db.Ingredients.find({'ingr_type':'all'}))) == 0:
+#         db.Ingredients.insert({'ingr_type':'all', 'ingredients':all_food_json})
+#         print("Successfully added all ingredients")
 
 
 
-    # with open('all_food.json', 'w') as outfile:
-    #     json.dump(all_food_json, outfile)
-    # with open('food_ingredients.json', 'w') as outfile:
-    #     json.dump(food_ingredients_json, outfile)
-    # with open('meats.json', 'w') as outfile:
-    #     json.dump(meats_json, outfile)
-    # with open('vegetables.json', 'w') as outfile:
-    #     json.dump(vegetables_json, outfile)
-    # with open('fruits.json', 'w') as outfile:
-    #     json.dump(fruit_json, outfile)
+    with open('all_food.json', 'w') as outfile:
+        json.dump(all_food_json, outfile)
+    with open('food_ingredients.json', 'w') as outfile:
+        json.dump(food_ingredients_json, outfile)
+    with open('meats.json', 'w') as outfile:
+        json.dump(meats_json, outfile)
+    with open('vegetables.json', 'w') as outfile:
+        json.dump(vegetables_json, outfile)
+    with open('fruits.json', 'w') as outfile:
+        json.dump(fruit_json, outfile)
 
     # print(list(db.Ingredients.find({'ingr_type':'meats'}))[0]['ingredients'])
 
 
 def get_all_foods():
-    client = MongoClient('mongodb+srv://adminuser:nlpRecipe@recipe-cluster-907d3.mongodb.net/test?retryWrites=true')
-    db = client.RecipeMeters
+#     client = MongoClient('mongodb+srv://adminuser:nlpRecipe@recipe-cluster-907d3.mongodb.net/test?retryWrites=true')
+#     db = client.RecipeMeters
     all_food = set()
     try:
         file_pointer = list(db.Ingredients.find({'ingr_type':'meats'}))[0]['ingredients']
@@ -149,15 +149,29 @@ def get_all_ingredients():
 
 
 def get_all_meats():
-    all_food = set()
     try:
-        file_pointer = open('meats.json')
-        all_food_json = json.load(file_pointer)
-        for item in all_food_json['results']['bindings']:
-            all_food.add(unidecode.unidecode(item['foodLabel']['value'].lower()))
-        return all_food
+        fp = open('all_meats.txt')
+        all_foods = set()
+        for line in fp:
+            all_foods.add(line.strip())
+        return all_foods
     except:
-        'FILE NOT FOUND, please run get_kb_lists()'
+        print('FILE NOT FOUND: {}'.format('all_meats.txt'))
+
+    # To query for new meats. Don't do this unless all_meats.txt is missing.
+
+    # all_food = set()
+    # try:
+    #     file_pointer = open('meats.json')
+    #     all_food_json = json.load(file_pointer)
+    #     for item in all_food_json['results']['bindings']:
+    #         all_food.add(unidecode.unidecode(item['foodLabel']['value'].lower()))
+    #     with open('all_meats.txt', 'w') as f:
+    #         for item in all_food:
+    #             f.write("%s\n" % item)
+    #     return all_food
+    # except:
+    #     'FILE NOT FOUND, please run get_kb_lists()'
 
 
 def get_all_vegetables():
@@ -217,7 +231,9 @@ def get_kaggle_food_with_cusine():
         return None
 
 if __name__ == "__main__":
-    get_kb_lists()
+
+    pass
+    # get_kb_lists()
     # print('FRUITS: {}'.format(get_all_fruits()))
     # print('VEGGIES: {}'.format(get_all_vegetables()))
     # print('MEATS: {}'.format(get_all_meats()))
