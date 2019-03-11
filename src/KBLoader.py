@@ -6,50 +6,50 @@ import unidecode
 
 def get_kb_lists():
     all_food_query = '''SELECT DISTINCT ?foodLabel ?countryLabel
-                        WHERE 
+                        WHERE
                         {
                           ?food wdt:P279 wd:Q2095 .
                           OPTIONAL{?food wdt:P361 ?country}.
-                        
+
                           SERVICE wikibase:label { bd:serviceParam wikibase:language "[AUTO_LANGUAGE],en". }
                         }'''
 
     food_ingredient_query = '''SELECT DISTINCT ?food ?foodLabel ?country ?countryLabel
-                        WHERE 
+                        WHERE
                         {
                           ?food wdt:P31 wd:Q25403900 .
                           OPTIONAL{?food wdt:P361 ?country}
-                          
-                        
+
+
                           SERVICE wikibase:label { bd:serviceParam wikibase:language "[AUTO_LANGUAGE],en". }
                         }'''
 
     meats_query = '''SELECT DISTINCT ?food ?foodLabel ?country ?countryLabel
-                        WHERE 
+                        WHERE
                         {
                           ?food wdt:P279 wd:Q10990 .
                           OPTIONAL{?food wdt:P361 ?country}
-                          
-                        
+
+
                           SERVICE wikibase:label { bd:serviceParam wikibase:language "[AUTO_LANGUAGE],en". }
                         }'''
     vegetable_query = '''SELECT DISTINCT ?food ?foodLabel ?country ?countryLabel
-                        WHERE 
+                        WHERE
                         {
                         ?food wdt:P279 wd:Q11004 .
                         OPTIONAL{?food wdt:P361 ?country}
-                        
-                        
+
+
                         SERVICE wikibase:label { bd:serviceParam wikibase:language "[AUTO_LANGUAGE],en". }
                         }'''
 
     fruit_query = '''SELECT DISTINCT ?food ?foodLabel ?country ?countryLabel
-                    WHERE 
+                    WHERE
                     {
                       ?food wdt:P279 wd:Q3314483 .
                       OPTIONAL{?food wdt:P361 ?country}
-                      
-                    
+
+
                       SERVICE wikibase:label { bd:serviceParam wikibase:language "[AUTO_LANGUAGE],en". }
                     }'''
 
@@ -90,6 +90,33 @@ def get_all_foods():
     except:
         print('FILE NOT FOUND, please run get_kb_lists()')
 
+def get_all_foods_dic():
+    all_food = dict()
+    all_food['NO_COUNTRY'] = []
+    try:
+        file_pointer = open('all_food.json')
+        all_food_json = json.load(file_pointer)
+        # print(all_food_json)
+        for item in all_food_json['results']['bindings']:
+            print ("Here")
+            foodlabel = unidecode.unidecode(item['foodLabel']['value'].lower())
+            if 'countryLabel' in item:
+                print("in")
+                country_key = unidecode.unidecode(item['countryLabel']['value'].lower())
+                if country_key in all_food.keys():
+                    print("inner if")
+                    all_food[country_key].append(foodlabel)
+                else:
+                    print("inner else")
+                    all_food[country_key] = [foodlabel]
+            else:
+                print("outer else")
+                all_food['NO_COUNTRY'].append(foodlabel)
+                print("pass")
+
+        return all_food
+    except:
+        print('FILE NOT FOUND, please run get_kb_lists()')
 
 def get_all_ingredients():
     all_food = set()
@@ -104,15 +131,29 @@ def get_all_ingredients():
 
 
 def get_all_meats():
-    all_food = set()
     try:
-        file_pointer = open('meats.json')
-        all_food_json = json.load(file_pointer)
-        for item in all_food_json['results']['bindings']:
-            all_food.add(unidecode.unidecode(item['foodLabel']['value'].lower()))
-        return all_food
+        fp = open('all_meats.txt')
+        all_foods = set()
+        for line in fp:
+            all_foods.add(line.strip())
+        return all_foods
     except:
-        'FILE NOT FOUND, please run get_kb_lists()'
+        print('FILE NOT FOUND: {}'.format('all_meats.txt'))
+
+    # To query for new meats. Don't do this unless all_meats.txt is missing.
+
+    # all_food = set()
+    # try:
+    #     file_pointer = open('meats.json')
+    #     all_food_json = json.load(file_pointer)
+    #     for item in all_food_json['results']['bindings']:
+    #         all_food.add(unidecode.unidecode(item['foodLabel']['value'].lower()))
+    #     with open('all_meats.txt', 'w') as f:
+    #         for item in all_food:
+    #             f.write("%s\n" % item)
+    #     return all_food
+    # except:
+    #     'FILE NOT FOUND, please run get_kb_lists()'
 
 
 def get_all_vegetables():
@@ -172,6 +213,7 @@ def get_kaggle_food_with_cusine():
         return None
 
 if __name__ == "__main__":
+    pass
     # get_kb_lists()
     # print('FRUITS: {}'.format(get_all_fruits()))
     # print('VEGGIES: {}'.format(get_all_vegetables()))
@@ -180,4 +222,4 @@ if __name__ == "__main__":
     # print('ALLFOOD: {}'.format(get_all_foods()))
     # print(len(get_kaggle_foods()))
     # print(len(get_kaggle_food_with_cusine()))
-    print(get_kaggle_food_with_cusine())
+    # print(get_kaggle_food_with_cusine())
