@@ -12,7 +12,6 @@ class Ingredient:
         self.ingr = ingr
 
     def __str__(self):
-
         return 'Amount = {0}, MeasureType = {1}, IngredientType = {2}, Ingredient = {3} '.format(self.amount,
                                                                                self.measure_type, self.ingredient_type,
                                                                                self.ingr)
@@ -546,13 +545,34 @@ class Recipe:
 
         return self
 
+    def pretty_print_ingredients(self):
+        for ingr in self.ingredients:
+            val_string = ''
+            if ingr.amount is not None:
+                val_string = val_string + str(ingr.amount)
+            # self.measure_type = measure_type
+            # self.ingredient_type = ingredient_type
+            if ingr.measure_type is not None:
+                val_string = val_string +' '+str(ingr.measure_type)
+            if ingr.ingredient_type is not None:
+                val_string = val_string +' '+str(ingr.ingredient_type)
+            if ingr.ingr is not None:
+                val_string = val_string +' '+str(ingr.ingr)
+            print(val_string)
+
     def __str__(self):
         print('ORIGINAL INGREDIENTS')
         [print(ingr) for ingr in self.recipe_ingredients]
-        print('INGREDIENTS:')
+        print(' ')
+        print('PARSED INGREDIENTS:')
         [print(ingr) if ingr is not None else print('') for ingr in self.ingredients]
+        print(' ')
+        print('CONVERTED RECIPE INGREDIENTS')
+        self.pretty_print_ingredients()
+        print(' ')
         print('STEPS:')
         [print(step) for step in self.recipe_steps]
+        print(' ')
         print('PRIMARY_COOKING_METHOD: {}'.format(self.print_list(list(self.primary_methods))))
 
         print('SECONDARY_COOKING_METHOD: {}'.format(self.print_list([m for m in self.secondary_methods])))

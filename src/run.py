@@ -67,7 +67,7 @@ def main():
                 og_recipe = scrape(url)
         except Exception as inst:
             print('Something went wrong. Please try again:')
-            msg = "Failed for user input - {0}: {1}\n".format(str(user_input), str(inst))
+            msg = "Failed for user input - {0}: {1}\n".format(str(user_input), str(inst.with_traceback()))
             print(msg)
             log_file.write(msg)
             log_file.flush()
