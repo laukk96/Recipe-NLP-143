@@ -189,6 +189,7 @@ class Recipe:
         return ' '.join(filtered_list)
 
     def transform_to_vegetarian(self):  # REQUIRED
+        print('############', [str(ing) for ing in self.ingredients], self.meats)
         if len(self.meats) > 0:
             for i in range(len(self.ingredients)):
                 search_list = self.ingredients[i].ingr.split(' ')
@@ -218,6 +219,7 @@ class Recipe:
             self.meats = set()
             return self
         else:
+            print("ELSE")
             return self
 
     def _get_nonveg_ingredient(self):
@@ -263,10 +265,10 @@ class Recipe:
     def transform_by_scale_factor(self, factor):
         for ingredient in self.ingredients:
             if ingredient is not None and ingredient.amount is not None:
-                ingredient.amount = str(Fraction(ingredient.amount) * factor)        
+                ingredient.amount = str(Fraction(ingredient.amount) * factor)
         return self
 
-    
+
     def transform_to_indian(self):  # REQUIRED
         food_with_cusine_map = KBLoader.get_kaggle_food_with_cusine()
         print('print ingredients that are indian')
@@ -306,7 +308,7 @@ class Recipe:
                     for j in range(len(self.recipe_steps)):
                         self.recipe_steps[j] = re.sub(ingredient_to_replace, self._get_chinese_ingredient(),
                                                       self.recipe_steps[j])
-                                                      
+
         return self
 
     def transform_to_healthy(self):  # REQUIRED
@@ -330,6 +332,8 @@ class Recipe:
                         new_ingr = re.sub(inx,new_ingr_sel,ing.ingr)
                         print("----------Changing ingredient " + ing.ingr + " with " + new_ingr)
                         ing.ingr = new_ingr
+                        if new_ingr_sel == 'chicken' or new_ingr_sel == 'turkey':
+                            self.meats = {new_ingr_sel}
                         # if new_ingr_sel+inx in applied_new:
                         #     continue
 
@@ -343,9 +347,8 @@ class Recipe:
                                 break
 
                         break
-        for ing in self.ingredients:
-            print(ing)
-        print("----------------------------------------------- Method Ends Here -----------------------------------------------")
+        # for ing in self.ingredients:
+        #     print(ing)
         return self
 
     def _get_unhealthy_ingredient(self):
@@ -437,9 +440,9 @@ class Recipe:
                     if n_rep > 0:
                         break
 
-        for ing in self.ingredients:
-            print(ing)
-        print("----------------------------------------------- Method Ends Here -----------------------------------------------")
+        # for ing in self.ingredients:
+        #     print(ing)
+        # print("----------------------------------------------- Method Ends Here -----------------------------------------------")
         return self
 
     def transform_to_stirfry(self):  # OPTIONAL
@@ -536,7 +539,7 @@ class Recipe:
     def __str__(self):
         print('TITLE:')
         [print(self.title)]
-        print('ACTUAL INGREDIENTS')
+        print('PREVIOUS INGREDIENTS')
         [print(ingr) for ingr in self.recipe_ingredients]
         print('INGREDIENTS:')
         [print(ingr) if ingr is not None else print('') for ingr in self.ingredients]
