@@ -64,7 +64,7 @@ def main():
                 print(sf_recipe)
             elif user_input == '9':
                 url = input("URL -> ")
-                recipe = scrape(url)
+                og_recipe = scrape(url)
         except Exception as inst:
             print('Something went wrong. Please try again:')
             msg = "Failed for user input - {0}: {1}\n".format(str(user_input), str(inst))
