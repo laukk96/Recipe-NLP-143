@@ -59,11 +59,10 @@ def main():
         'https://www.allrecipes.com/recipe/220560/kashmiri-lamb/?internalSource=staff%20pick&referringId=233&referringContentType=Recipe%20Hub&clickId=cardslot%206',
         'https://www.allrecipes.com/recipe/221131/baked-buffalo-chicken-dip/?internalSource=hub%20recipe&referringContentType=Search',
         'https://www.allrecipes.com/recipe/21176/baked-dijon-salmon/?internalSource=staff%20pick&referringId=1642&referringContentType=Recipe%20Hub',
-        'https://www.allrecipes.com/recipe/25016/coconut-macaroon-brownies/?internalSource=streams&referringId=838&referringContentType=Recipe%20Hub&clickId=st_trending_b',
         'https://www.allrecipes.com/recipe/12009/creamy-cajun-chicken-pasta/?internalSource=hub%20recipe&referringContentType=Search&clickId=cardslot%202',
         'https://www.allrecipes.com/recipe/26655/smothered-meatballs/?internalSource=popular&referringContentType=Homepage&clickId=cardslot%208',
-        'https://www.allrecipes.com/recipe/265432/lemon-cheesecake-bars/?internalSource=previously%20viewed&referringContentType=Homepage&clickId=cardslot%2016',
         'https://www.allrecipes.com/recipe/85138/great-green-salad/?internalSource=streams&referringId=213&referringContentType=Recipe%20Hub&clickId=st_trending_s',
+        'https://www.allrecipes.com/recipe/235014/paleo-chili/?internalSource=streams&referringId=84&referringContentType=Recipe%20Hub&clickId=st_trending_s']
         'https://www.allrecipes.com/recipe/214080/kale-swiss-chard-chicken-and-feta-salad/','https://www.allrecipes.com/recipe/25317/carrot-chile-and-cilantro-soup/?internalSource=rotd&referringId=87&referringContentType=Recipe%20Hub',
         'https://www.allrecipes.com/recipe/245362/chef-johns-shakshuka/?internalSource=staff%20pick&referringId=87&referringContentType=Recipe%20Hub',
         'https://www.allrecipes.com/recipe/21528/pesto-pizza/?internalSource=staff%20pick&referringId=87&referringContentType=Recipe%20Hub',
