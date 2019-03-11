@@ -7,7 +7,8 @@ This is a NLP oriented parser that applies natural language oriented semantic/ex
 
 2. ### Running The Parser/Transformer:
       1. Open a CLI of your choice.
-      2. Run `python run.py`.
+      2. Navigate to the `src` folder in the repository.
+      3. Run `python run.py`.
 
 3. ### Using the Interface:
       1. Enter the recipe url from `allrecipes.com`.
