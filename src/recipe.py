@@ -260,7 +260,10 @@ class Recipe:
 
     def _get_chinese_ingredient(self):
         chinese_spice = ['red sichuan peppercorn', 'green sichuan peppercorn', 'five spice powder', 'duce sauce', 'oyster sauce', 'hoisin sauce', 'black bean and garlic sauce','xo sauce','sweet and saur sauce', 'soy sauce', 'chinese black vinegar', 'sesame oil', 'rice wine']
-        return random.choice(chinese_spice)
+        random.shuffle(chinese_spice)
+        lst_to_return = ['douchi']+ chinese_spice
+        #return random.choice(chinese_spice)
+        return (n for n in lst_to_return)
 
     def transform_by_scale_factor(self, factor):
         for ingredient in self.ingredients:
@@ -294,23 +297,31 @@ class Recipe:
                         self.recipe_steps[j] = self._clean_dup_step(self.recipe_steps[j])
         return self
 
-    def transform_to_chinese(self):  # OPTIONAL
-        print('print ingredients that are chinese:')
+    def transform_to_chinese(self):  # optional
         food_with_cusine_map = KBLoader.get_kaggle_food_with_cusine()
+        print('print ingredients that are Chinese')
+        gen = self._get_chinese_ingredient()
         for i in range(len(self.ingredients)):
             if self.ingredients[i].ingr in food_with_cusine_map:
                 if 'chinese' in food_with_cusine_map[self.ingredients[i].ingr]:
                     print('--', self.ingredients[i].ingr)
                 else:
-                    print('--------- not chinese: ', self.ingredients[i].ingr)
+                    print('--------- not Chinese: ', self.ingredients[i].ingr)
+                    try:
+                        repl = next(gen)
+                    except StopIteration:
+                        repl = 'douchi'
                     ingredient_to_replace = self.ingredients[i].ingr
-                    self.delete_ingredient(ingredient_to_replace)
+                    self.ingredients[i].ingr = repl
                     for j in range(len(self.recipe_steps)):
-                        self.recipe_steps[j] = re.sub(ingredient_to_replace, self._get_chinese_ingredient(),
-                                                      self.recipe_steps[j])
-
-        return self
-
+                        key_search = ingredient_to_replace.split(' ')
+                        #print('REPLACE: ', key_search)
+                        # for k in range(len(key_search)):
+                        self.recipe_steps[j] = re.sub(ingredient_to_replace, repl, self.recipe_steps[j])
+                            # break;
+                        self.recipe_steps[j] = self._clean_dup_step(self.recipe_steps[j])
+        return self 
+    
     def transform_to_healthy(self):  # REQUIRED
 
         dic = {frozenset({'chicken','turkey'}):{'meat', 'beef', 'brisket','pork','steak','lamb', 'bacon', 'ham'},
