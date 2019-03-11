@@ -1,6 +1,6 @@
 import requests
 from bs4 import BeautifulSoup
-
+import copy
 from recipe import Recipe
 
 
@@ -17,7 +17,6 @@ def scrape(url):
             tmp = item.text.strip()
             if len(tmp) > 0 and tmp != 'Add all ingredients to list':
                 ingredients.append(tmp)
-        # print(ingredients)
 
         step_lst = soup.find_all(class_="recipe-directions__list--item")
         directions = []
@@ -25,8 +24,8 @@ def scrape(url):
             entry = step.text.lower().strip()
             if len(entry) > 0:
                 directions.append(entry)
-        # print(directions)
         recep = Recipe(ingredients, directions)
+
         print(recep)
         print('CONVERSION TO VEGETARIAN')
         # print(recep)
@@ -69,6 +68,7 @@ def main():
         'https://www.allrecipes.com/recipe/256728/grilled-portobello-mushrooms-with-mashed-cannellini-beans-and-harissa-sauce/?internalSource=staff%20pick&referringId=87&referringContentType=Recipe%20Hub',
 
     ]
+
 
     for url in list_of_urls[:]:
         scrape(url)
