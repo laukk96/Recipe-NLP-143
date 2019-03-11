@@ -40,10 +40,10 @@ def scrape(url):
         #
         # recep = recep.transform_to_indian()
         # print(recep)
-        recep = recep.transform_to_stirfry()
+        # recep = recep.transform_to_stirfry()
         # print('##################################################TRANSFORMING')
 
-        print(recep)
+        # print(recep)
         return recep
 
     else:

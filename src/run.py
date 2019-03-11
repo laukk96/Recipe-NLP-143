@@ -1,12 +1,13 @@
 from recipe import Recipe
 from webscraper import scrape
+import copy
 
 def main():
     print('please enter url from allrecipes.com: ')
     log_file = open("errors.log", "a")
     user_input = input()
     try:
-        recipe = scrape(user_input)
+        og_recipe = scrape(user_input)
     except Exception as inst:
          print('Error occured wile parsing recipe from link. Please provide a link again:')
          msg = "Failed for url {0}: {1}\n".format(str(user_input), str(inst))
@@ -17,6 +18,7 @@ def main():
          log_file.close()
 
     while user_input != 0:
+        recipe = copy.deepcopy(og_recipe)
         log_file = open("errors.log", "a")
         print('0 to Exit!')
         print('1 to convert to vegetarian')
@@ -71,8 +73,8 @@ def main():
             log_file.flush()
         finally:
             log_file.close()
-            #data = log_file.read() 
-            
+            #data = log_file.read()
+
 
 
 
