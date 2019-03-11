@@ -1,12 +1,8 @@
 import random
 import re
 
-# import KBLoader
+from fractions import Fraction
 import KBLoader
-
-
-# import KBLoader
-
 
 class Ingredient:
     def __init__(self, amount, measure_type, ingr, ingredient_type=None):
@@ -16,6 +12,7 @@ class Ingredient:
         self.ingr = ingr
 
     def __str__(self):
+
         return 'Amount = {0}, MeasureType = {1}, IngredientType = {2}, Ingredient = {3} '.format(self.amount,
                                                                                self.measure_type, self.ingredient_type,
                                                                                self.ingr)
@@ -243,8 +240,8 @@ class Recipe:
             return self
 
     def _get_indian_ingredient(self):
-        indian_spice = ['tikka-masala', 'garam-masala', 'gopi-cream', 'red-chilli-powder', 'turmeric-powder', 'ginger',
-                        'fennel','ajwain', 'tamarind-sauce', 'basil', 'gooseberry', 'mustard',
+        indian_spice = ['tikka-masala', 'garam-masala', 'red-chilli-powder', 'turmeric-powder', 'ginger',
+                        'fennel','ajwain', 'tamarind-sauce', 'gooseberry', 'mustard',
                         'curry-powder']
 
         # if 'soy' in toReplace.split(' '):
@@ -259,6 +256,17 @@ class Recipe:
         # indian_spice = {'tikka', 'masala', 'milk', 'gopi cream', 'red chilli powder', 'turmeric', 'ginger'}
         return (n for n in lst_to_return)
 
+    def _get_chinese_ingredient(self):
+        chinese_spice = ['red sichuan peppercorn', 'green sichuan peppercorn', 'five spice powder', 'duce sauce', 'oyster sauce', 'hoisin sauce', 'black bean and garlic sauce','xo sauce','sweet and saur sauce', 'soy sauce', 'chinese black vinegar', 'sesame oil', 'rice wine']
+        return random.choice(chinese_spice)
+
+    def transform_by_scale_factor(self, factor):
+        for ingredient in self.ingredients:
+            if ingredient is not None and ingredient.amount is not None:
+                ingredient.amount = str(Fraction(ingredient.amount) * factor)        
+        return self
+
+    
     def transform_to_indian(self):  # REQUIRED
         food_with_cusine_map = KBLoader.get_kaggle_food_with_cusine()
         print('print ingredients that are indian')
@@ -277,7 +285,7 @@ class Recipe:
                     self.ingredients[i].ingr = repl
                     for j in range(len(self.recipe_steps)):
                         key_search = ingredient_to_replace.split(' ')
-                        print('REPLACE: ', key_search)
+                        # print('REPLACE: ', key_search)
                         # for k in range(len(key_search)):
                         self.recipe_steps[j] = re.sub(ingredient_to_replace, repl, self.recipe_steps[j])
                             # break;
@@ -285,7 +293,21 @@ class Recipe:
         return self
 
     def transform_to_chinese(self):  # OPTIONAL
-        pass
+        print('print ingredients that are chinese:')
+        food_with_cusine_map = KBLoader.get_kaggle_food_with_cusine()
+        for i in range(len(self.ingredients)):
+            if self.ingredients[i].ingr in food_with_cusine_map:
+                if 'chinese' in food_with_cusine_map[self.ingredients[i].ingr]:
+                    print('--', self.ingredients[i].ingr)
+                else:
+                    print('--------- not chinese: ', self.ingredients[i].ingr)
+                    ingredient_to_replace = self.ingredients[i].ingr
+                    self.delete_ingredient(ingredient_to_replace)
+                    for j in range(len(self.recipe_steps)):
+                        self.recipe_steps[j] = re.sub(ingredient_to_replace, self._get_chinese_ingredient(),
+                                                      self.recipe_steps[j])
+                                                      
+        return self
 
     def transform_to_healthy(self):  # REQUIRED
 
@@ -460,7 +482,7 @@ class Recipe:
         print('ACTUAL INGREDIENTS')
         [print(ingr) for ingr in self.recipe_ingredients]
         print('INGREDIENTS:')
-        [print(ingr) for ingr in self.ingredients]
+        [print(ingr) if ingr is not None else print('') for ingr in self.ingredients]
         print('STEPS:')
         [print(step) for step in self.recipe_steps]
         print('PRIMARY_COOKING_METHOD: {}'.format(self.primary_methods))
@@ -470,7 +492,7 @@ class Recipe:
 
 def main():
     pass
-    # Recipe()
+    #Recipe()
 
 
 if __name__ == "__main__":

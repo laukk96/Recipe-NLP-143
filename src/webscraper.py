@@ -1,7 +1,7 @@
 import requests
 import re
 from bs4 import BeautifulSoup
-
+import copy
 from recipe import Recipe
 
 
@@ -19,7 +19,6 @@ def scrape(url):
             tmp = item.text.strip()
             if len(tmp) > 0 and tmp != 'Add all ingredients to list':
                 ingredients.append(tmp)
-        # print(ingredients)
 
         step_lst = soup.find_all(class_="recipe-directions__list--item")
         directions = []
@@ -27,10 +26,11 @@ def scrape(url):
             entry = step.text.lower().strip()
             if len(entry) > 0:
                 directions.append(entry)
-        # print(directions)
-        recep = Recipe(ingredients, directions, title)
-        # print(recep)
-        # print('CONVERSION TO VEGETARIAN')
+        recep = Recipe(ingredients, directions)
+
+        print(recep)
+        print('CONVERSION TO VEGETARIAN')
+
         # print(recep)
         # print(recep)
         # print('vegie')
@@ -42,9 +42,9 @@ def scrape(url):
         #
         # recep = recep.transform_to_indian()
         # print(recep)
+        recep = recep.transform_to_unhealthy()
         # print('##################################################TRANSFORMING')
-        #comment4
-        recep = recep.transform_to_stirfry()
+
         print(recep)
         return recep
 
@@ -71,7 +71,8 @@ def main():
 
     ]
 
-    for url in list_of_urls[0:1]:
+
+    for url in list_of_urls[:]:
         scrape(url)
 
 
