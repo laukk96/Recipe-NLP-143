@@ -79,7 +79,6 @@ medium tomatoes#thai
 cornish hens#vietnamese
 coarse salt#moroccan
 lap cheong#chinese
-rosemary#chinese
 avocado oil#vietnamese
 duck breast halves#french
 chuck#spanish
@@ -92,7 +91,6 @@ cheese spread#southern_us
 pitas#southern_us
 sweet paprika#russian
 mustard powder#italian
-potato starch#chinese
 seasoning#vietnamese
 asian fish sauce#korean
 roasted red peppers#italian
@@ -127,7 +125,6 @@ ground mustard#mexican
 red wine vinegar#french
 brandy#russian
 nori flakes#japanese
-puff pastry#chinese
 soup#cajun_creole
 fish stock#spanish
 spices#italian
@@ -146,7 +143,6 @@ carbonated water#mexican
 empanada#mexican
 fresh corn#italian
 yellow bean sauce#vietnamese
-round steaks#chinese
 chili pepper#spanish
 shortening#spanish
 Progresso Diced Tomatoes#italian
@@ -259,7 +255,6 @@ green lentil#chinese
 boneless sirloin steak#french
 baking soda#jamaican
 fish steaks#french
-razor clams#chinese
 caviar#french
 fresh parsley leaves#italian
 lump crab meat#thai
@@ -268,7 +263,6 @@ white wine vinegar#british
 peaches#italian
 boiling potatoes#moroccan
 parsnips#russian
-fresh green peas#chinese
 cold water#russian
 spelt#southern_us
 herbsaint#cajun_creole
@@ -324,7 +318,6 @@ ranch dressing#irish
 sherry#jamaican
 salt#cajun_creole
 Emmenthal#french
-flour tortillas (not low fat)#chinese
 cacao nibs#french
 Emmenthal#mexican
 grated lemon zest#brazilian
@@ -513,7 +506,6 @@ boneless pork shoulder#cajun_creole
 agave tequila#mexican
 self rising flour#chinese
 lavender#greek
-pumpkin#chinese
 sweet chili sauce#filipino
 frozen brussels sprouts#italian
 chopped parsley#spanish
@@ -542,16 +534,13 @@ beef consomme#italian
 turkey stock#mexican
 lemon thyme#french
 coconut water#thai
-cooked shrimp#chinese
 cooked meat#southern_us
 roe#greek
 irish cream liqueur#irish
-egg substitute#chinese
 thyme leaves#filipino
 idaho potatoes#irish
 sliced cucumber#southern_us
 extra light olive oil#japanese
-boneless skinless chicken breasts#chinese
 french sandwich rolls#cajun_creole
 orange liqueur#irish
 garlic salt#cajun_creole
@@ -573,7 +562,6 @@ cayenne pepper#greek
 chicken breast tenderloins#french
 light butter#southern_us
 soba#thai
-ice cubes#chinese
 pork bouillon cube#chinese
 coriander seeds#italian
 rice#chinese
@@ -652,7 +640,6 @@ konnyaku#japanese
 butternut squash#southern_us
 beau monde seasoning#brazilian
 butter#thai
-chopped almonds#chinese
 noodles#italian
 vanilla#french
 grapeseed oil#italian
@@ -724,7 +711,6 @@ chile powder#mexican
 french fried onions#vietnamese
 tapioca flour#vietnamese
 grated lemon zest#greek
-boneless chop pork#chinese
 garlic oil#italian
 country style bread#italian
 egg pasta#italian
@@ -736,7 +722,6 @@ black truffle oil#italian
 ground coriander#moroccan
 steamed rice#vietnamese
 holy basil#thai
-sprouts#chinese
 asparagus spears#japanese
 sour cream#french
 oxtails#southern_us
@@ -809,7 +794,6 @@ reduced fat ricotta cheese#italian
 romano cheese#southern_us
 french baguette#greek
 grated parmesan cheese#irish
-chopped nuts#chinese
 extra large eggs#moroccan
 riesling#korean
 crushed pretzels#southern_us
@@ -884,10 +868,7 @@ Progresso Balsamic Vinegar#italian
 chinese noodles#chinese
 Splenda Brown Sugar Blend#cajun_creole
 corn syrup#filipino
-jam#chinese
 bread flour#cajun_creole
-Philadelphia Cream Cheese#chinese
-heavy whipping cream#chinese
 Herdez Salsa Casera#mexican
 framboise eau-de-vie#italian
 walnuts#mexican
@@ -903,12 +884,10 @@ smoked sea salt#southern_us
 whole wheat breadcrumbs#irish
 whole milk#chinese
 chicken bouillon granules#japanese
-bone-in chicken breast halves#chinese
 fresh tuna steaks#cajun_creole
 crabmeat frozen#cajun_creole
 cherries#russian
 yeast#filipino
-new potatoes#chinese
 medium shrimp#vietnamese
 white bread#greek
 jello#japanese
@@ -931,14 +910,12 @@ curaçao#french
 semi-sweet chocolate morsels#french
 solid white tuna in oil#italian
 essence#italian
-wild mushrooms#chinese
 frozen mixed thawed vegetables,#italian
 low-fat firm silken tofu#italian
 ground black pepper#brazilian
 artichok heart marin#cajun_creole
 reduced sodium reduced fat cream of mushroom soup#mexican
 hot red pepper flakes#italian
-carrot sticks#chinese
 active dry yeast#filipino
 yellow corn meal#spanish
 tomato ketchup#thai
@@ -1033,7 +1010,6 @@ endive#spanish
 sofrito#mexican
 duck#thai
 pinto beans#moroccan
-cream cheese, soften#chinese
 chopped celery#french
 oats#brazilian
 fat free greek yogurt#greek
@@ -1042,7 +1018,6 @@ cauliflower flowerets#thai
 sour cherries#spanish
 baking potatoes#moroccan
 bread rolls#mexican
-light brown sugar#chinese
 fresh chives#italian
 reduced sodium beef broth#vietnamese
 shortcrust pastry#british
@@ -1068,7 +1043,6 @@ red radishes#japanese
 chip plain tortilla#mexican
 cooked ham#japanese
 soba noodles#thai
-chicken leg quarters#chinese
 chili sauce#italian
 Ciabatta rolls#italian
 serrano chile#mexican
@@ -1089,7 +1063,6 @@ button mushrooms#thai
 chopped tomatoes#greek
 all purpose unbleached flour#spanish
 tomato jam#spanish
-maltose#chinese
 apples#filipino
 fleur de sel#spanish
 shirataki#korean
@@ -1140,7 +1113,6 @@ dende oil#brazilian
 basil#irish
 roast beef#thai
 red chili peppers#chinese
-duck breasts#chinese
 mandarin oranges#italian
 full fat cream cheese#british
 coffee beans#brazilian
@@ -1205,7 +1177,6 @@ sugar pea#moroccan
 prepared guacamole#mexican
 hearts of palm#greek
 cooked quinoa#mexican
-soda#chinese
 squash#moroccan
 crushed red pepper#thai
 anise liqueur#southern_us
@@ -1232,7 +1203,6 @@ yellow food coloring#italian
 pork blood#irish
 loosely packed fresh basil leaves#southern_us
 hot chili sauce#korean
-fresh peas#chinese
 frozen meatballs#filipino
 cream cheese#jamaican
 long-grain rice#filipino
@@ -1255,7 +1225,6 @@ pickling cucumbers#russian
 raspberry preserves#russian
 cooking spray#jamaican
 chinese plum sauce#chinese
-avocado#chinese
 caster#french
 boneless beef rib eye steaks#italian
 beef steak#mexican
@@ -1296,9 +1265,7 @@ avocado oil#mexican
 prawns#mexican
 dried mango#thai
 rich chicken stock#japanese
-chicken breasts#chinese
 royal olives#italian
-syrup#chinese
 lettuce leaves#southern_us
 beef bouillon#italian
 rice noodles#thai
@@ -1323,7 +1290,6 @@ kidney beans#cajun_creole
 brown shrimp#greek
 fresh mushrooms#southern_us
 piloncillo#mexican
-pork butt#chinese
 kimchi#mexican
 min#russian
 Jack Daniels Whiskey#southern_us
@@ -1342,7 +1308,6 @@ sugar#jamaican
 chili paste#moroccan
 yogurt low fat#greek
 cider vinegar#italian
-Corn Flakes Cereal#chinese
 pancit#filipino
 canola#french
 shredded reduced fat reduced sodium swiss cheese#italian
@@ -1351,7 +1316,6 @@ crumbs#british
 shiitake#mexican
 shells#southern_us
 bacon#japanese
-parma ham#chinese
 white wine vinegar#greek
 bread flour#southern_us
 salt and ground black pepper#filipino
@@ -1361,7 +1325,6 @@ grate lime peel#thai
 beef tenderloin#brazilian
 hot smoked paprika#southern_us
 boneless skinless chicken breast halves#vietnamese
-roast duck meat#chinese
 light soy sauce#thai
 kohlrabi#mexican
 yucca root#brazilian
@@ -1378,7 +1341,6 @@ canned low sodium chicken broth#southern_us
 boneless skinless chicken breast halves#french
 pork meat#cajun_creole
 fresh mint#thai
-skinless and boneless chicken breast fillet#chinese
 knorr homestyl stock   chicken#mexican
 pimento stuffed olives#cajun_creole
 boneless chicken breast#japanese
@@ -1387,7 +1349,6 @@ light coconut milk#italian
 fresh udon#vietnamese
 mussels#southern_us
 green tea bags#japanese
-chutney#chinese
 baby carrots#moroccan
 pizza sauce#mexican
 broccoli#italian
@@ -1424,7 +1385,6 @@ pork shoulder boston butt#korean
 rice#southern_us
 morel#mexican
 oil cured olives#french
-short rib#chinese
 chinese chives#chinese
 tamarind purée#thai
 sherry#vietnamese
@@ -1451,7 +1411,6 @@ maple syrup#french
 roasted peanuts#southern_us
 organic sugar#thai
 corn oil#japanese
-sausages#chinese
 lemonade concentrate#italian
 sliced mushrooms#greek
 large egg yolks#british
@@ -1479,7 +1438,6 @@ chocolate syrup#mexican
 silver#cajun_creole
 hothouse cucumber#russian
 low sodium vegetable broth#mexican
-roasted unsalted cashews#chinese
 shell pasta#southern_us
 thai chile#vietnamese
 soybean paste#chinese
@@ -1539,7 +1497,6 @@ reduced sodium soy sauce#brazilian
 Fisher Pecans#southern_us
 boneless skinless chicken breasts#spanish
 fresh ginger#spanish
-corn flakes#chinese
 rib eye steaks#french
 bittersweet chocolate chips#southern_us
 smoked gouda#british
@@ -2425,9 +2382,7 @@ large egg whites#russian
 littleneck clams#cajun_creole
 gluten-free flour#southern_us
 apricots#greek
-pineapple juice#chinese
 galangal#vietnamese
-pure maple syrup#chinese
 reduced sodium italian style stewed tomatoes#italian
 whole milk#moroccan
 seitan#chinese
@@ -2453,7 +2408,6 @@ ground ginger#vietnamese
 fennel bulb#spanish
 dark brown sugar#cajun_creole
 lima beans#italian
-promise buttery spread#chinese
 celery ribs#brazilian
 italian-style meatballs#italian
 emerils original essence#brazilian
@@ -2510,7 +2464,6 @@ pork blade steaks#vietnamese
 rib#brazilian
 silver#brazilian
 sambal chile paste#thai
-ground turkey#chinese
 peeled shrimp#italian
 cooking liquid#moroccan
 extra firm tofu#japanese
@@ -2594,9 +2547,7 @@ spinach#italian
 Spanish olives#filipino
 eye of round steak#vietnamese
 fideos#spanish
-tiger prawn#chinese
 chili pepper#mexican
-sugar pea#chinese
 ground cloves#filipino
 acini di pepe#italian
 nonfat yogurt plain#japanese
@@ -2670,7 +2621,6 @@ almond butter#vietnamese
 soda bread#irish
 vegetable oil spray#korean
 Jameson Irish Whiskey#southern_us
-pancake#chinese
 turkey meat#southern_us
 lard#vietnamese
 beef kidney#british
@@ -2724,7 +2674,6 @@ agave nectar#vietnamese
 shiitake#russian
 red wine vinegar#brazilian
 miswa#filipino
-almonds#chinese
 praline topping#southern_us
 lamb#irish
 cream cheese spread#italian
@@ -2757,8 +2706,6 @@ mexican cooking sauce#mexican
 white miso#japanese
 fresh mushrooms#mexican
 beefsteak tomatoes#brazilian
-head on shrimp#chinese
-tomato sauce#chinese
 canola oil#japanese
 graham cracker crumbs#mexican
 steamed rice#mexican
@@ -2792,7 +2739,6 @@ fruit#jamaican
 pork shoulder#japanese
 crostini#southern_us
 mango chutney#spanish
-firmly packed brown sugar#chinese
 seasoned black beans#mexican
 poppy seeds#japanese
 chocolate sauce#southern_us
@@ -2833,7 +2779,6 @@ duck breasts#japanese
 ground turmeric#cajun_creole
 organic coconut milk#thai
 chopped fresh chives#vietnamese
-flour for dusting#chinese
 dried apricot#british
 chicken-flavored soup powder#italian
 green bell pepper#russian
@@ -2981,7 +2926,6 @@ garlic powder#brazilian
 halibut fillets#british
 melon liqueur#southern_us
 burgundy#french
-virginia ham#chinese
 pork tenderloin#southern_us
 dried thyme#jamaican
 raspberry puree#southern_us
@@ -3020,7 +2964,6 @@ shortening#cajun_creole
 salmon fillets#mexican
 fresh shiitake mushrooms#irish
 carp#french
-pineapple chunks in natural juice#chinese
 fresh turmeric#thai
 pig#british
 fennel seeds#vietnamese
@@ -3034,7 +2977,6 @@ fresh raspberries#french
 processed cheese#cajun_creole
 chinese chives#japanese
 pectin#southern_us
-fully cooked ham#chinese
 couscous#moroccan
 frozen whipped topping#italian
 frozen pastry puff sheets#spanish
@@ -3073,7 +3015,6 @@ roasted hazelnuts#russian
 phyllo pastry#greek
 frozen corn#italian
 red grape#brazilian
-mango#chinese
 green pepper#japanese
 ground thyme#cajun_creole
 unsalted cashews#thai
@@ -3125,7 +3066,6 @@ hazelnuts#moroccan
 unbaked pie shells#british
 eye of round steak#cajun_creole
 fettuccine pasta#chinese
-jelly#chinese
 breakfast sausages#mexican
 boneless rib eye steaks#italian
 green beans#southern_us
@@ -3174,7 +3114,6 @@ wheat flour#british
 pink grapefruit juice#korean
 yukon gold potatoes#japanese
 italian salad dressing#southern_us
-whipping cream#chinese
 ground sirloin#korean
 cilantro leaves#japanese
 shredded coconut#brazilian
@@ -3183,7 +3122,6 @@ sweet soy sauce#vietnamese
 black bean sauce#vietnamese
 chili habanero pepper#jamaican
 cole slaw mix#japanese
-cheese#chinese
 broiler-fryer chicken#mexican
 beef soup bones#southern_us
 roquefort cheese#french
@@ -3233,7 +3171,6 @@ fresh coriander#thai
 crushed red pepper#japanese
 long grain white rice#russian
 large flour tortillas#mexican
-dried cranberries#chinese
 cremini#italian
 bacon fat#mexican
 diced tomatoes#mexican
@@ -3253,7 +3190,6 @@ dried thyme#italian
 rice sticks#vietnamese
 sausage links#moroccan
 chicken#russian
-canadian bacon#chinese
 beer#mexican
 tilapia fillets#southern_us
 smoked bacon#spanish
@@ -3277,7 +3213,6 @@ dried beans#mexican
 sea salt#irish
 white flour#russian
 candy canes#japanese
-buffalo sauce#chinese
 parsley#moroccan
 bénédictine#british
 salmon steaks#japanese
@@ -3387,7 +3322,6 @@ steamer#mexican
 dumpling dough#chinese
 boneless skin on chicken thighs#southern_us
 diced potatoes#mexican
-tangerine juice#chinese
 fresh ginger#vietnamese
 whole cloves#thai
 ricotta#french
@@ -3499,7 +3433,6 @@ baby spinach#jamaican
 fish fillets#british
 boneless skinless chicken breasts#southern_us
 butter oil#jamaican
-garam masala#chinese
 celery salt#southern_us
 canned beans#mexican
 finely chopped onion#southern_us
@@ -3549,7 +3482,6 @@ reduced sodium soy sauce#cajun_creole
 other vegetables#cajun_creole
 whole allspice#mexican
 sea salt#british
-plum jam#chinese
 red mullet#french
 confit duck leg#russian
 vegetable juice#spanish
@@ -3659,7 +3591,6 @@ pecan meal#southern_us
 hot water#italian
 turkey sausage links#italian
 shredded swiss cheese#italian
-white cabbage#chinese
 cold water#mexican
 sherry vinegar#mexican
 finely chopped onion#irish
@@ -3677,7 +3608,6 @@ fresh chives#chinese
 unsmoked bacon#french
 asparagus spears#irish
 medium shrimp#japanese
-cake flour#chinese
 dried plum#french
 truffle oil#spanish
 fast-rising active dry yeast#french
@@ -3710,7 +3640,6 @@ whole wheat pastry flour#jamaican
 cake#greek
 white chocolate chips#southern_us
 golden caster sugar#vietnamese
-high-gluten flour#chinese
 active dry yeast#vietnamese
 sugar pea#french
 fresh onion#italian
@@ -3800,7 +3729,6 @@ cranberry sauce#mexican
 bacon slices#korean
 chambord#british
 american cheese food#southern_us
-unflavored gelatin#chinese
 soft-boiled egg#british
 yoghurt#mexican
 chunky#italian
@@ -3896,7 +3824,6 @@ spearmint#greek
 teriyaki sauce#vietnamese
 cayenne pepper#korean
 Kraft Miracle Whip Dressing#southern_us
-hard-boiled egg#chinese
 cooking wine#cajun_creole
 pastry dough#russian
 unseasoned breadcrumbs#japanese
@@ -3907,7 +3834,6 @@ ice water#italian
 uncooked rigatoni#italian
 masa#mexican
 purple onion#filipino
-baby spinach leaves#chinese
 cinnamon sticks#spanish
 sea salt flakes#spanish
 green olives#russian
@@ -3976,7 +3902,6 @@ unsalted butter#brazilian
 black beans#japanese
 ground almonds#moroccan
 ale#british
-water#chinese
 mushrooms#moroccan
 glutinous rice flour#korean
 frozen petit pois#chinese
@@ -4015,7 +3940,6 @@ celery heart#french
 less sodium beef broth#thai
 dry white wine#jamaican
 coco#mexican
-custard#chinese
 sorghum flour#russian
 mint leaves#irish
 grape juice#french
@@ -4121,7 +4045,6 @@ almond flour#southern_us
 dukkah#moroccan
 light brown sugar#french
 spinach#french
-fresh lime juice#chinese
 toasted slivered almonds#southern_us
 kirsch#spanish
 manicotti shells#italian
@@ -4149,7 +4072,6 @@ boneless chicken breast halves#greek
 sharp cheddar cheese#french
 prosciutto#british
 yukon gold potatoes#filipino
-crabmeat#chinese
 hot Italian sausages#brazilian
 ground nutmeg#moroccan
 condensed reduced fat reduced sodium cream of chicken soup#italian
@@ -4163,13 +4085,11 @@ sea bass fillets#thai
 shell-on shrimp#spanish
 cabernet sauvignon#italian
 amaretto#cajun_creole
-whole peeled tomatoes#chinese
 celery stick#chinese
 turkey#southern_us
 boiling potatoes#southern_us
 crushed pineapple#filipino
 spring onions#vietnamese
-canola#chinese
 wheat free soy sauce#chinese
 thyme sprigs#southern_us
 safflower#filipino
@@ -4250,7 +4170,6 @@ sweet rice flour#filipino
 crusty bread#cajun_creole
 farro#italian
 rotini#greek
-pomegranate juice#chinese
 fresh raspberries#irish
 ground coriander#british
 cottage cheese#greek
@@ -4304,7 +4223,6 @@ juniper berries#moroccan
 shucked oysters#vietnamese
 medium shrimp#mexican
 vegetable oil spray#italian
-sea cucumber#chinese
 orange glaze#southern_us
 hamburger buns#vietnamese
 salted roast peanuts#thai
@@ -4325,7 +4243,6 @@ warm water#japanese
 long-grain rice#spanish
 cheese soup#mexican
 diced yellow onion#mexican
-roasted chestnuts#chinese
 oatmeal#southern_us
 beef fillet#korean
 bay leaves#jamaican
@@ -4523,7 +4440,6 @@ mild olive oil#southern_us
 dried thyme#spanish
 white cake mix#jamaican
 boneless skinless chicken breasts#filipino
-minced pork#chinese
 bay leaf#moroccan
 white wine vinegar#southern_us
 cider vinegar#chinese
@@ -4732,7 +4648,6 @@ basil#british
 orange juice#russian
 frozen peas#moroccan
 light brown sugar#filipino
-bacon fat#chinese
 pure olive oil#cajun_creole
 warm water#korean
 orange liqueur#italian
@@ -4746,7 +4661,6 @@ chili#cajun_creole
 smoked ham hocks#cajun_creole
 low fat reduced sodium pasta sauce#italian
 watercress leaves#vietnamese
-fried wonton strips#chinese
 crushed cornflakes#british
 hachiya#french
 hearts of palm#thai
@@ -4760,12 +4674,10 @@ capers#italian
 posole#mexican
 broad beans#moroccan
 hoisin sauce#korean
-rolls#chinese
 dried mixed herbs#italian
 cocktail sauce#cajun_creole
 raw almond#brazilian
 pancake#french
-Madras curry powder#chinese
 edamame#greek
 coconut cream#japanese
 fatback#southern_us
@@ -4789,7 +4701,6 @@ food colouring#irish
 quick cooking brown rice#chinese
 roasted red peppers#greek
 hearts of romaine#chinese
-chunky peanut butter#chinese
 chili garlic paste#vietnamese
 spring roll wrappers#filipino
 cinnamon sticks#filipino
@@ -4804,8 +4715,6 @@ mentsuyu#japanese
 annatto seeds#vietnamese
 fresh thyme leaves#korean
 gai lan#korean
-flank steak#chinese
-chicken breast fillets#chinese
 peanuts#cajun_creole
 beef stew meat#mexican
 saba#french
@@ -4821,7 +4730,6 @@ beefsteak tomatoes#southern_us
 red cabbage#southern_us
 wild mushrooms#cajun_creole
 crisco#chinese
-powdered vanilla pudding mix#chinese
 palm oil#brazilian
 low-fat yogurt#mexican
 grated lemon peel#british
@@ -4844,7 +4752,6 @@ neutral oil#french
 diced chicken#vietnamese
 hot water#filipino
 tea bags#italian
-beef rib short#chinese
 light agave nectar#japanese
 cornish game hens#moroccan
 thyme sprigs#spanish
@@ -4919,7 +4826,6 @@ lime#mexican
 fresh thyme leaves#italian
 cayenne#spanish
 whole turkey#cajun_creole
-lamb breast#chinese
 sliced green onions#jamaican
 pepperoni slices#spanish
 unsweetened shredded dried coconut#mexican
@@ -4952,7 +4858,6 @@ medjool date#moroccan
 merluza#chinese
 shallots#vietnamese
 catfish fillets#vietnamese
-green chilies#chinese
 cheddar cheese#greek
 heavy whipping cream#southern_us
 leaf parsley#greek
