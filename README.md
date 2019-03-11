@@ -4,6 +4,7 @@ This is a NLP oriented parser that applies natural language oriented semantic/ex
 
 1. ### Installation:
       1. Clone the repository on your local machine with `git clone https://github.com/rhettdsouza13/Recipe-NLP.git`
+      2. Run the package installer `package.sh` if BeautifulSoup and unidecode dependancies are not met.
 
 2. ### Running The Parser/Transformer:
       1. Open a CLI of your choice.
