@@ -1,4 +1,5 @@
 import requests
+import re
 from bs4 import BeautifulSoup
 
 from recipe import Recipe
@@ -11,6 +12,7 @@ def scrape(url):
     page = requests.get(url)
     if page.status_code == 200:
         soup = BeautifulSoup(page.content, 'html.parser')
+        title = re.sub("- Allrecipes.com", "", soup.title.string)
         tmp_lst = soup.find_all(class_="checkList__line")
         ingredients = []
         for item in tmp_lst:
@@ -26,7 +28,7 @@ def scrape(url):
             if len(entry) > 0:
                 directions.append(entry)
         # print(directions)
-        recep = Recipe(ingredients, directions)
+        recep = Recipe(ingredients, directions, title)
         # print(recep)
         # print('CONVERSION TO VEGETARIAN')
         # print(recep)
@@ -42,7 +44,7 @@ def scrape(url):
         # print(recep)
         # print('##################################################TRANSFORMING')
         #comment4
-        recep = recep.transform_to_indian()
+        recep = recep.transform_to_stirfry()
         print(recep)
         return recep
 
@@ -69,7 +71,7 @@ def main():
 
     ]
 
-    for url in list_of_urls[:]:
+    for url in list_of_urls[0:1]:
         scrape(url)
 
 
