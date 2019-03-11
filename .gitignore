@@ -1,3 +1,4 @@
+*.log
 *.json
 .DS_Store
 .huskyrc.json
