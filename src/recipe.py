@@ -303,7 +303,7 @@ class Recipe:
         gen = self._get_chinese_ingredient()
         for i in range(len(self.ingredients)):
             if self.ingredients[i].ingr in food_with_cusine_map:
-                if 'Chinese' in food_with_cusine_map[self.ingredients[i].ingr]:
+                if 'chinese' in food_with_cusine_map[self.ingredients[i].ingr]:
                     print('--', self.ingredients[i].ingr)
                 else:
                     print('--------- not Chinese: ', self.ingredients[i].ingr)
