@@ -562,7 +562,7 @@ class Recipe:
 
     def __str__(self):
         print('==== ORIGINAL INGREDIENTS ====')
-        [print("•", ingr) for ingr in self.recipe_ingredients]
+        [print(ingr) for ingr in self.recipe_ingredients]
         # for step in self.recipe_ingredients:
         #     for segment in step.split(".\n"):
         #         segment = segment.strip(" ")
