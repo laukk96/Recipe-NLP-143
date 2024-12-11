@@ -2,31 +2,39 @@ import requests
 from bs4 import BeautifulSoup
 import copy
 from recipe import Recipe
-
+import os
 
 #test comment
 
 def scrape(url):
-    print(url)
+    os.system("clear")
     page = requests.get(url)
     if page.status_code == 200:
         soup = BeautifulSoup(page.content, 'html.parser')
-        tmp_lst = soup.find_all(class_="checkList__line")
+        tmp_lst = soup.find_all(class_="mm-recipes-structured-ingredients__list")
         ingredients = []
         for item in tmp_lst:
             tmp = item.text.strip()
+            # tmp = tmp.replace("\n", "")
+            # tmp = tmp + "\n"
             if len(tmp) > 0 and tmp != 'Add all ingredients to list':
                 ingredients.append(tmp)
 
-        step_lst = soup.find_all(class_="recipe-directions__list--item")
+        step_lst = soup.find_all(class_="comp mntl-sc-block mntl-sc-block-startgroup mntl-sc-block-group--OL")
         directions = []
         for step in step_lst:
             entry = step.text.lower().strip()
             if len(entry) > 0:
+                entry = entry.replace("\n", "")
+                entry += "\n"
                 directions.append(entry)
         recep = Recipe(ingredients, directions)
+        # for d in directions:
+        #     print("\n----------------------------------------------------------------------------------------")
+        #     print(d)
+        #     print("----------------------------------------------------------------------------------------")
 
-        print(recep)
+        # print("webscraper.py | scrape() -> \n", recep.ingredients)
         # print('CONVERSION TO VEGETARIAN')
 
         # print(recep)

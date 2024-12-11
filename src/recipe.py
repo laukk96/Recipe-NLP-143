@@ -52,8 +52,8 @@ class Recipe:
                     # print(ingredient.split(',')[0].strip().split(' '))
             else:
                 ingredient = ingredient.split(',')[0]
-            ingredient = re.sub(' \(.*\)', '', ingredient)
-            ingredient = re.sub(',', '', ingredient)
+            ingredient = re.sub(r' \(.*\)', '', ingredient)
+            ingredient = re.sub(r',', '', ingredient)
             lst_key_words = ingredient.lower().split(' ')
             # print(lst_key_words)
             # print('-----keyword search list: {}'.format(lst_key_words))
@@ -105,7 +105,7 @@ class Recipe:
             if matched_word is not None:
                 ingr = Ingredient(amount, measure_type, matched_word, ingredient_type)
                 self.ingredients.append(ingr)
-        print('MEATS FOUND: {}'.format(self.meats))
+        # print('MEATS FOUND: {}'.format(self.meats))
 
     def _populate_methods_and_tools(self):
         primary_cooking_methods = {'bake', 'fry', 'roast', 'grill', 'steam', 'poach', 'simmer', 'broil',
@@ -130,7 +130,7 @@ class Recipe:
             step_lst = step.lower().split(' ')
             for i in range(len(step_lst)):
                 val = step_lst[i]
-                val = re.sub('[^\w\s]','',val)
+                val = re.sub(r'[^\w\s]','',val)
                 if val in primary_cooking_methods:
                     if val in primary_cooking_mapping:
                         if len(self.primary_methods) == 0:
@@ -178,11 +178,11 @@ class Recipe:
         for i in range(len(search)-1):
             lhs = search[i]
             rhs = search[i+1]
-            search_vallhs = re.sub('[^\w\s]', '', lhs)
-            search_valrhs = re.sub('[^\w\s]', '', rhs)
+            search_vallhs = re.sub(r'[^\w\s]', '', lhs)
+            search_valrhs = re.sub(r'[^\w\s]', '', rhs)
             if search_vallhs != search_valrhs:
                 filtered_list.append(lhs)
-        if re.sub('[^\w\s]', '', filtered_list[-1]) != re.sub('[^\w\s]', '', search[-1]):
+        if re.sub(r'[^\w\s]', '', filtered_list[-1]) != re.sub(r'[^\w\s]', '', search[-1]):
             filtered_list.append(search[-1])
         return ' '.join(filtered_list)
 
@@ -203,14 +203,14 @@ class Recipe:
                             key_word_search = ' '.join(look_up_phrase[u:len(look_up_phrase)])
                             print('##keywordsearch: ',key_word_search)
                             self.recipe_steps[j] = re.sub(key_word_search, repl, self.recipe_steps[j])
-                            self.recipe_steps[j] = re.sub(' meat\.', ' '+repl+'.', self.recipe_steps[j])
-                            self.recipe_steps[j] = re.sub(' meat','',self.recipe_steps[j])
-                            self.recipe_steps[j] = re.sub(' no longer pink and', '',self.recipe_steps[j])
-                            self.recipe_steps[j] = re.sub('skin and bones', 'veggie scraps', self.recipe_steps[j])
+                            self.recipe_steps[j] = re.sub(r' meat\.', ' '+repl+'.', self.recipe_steps[j])
+                            self.recipe_steps[j] = re.sub(r' meat','',self.recipe_steps[j])
+                            self.recipe_steps[j] = re.sub(r' no longer pink and', '',self.recipe_steps[j])
+                            self.recipe_steps[j] = re.sub(r'skin and bones', 'veggie scraps', self.recipe_steps[j])
                             self.recipe_steps[j] = re.sub(look_up_phrase[u], repl , self.recipe_steps[j])
-                            self.recipe_steps[j] = re.sub('bones', repl , self.recipe_steps[j])
-                            self.recipe_steps[j] = re.sub('skin', repl , self.recipe_steps[j])
-                            self.recipe_steps[j] = re.sub(' fat', '', self.recipe_steps[j])
+                            self.recipe_steps[j] = re.sub(r'bones', repl , self.recipe_steps[j])
+                            self.recipe_steps[j] = re.sub(r'skin', repl , self.recipe_steps[j])
+                            self.recipe_steps[j] = re.sub(r' fat', '', self.recipe_steps[j])
                         new_step = self._clean_dup_step(self.recipe_steps[j])
                         self.recipe_steps[j] = new_step
                             # break;
@@ -561,22 +561,30 @@ class Recipe:
             print(val_string)
 
     def __str__(self):
-        print('ORIGINAL INGREDIENTS')
-        [print(ingr) for ingr in self.recipe_ingredients]
+        print('==== ORIGINAL INGREDIENTS ====')
+        # [print("•", ingr) for ingr in self.recipe_ingredients]
+        for step in self.recipe_ingredients:
+            for segment in step.split(".\n"):
+                segment = segment.strip(" ")
+                print("•", segment, "\n")
         print(' ')
-        print('PARSED INGREDIENTS:')
+        print('==== PARSED INGREDIENTS: ====')
         [print(ingr) if ingr is not None else print('') for ingr in self.ingredients]
         print(' ')
-        print('CONVERTED RECIPE INGREDIENTS')
+        print('==== CONVERTED RECIPE INGREDIENTS ====')
         self.pretty_print_ingredients()
         print(' ')
-        print('STEPS:')
-        [print(step) for step in self.recipe_steps]
+        print('==== STEPS ====')
+        for step in self.recipe_steps:
+            for segment in step.split("."):
+                segment = segment.strip(" ")
+                print("•", segment, "\n")
+        # [print("segment") for segment in step.split(",") for step in self.recipe_steps]
         print(' ')
-        print('PRIMARY_COOKING_METHOD: {}'.format(self.print_list(list(self.primary_methods))))
+        print('==> PRIMARY_COOKING_METHOD: {}'.format(self.print_list(list(self.primary_methods))))
 
-        print('SECONDARY_COOKING_METHOD: {}'.format(self.print_list([m for m in self.secondary_methods])))
-        print('TOOLS: {}'.format(self.print_list([m for m in self.tools])))
+        print('==> SECONDARY_COOKING_METHOD: {}'.format(self.print_list([m for m in self.secondary_methods])))
+        print('==> TOOLS: {}'.format(self.print_list([m for m in self.tools])))
         return ''
     def print_list(self, lst):
         return ', '.join(lst)

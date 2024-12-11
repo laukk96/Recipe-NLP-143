@@ -5,7 +5,9 @@ import copy
 def main():
     print('please enter url from allrecipes.com: ')
     log_file = open("errors.log", "a")
-    user_input = input()
+    # user_input = input()
+    # TODO: Remove test link 
+    user_input = "https://www.allrecipes.com/recipe/247363/chef-johns-grilled-lamb-with-mint-orange-sauce/"
     try:
         og_recipe = scrape(user_input)
     except Exception as inst:
@@ -19,6 +21,7 @@ def main():
 
     while user_input != 0:
         recipe = copy.deepcopy(og_recipe)
+        print(recipe)
         log_file = open("errors.log", "a")
         print('0 to Exit!')
         print('1 to convert to vegetarian')
