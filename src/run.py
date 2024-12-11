@@ -1,13 +1,14 @@
 from recipe import Recipe
 from webscraper import scrape
 import copy
+import os
 
 def main():
     print('please enter url from allrecipes.com: ')
     log_file = open("errors.log", "a")
-    # user_input = input()
-    # TODO: Remove test link 
-    user_input = "https://www.allrecipes.com/recipe/247363/chef-johns-grilled-lamb-with-mint-orange-sauce/"
+    user_input = input()
+    # Test Input: 
+    # user_input = "https://www.allrecipes.com/recipe/247363/chef-johns-grilled-lamb-with-mint-orange-sauce/"
     try:
         og_recipe = scrape(user_input)
     except Exception as inst:
@@ -20,6 +21,7 @@ def main():
          log_file.close()
 
     while user_input != 0:
+        os.system("clear")
         recipe = copy.deepcopy(og_recipe)
         print(recipe)
         log_file = open("errors.log", "a")
@@ -77,9 +79,6 @@ def main():
         finally:
             log_file.close()
             #data = log_file.read()
-
-
-
 
 
 if __name__ == "__main__":
