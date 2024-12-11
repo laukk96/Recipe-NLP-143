@@ -562,11 +562,11 @@ class Recipe:
 
     def __str__(self):
         print('==== ORIGINAL INGREDIENTS ====')
-        # [print("•", ingr) for ingr in self.recipe_ingredients]
-        for step in self.recipe_ingredients:
-            for segment in step.split(".\n"):
-                segment = segment.strip(" ")
-                print("•", segment, "\n")
+        [print("•", ingr) for ingr in self.recipe_ingredients]
+        # for step in self.recipe_ingredients:
+        #     for segment in step.split(".\n"):
+        #         segment = segment.strip(" ")
+        #         print("•", segment, "\n")
         print(' ')
         print('==== PARSED INGREDIENTS: ====')
         [print(ingr) if ingr is not None else print('') for ingr in self.ingredients]
