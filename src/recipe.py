@@ -276,6 +276,30 @@ class Recipe:
         #return random.choice(chinese_spice)
         return (n for n in lst_to_return)
 
+    def float_to_fraction_string(self, value):
+        # Handle common fractional values
+        fraction_map = {
+            0.5: "½",
+            0.25: "¼",
+            0.75: "¾",
+            0.3333333333333333: "⅓",
+            0.6666666666666666: "⅔",
+            0.125: "⅛",
+            0.375: "⅜",
+            0.625: "⅝",
+            0.875: "⅞"
+        }
+
+        if value in fraction_map:
+            return fraction_map[value]
+
+        # If not a common fraction, return the value as a regular fraction
+        frac = Fraction(value).limit_denominator(100)
+        if frac.denominator == 1:
+            return str(frac.numerator)  # Just a whole number
+        else:
+            return f"{frac.numerator}/{frac.denominator}"
+
     def transform_by_scale_factor(self, factor):
         for ingredient in self.ingredients:
             if ingredient is not None and ingredient.amount is not None:
@@ -289,7 +313,9 @@ class Recipe:
                     except (TypeError, ValueError):
                         print(f"Could not parse amount '{ingredient.amount}'")
                         continue
-                ingredient.amount = str(Fraction(amount) * factor)
+                scaled_amount = float(Fraction(amount) * factor)
+                # Convert the scaled amount back to a cute fractional string
+                ingredient.amount = self.float_to_fraction_string(scaled_amount)
         return self
 
 
