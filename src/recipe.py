@@ -98,7 +98,7 @@ class Recipe:
                                 amount = amount_quan_list[0]  # Fallback to raw value if not parsable
 
                         # Extract measure type
-                        measure_types = ['cup', 'ounce', 'tablespoon', 'teaspoon', 'pound', 'gram', 'liter','cups', 'ounces', 'tablespoons', 'teaspoons', 'pounds', 'grams', 'liters', 'clove', 'cloves']
+                        measure_types = ['cup', 'ounce', 'tablespoon', 'teaspoon', 'pound', 'gram', 'liter','cups', 'ounces', 'tablespoons', 'teaspoons', 'pounds', 'grams', 'liters', 'clove', 'cloves', 'pinch', 'pinches']
                         for word in amount_quan_list[1:]:
                             if word in measure_types:
                                 measure_type = word
