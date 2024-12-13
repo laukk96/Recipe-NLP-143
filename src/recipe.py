@@ -32,7 +32,7 @@ class Recipe:
 
     def _clean_ingredient(self, ingredient):
         
-        list_bad_words = [' chopped, ', ' skinless, ']
+        list_bad_words = ['chopped', 'peeled', 'diced', 'minced', 'grated', 'sliced', 'fresh', 'organic']
         for word in list_bad_words:
             ingredient = re.sub(word, ' ', ingredient)
         return ingredient
@@ -98,7 +98,7 @@ class Recipe:
                                 amount = amount_quan_list[0]  # Fallback to raw value if not parsable
 
                         # Extract measure type
-                        measure_types = ['cup', 'ounce', 'tablespoon', 'teaspoon', 'pound', 'gram', 'liter','cups', 'ounces', 'tablespoons', 'teaspoons', 'pounds', 'grams', 'liters', 'clove', 'cloves', 'pinch', 'pinches']
+                        measure_types = ['cup', 'ounce', 'tablespoon', 'teaspoon', 'pound', 'gram', 'liter','cups', 'ounces', 'tablespoons', 'teaspoons', 'pounds', 'grams', 'liters', 'clove', 'cloves', 'pinch', 'pinches', 'quarts', 'quart']
                         for word in amount_quan_list[1:]:
                             if word in measure_types:
                                 measure_type = word
