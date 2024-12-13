@@ -7,6 +7,8 @@ def main():
     print('please enter url from allrecipes.com: ')
     log_file = open("errors.log", "a")
     user_input = input()
+    scaled = False
+    scaled_recipe = None
     # Test Input: 
     # user_input = "https://www.allrecipes.com/recipe/247363/chef-johns-grilled-lamb-with-mint-orange-sauce/"
     try:
@@ -23,7 +25,10 @@ def main():
     while user_input != 0:
         os.system("clear")
         recipe = copy.deepcopy(og_recipe)
-        print(recipe)
+        if scaled:
+            print(scaled_recipe)
+        else:
+            print(recipe)
         log_file = open("errors.log", "a")
         print('0 to Exit!')
         print('1 to convert to vegetarian')
@@ -63,7 +68,8 @@ def main():
                 factor_input = input()
                 float_input = float(factor_input)
                 scaled_recipe = recipe.transform_by_scale_factor(float_input)
-                print(scaled_recipe)
+                #print(scaled_recipe)
+                scaled = True
             elif user_input == '8':
                 sf_recipe = recipe.transform_to_stirfry()
                 print(sf_recipe)

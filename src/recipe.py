@@ -1,6 +1,6 @@
 import random
 import re
-
+from unicodedata import numeric
 from fractions import Fraction
 import KBLoader
 
@@ -266,7 +266,17 @@ class Recipe:
     def transform_by_scale_factor(self, factor):
         for ingredient in self.ingredients:
             if ingredient is not None and ingredient.amount is not None:
-                ingredient.amount = str(Fraction(ingredient.amount) * factor)
+                try:
+                # Attempt to parse the amount as a Fraction
+                    amount = str(Fraction(ingredient.amount))
+                except ValueError:
+                # If parsing fails, handle symbolic fractions like ¼, ½, etc.
+                    try:
+                        amount = numeric(ingredient.amount)  # Converts symbolic fraction to float
+                    except (TypeError, ValueError):
+                        print(f"Could not parse amount '{ingredient.amount}'")
+                        continue
+                ingredient.amount = str(Fraction(amount) * factor)
         return self
 
 
