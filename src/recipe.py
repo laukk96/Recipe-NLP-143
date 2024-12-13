@@ -37,75 +37,85 @@ class Recipe:
         return ingredient
     def _populate_ingredients(self):
         for ingredient in self.recipe_ingredients:
-            # print('INGREDIENT: {}'.format(ingredient))
-            ingredient = self._clean_ingredient(ingredient)
-            # print(ingredient)
-            tmp_ingredients = ingredient.split(',')
-            if len(tmp_ingredients) > 1:
-                if len(ingredient.split(',')[1].strip().split(' ')) < len(ingredient.split(',')[0].strip().split(' ')):
-                    ingredient = ingredient.split(',')[0]
-                else:
-                    pass
-                    # print('fails this condition',ingredient)
-                    # print(ingredient)
-                    # print(ingredient.split(',')[1].split(' '))
-                    # print(ingredient.split(',')[0].strip().split(' '))
-            else:
-                ingredient = ingredient.split(',')[0]
-            ingredient = re.sub(r' \(.*\)', '', ingredient)
-            ingredient = re.sub(r',', '', ingredient)
-            lst_key_words = ingredient.lower().split(' ')
-            # print(lst_key_words)
-            # print('-----keyword search list: {}'.format(lst_key_words))
-            amount_quan_list = []
-            key_word_search = None
-            matched_word = None
-            for i in range(len(lst_key_words)):
-                key_word_search = ' '.join(lst_key_words[i:len(lst_key_words)])
-                list_of_matches = []  # This is to match with the longest phrase in the list.'
+            try:
+                # Step 1: Split ingredients by commas
+                ingredient_list = [i.strip() for i in ingredient.split(',') if i.strip()]
+                print(f"Ingredient List: {ingredient_list}")  # Debug
 
-                if key_word_search in self.KBfoods:
-                    matched_word = key_word_search
-                    amount_quan_list = lst_key_words[0:i]
-                    # print('-KEYWORDSEARCH: {}'.format(key_word_search))
-                    for val in key_word_search.split(' '):
-                        if val in self.KBmeats:
-                            # print('-------------------------meats matched: {}'.format(val))
-                            self.meats.add(val)
+                for ingredient in ingredient_list:
+                    # Step 2: Clean the ingredient
+                    ingredient = self._clean_ingredient(ingredient)
+                    print(f"Cleaned Ingredient: {ingredient}")  # Debug
+
+                    # Step 3: Tokenize the ingredient string
+                    lst_key_words = ingredient.lower().split()
+                    print(f"Tokenized Keywords: {lst_key_words}")  # Debug
+
+                    # Initialize variables for parsing
+                    amount_quan_list = []
+                    key_word_search = None
+                    matched_word = None
+
+                    # Step 4: Search for food keywords in the ingredient string
+                    for i in range(len(lst_key_words)):
+                        key_word_search = ' '.join(lst_key_words[i:])
+                        if key_word_search in self.KBfoods:
+                            matched_word = key_word_search
+                            amount_quan_list = lst_key_words[:i]
+                            for val in key_word_search.split():
+                                if val in self.KBmeats:
+                                    self.meats.add(val)
+                                    break
                             break
+                        if lst_key_words[i] in self.KBfoods:
+                            if matched_word is None:
+                                matched_word = lst_key_words[i]
+                                amount_quan_list = lst_key_words[:i]
+                            if matched_word in self.KBmeats:
+                                self.meats.add(matched_word)
+                                break
 
-                    break
-                if lst_key_words[i] in self.KBfoods:
-                    if matched_word == None:
-                        matched_word = lst_key_words[i]
-                        amount_quan_list = lst_key_words[0:i]
-                    if matched_word in self.KBmeats:
-                        # print('-------------------------meats matched: {}'.format(matched_word))
-                        self.meats.add(matched_word)
-                        break
+                    print(f"Matched Word: {matched_word}, Amount/Quantity List: {amount_quan_list}")  # Debug
 
-            amount = None
-            measure_type = None
-            ingredient_type = None
+                    # Step 5: Extract amount, measure type, and ingredient type
+                    amount = None
+                    measure_type = None
+                    ingredient_type = None
 
-            # print('------{}'.format(amount_quan_list))
-            if len(amount_quan_list) !=0:
-                amount = amount_quan_list[0]
-                if len(amount_quan_list) > 2:
-                    ingredient_type = ' '.join(amount_quan_list[1:])
-                else:
-                    if len(amount_quan_list) > 1:
-                        measure_type = amount_quan_list[1]
+                    # Handle amounts and measure types
+                    if amount_quan_list:
+                        try:
+                            # First attempt to parse fractions, then handle whole numbers or text-based quantities
+                            amount = str(Fraction(amount_quan_list[0]))  # Convert amount to a fraction
+                        except ValueError:
+                            # Check if amount is a number or just a descriptor like 'softened'
+                            if amount_quan_list[0].isalpha():
+                                amount = None
+                            else:
+                                amount = amount_quan_list[0]  # Fallback to raw value if not parsable
 
-            # print('Amount: {}'.format(amount))
-            # print('measure_type: {}'.format(measure_type))
-            # print('ingredient_type: {}'.format(ingredient_type))
-            # print('matched_word: {}'.format(key_word_search))
+                        # Extract measure type
+                        measure_types = ['cup', 'ounce', 'tablespoon', 'teaspoon', 'pound', 'gram', 'liter']
+                        for word in amount_quan_list[1:]:
+                            if word in measure_types:
+                                measure_type = word
+                                break
 
-            if matched_word is not None:
-                ingr = Ingredient(amount, measure_type, matched_word, ingredient_type)
-                self.ingredients.append(ingr)
-        # print('MEATS FOUND: {}'.format(self.meats))
+                        # Extract ingredient type (after measure type)
+                        if len(amount_quan_list) > 2:
+                            ingredient_type = ' '.join(amount_quan_list[2:])
+
+                    print(f"Parsed Details - Amount: {amount}, Measure Type: {measure_type}, Ingredient Type: {ingredient_type}")  # Debug
+
+                    # Step 6: Add the parsed ingredient to the ingredients list
+                    if matched_word is not None:
+                        ingr = Ingredient(amount, measure_type, matched_word, ingredient_type)
+                        self.ingredients.append(ingr)
+                        print(f"Added Ingredient: {ingr}")  # Debug
+
+            except Exception as e:
+                print(f"Error processing ingredient '{ingredient}': {e}")  # Debug
+
 
     def _populate_methods_and_tools(self):
         primary_cooking_methods = {'bake', 'fry', 'roast', 'grill', 'steam', 'poach', 'simmer', 'broil',

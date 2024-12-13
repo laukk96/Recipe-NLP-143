@@ -24,7 +24,9 @@ def main():
 
     while user_input != 0:
         os.system("clear")
+        
         recipe = copy.deepcopy(og_recipe)
+
         if scaled:
             print(scaled_recipe)
         else:
