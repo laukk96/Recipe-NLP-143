@@ -31,13 +31,19 @@ class Recipe:
         self._populate_methods_and_tools()
 
     def _clean_ingredient(self, ingredient):
+        
         list_bad_words = [' chopped, ', ' skinless, ']
         for word in list_bad_words:
             ingredient = re.sub(word, ' ', ingredient)
         return ingredient
     def _populate_ingredients(self):
-        for ingredient in self.recipe_ingredients:
+        # Split ingredients by the '\n\n\n' separator
+        for ingredient in self.recipe_ingredients.split('\n\n\n'):
             try:
+                ingredient = ingredient.strip()  # Clean up extra whitespace
+                if not ingredient:
+                    continue
+
                 # Step 1: Split ingredients by commas
                 ingredient_list = [i.strip() for i in ingredient.split(',') if i.strip()]
                 print(f"Ingredient List: {ingredient_list}")  # Debug
