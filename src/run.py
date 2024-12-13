@@ -47,21 +47,27 @@ def main():
                 break
             elif user_input == '1':
                 veg_recipe = recipe.transform_to_vegetarian()
+                print("==== VEGETARIAN RECIPE ====")
                 print(veg_recipe)
             elif user_input == '2':
                 nonveg_recipe = recipe.transform_to_nonvegetarian()
+                print("==== NONVEGETARIAN RECIPE ====")
                 print(nonveg_recipe)
             elif user_input == '3':
                 healthy_recipe = recipe.transform_to_healthy()
+                print("==== HEALTHY RECIPE ====")
                 print(healthy_recipe)
             elif user_input == '4':
                 unhealthy_recipe = recipe.transform_to_unhealthy()
+                print("==== UNHEALTHY RECIPE ====")
                 print(unhealthy_recipe)
             elif user_input == '5':
                 indian_recipe = recipe.transform_to_indian()
+                print("==== INDIAN RECIPE ====")
                 print(indian_recipe)
             elif user_input == '6':
                 chinese_recipe = recipe.transform_to_chinese()
+                print("==== CHINESE RECIPE ====")
                 print(chinese_recipe)
             elif user_input == '7':
                 print('enter a factor by which you would like to transform the recipe scale:')
@@ -72,6 +78,7 @@ def main():
                 scaled = True
             elif user_input == '8':
                 sf_recipe = recipe.transform_to_stirfry()
+                print("==== STIRFRY RECIPE ====")
                 print(sf_recipe)
             elif user_input == '9':
                 url = input("URL -> ")

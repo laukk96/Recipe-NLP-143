@@ -30,33 +30,37 @@ class Recipe:
         self._populate_ingredients()
         self._populate_methods_and_tools()
 
+    # removes the listed bad words from an ingredient string
     def _clean_ingredient(self, ingredient):
         list_bad_words = [' chopped, ', ' skinless, ']
         for word in list_bad_words:
             ingredient = re.sub(word, ' ', ingredient)
         return ingredient
+    
+    # finds ingredients/meats in recipe_ingredients that exist on kaggle
+    # and adds them to self.meats and self.ingredients
     def _populate_ingredients(self):
         for ingredient in self.recipe_ingredients:
-            # print('INGREDIENT: {}'.format(ingredient))
+            # cleans ingredient string
             ingredient = self._clean_ingredient(ingredient)
-            # print(ingredient)
+
+            # appears to look at for words separated by commas in the 
+            # ingredient string and remove some of the words under certain conditions
             tmp_ingredients = ingredient.split(',')
             if len(tmp_ingredients) > 1:
                 if len(ingredient.split(',')[1].strip().split(' ')) < len(ingredient.split(',')[0].strip().split(' ')):
                     ingredient = ingredient.split(',')[0]
                 else:
                     pass
-                    # print('fails this condition',ingredient)
-                    # print(ingredient)
-                    # print(ingredient.split(',')[1].split(' '))
-                    # print(ingredient.split(',')[0].strip().split(' '))
             else:
                 ingredient = ingredient.split(',')[0]
+
+            # removes parentheses and commas
             ingredient = re.sub(r' \(.*\)', '', ingredient)
             ingredient = re.sub(r',', '', ingredient)
+
+            # looks for keywords(words in kaggle dataset) in ingredient string
             lst_key_words = ingredient.lower().split(' ')
-            # print(lst_key_words)
-            # print('-----keyword search list: {}'.format(lst_key_words))
             amount_quan_list = []
             key_word_search = None
             matched_word = None
@@ -64,6 +68,7 @@ class Recipe:
                 key_word_search = ' '.join(lst_key_words[i:len(lst_key_words)])
                 list_of_matches = []  # This is to match with the longest phrase in the list.'
 
+                # checks with kaggle dataset and adds found words to matched_word
                 if key_word_search in self.KBfoods:
                     matched_word = key_word_search
                     amount_quan_list = lst_key_words[0:i]
@@ -84,10 +89,10 @@ class Recipe:
                         self.meats.add(matched_word)
                         break
 
+            # extracting quantities
             amount = None
             measure_type = None
             ingredient_type = None
-
             # print('------{}'.format(amount_quan_list))
             if len(amount_quan_list) !=0:
                 amount = amount_quan_list[0]
@@ -102,11 +107,14 @@ class Recipe:
             # print('ingredient_type: {}'.format(ingredient_type))
             # print('matched_word: {}'.format(key_word_search))
 
+            # presuming ingredients have been found in the string, adds them to self.ingredients
             if matched_word is not None:
                 ingr = Ingredient(amount, measure_type, matched_word, ingredient_type)
                 self.ingredients.append(ingr)
         # print('MEATS FOUND: {}'.format(self.meats))
 
+    # finds primary and secondary cooking methods in self.recipe_steps and adds 
+    # them to self.primary_methods, self.secondary_methods, self.tools
     def _populate_methods_and_tools(self):
         primary_cooking_methods = {'bake', 'fry', 'roast', 'grill', 'steam', 'poach', 'simmer', 'broil',
                                    'blanch', 'braise', 'stew', 'saute', 'stir-fry', 'stirfry', 'sear', 'boil',
@@ -128,9 +136,10 @@ class Recipe:
                          'towel','sponge', 'rack', 'tray', 'brush', 'oven'}
         for step in self.recipe_steps:
             step_lst = step.lower().split(' ')
-            for i in range(len(step_lst)):
+            for i in range(len(step_lst)): # goes thru each word in individual step
                 val = step_lst[i]
                 val = re.sub(r'[^\w\s]','',val)
+                # categorizes/maps each cooking method
                 if val in primary_cooking_methods:
                     if val in primary_cooking_mapping:
                         if len(self.primary_methods) == 0:
@@ -143,10 +152,12 @@ class Recipe:
                             self.secondary_methods.add(secondary_cooking_mapping[val])
                         else:
                             self.secondary_methods.add(val)
+                # adds tools to self.tools
                 if val in primary_tools:
                     self.tools.add(val)
         # [print(i) for i in self.recipe_steps]
 
+    # removes ingr from self.ingredients
     def delete_ingredient(self, ingr):
         new_ingredients = []
         for i in range(len(self.ingredients)):
@@ -172,6 +183,8 @@ class Recipe:
                 return random.choice(meat_dict[val])
             else:
                 return random.choice(['tofu','seitan', 'potatoes'])
+            
+    # returns a filtered list of step that has removed duplicate words
     def _clean_dup_step(self,step):
         filtered_list = []
         search = step.split(' ')
@@ -266,17 +279,7 @@ class Recipe:
     def transform_by_scale_factor(self, factor):
         for ingredient in self.ingredients:
             if ingredient is not None and ingredient.amount is not None:
-                try:
-                # Attempt to parse the amount as a Fraction
-                    amount = str(Fraction(ingredient.amount))
-                except ValueError:
-                # If parsing fails, handle symbolic fractions like ¼, ½, etc.
-                    try:
-                        amount = numeric(ingredient.amount)  # Converts symbolic fraction to float
-                    except (TypeError, ValueError):
-                        print(f"Could not parse amount '{ingredient.amount}'")
-                        continue
-                ingredient.amount = str(Fraction(amount) * factor)
+                ingredient.amount = str(Fraction(ingredient.amount) * factor)
         return self
 
 
