@@ -37,15 +37,12 @@ class Recipe:
             ingredient = re.sub(word, ' ', ingredient)
         return ingredient
     def _populate_ingredients(self):
-        # Split ingredients by the '\n\n\n' separator
-        for ingredient in self.recipe_ingredients.split('\n\n\n'):
+        print(self.recipe_ingredients)
+        
+        for ingredient in self.recipe_ingredients:
             try:
-                ingredient = ingredient.strip()  # Clean up extra whitespace
-                if not ingredient:
-                    continue
-
                 # Step 1: Split ingredients by commas
-                ingredient_list = [i.strip() for i in ingredient.split(',') if i.strip()]
+                ingredient_list = [i.strip() for i in ingredient.split('\n\n\n') if i.strip()]
                 print(f"Ingredient List: {ingredient_list}")  # Debug
 
                 for ingredient in ingredient_list:
@@ -101,7 +98,7 @@ class Recipe:
                                 amount = amount_quan_list[0]  # Fallback to raw value if not parsable
 
                         # Extract measure type
-                        measure_types = ['cup', 'ounce', 'tablespoon', 'teaspoon', 'pound', 'gram', 'liter']
+                        measure_types = ['cup', 'ounce', 'tablespoon', 'teaspoon', 'pound', 'gram', 'liter','cups', 'ounces', 'tablespoons', 'teaspoons', 'pounds', 'grams', 'liters', 'clove', 'cloves']
                         for word in amount_quan_list[1:]:
                             if word in measure_types:
                                 measure_type = word
