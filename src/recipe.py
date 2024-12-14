@@ -53,6 +53,7 @@ class Recipe:
 'water', 'beef broth']
         self.indian_food_embeddings = self.model.encode(self.indian_foods)
 
+    # removes the listed bad words from an ingredient string
     def _clean_ingredient(self, ingredient):
         
         list_bad_words = ['chopped', 'peeled', 'diced', 'minced', 'grated', 'sliced', 'fresh', 'organic']
@@ -60,6 +61,10 @@ class Recipe:
             ingredient = re.sub(word, ' ', ingredient)
         return ingredient
     
+
+    # finds ingredients/meats in recipe_ingredients that exist on kaggle
+    # and adds them to self.meats and self.ingredients
+
     def _populate_ingredients(self):
         print(self.recipe_ingredients)
         
@@ -146,7 +151,8 @@ class Recipe:
             except Exception as e:
                 print(f"Error processing ingredient '{ingredient}': {e}")  # Debug
 
-
+    # finds primary and secondary cooking methods in self.recipe_steps and adds 
+    # them to self.primary_methods, self.secondary_methods, self.tools
     def _populate_methods_and_tools(self):
         primary_cooking_methods = {'bake', 'fry', 'roast', 'grill', 'steam', 'poach', 'simmer', 'broil',
                                    'blanch', 'braise', 'stew', 'saute', 'stir-fry', 'stirfry', 'sear', 'boil',
@@ -168,9 +174,10 @@ class Recipe:
                          'towel','sponge', 'rack', 'tray', 'brush', 'oven'}
         for step in self.recipe_steps:
             step_lst = step.lower().split(' ')
-            for i in range(len(step_lst)):
+            for i in range(len(step_lst)): # goes thru each word in individual step
                 val = step_lst[i]
                 val = re.sub(r'[^\w\s]','',val)
+                # categorizes/maps each cooking method
                 if val in primary_cooking_methods:
                     if val in primary_cooking_mapping:
                         if len(self.primary_methods) == 0:
@@ -183,10 +190,12 @@ class Recipe:
                             self.secondary_methods.add(secondary_cooking_mapping[val])
                         else:
                             self.secondary_methods.add(val)
+                # adds tools to self.tools
                 if val in primary_tools:
                     self.tools.add(val)
         # [print(i) for i in self.recipe_steps]
 
+    # removes ingr from self.ingredients
     def delete_ingredient(self, ingr):
         new_ingredients = []
         for i in range(len(self.ingredients)):
