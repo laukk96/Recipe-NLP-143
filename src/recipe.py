@@ -42,8 +42,16 @@ class Recipe:
 'chopped onion', 'cooked bacon', 'store bought low sodium chicken broth', 'sweet rice', 'bread', 'raw sugar', 'steak', 'broiler-fryer chicken', 'low sodium gluten free soy sauce', 'potsticker wrappers', 'frozen garden peas', 'celery', 'pepper flakes', 'white button mushrooms', 'spring roll wrappers', 'buttermilk', 'flowering chives', 'bacon', 'chinese rock sugar', 'regular soy sauce', 'pickles', 'coarse salt', 'scallions', 'rainbow trout', 'spices', 'leeks', 'tofu puffs', 'regular sugar', 'teas', 'chicken fingers', 'celery seed', 'lamb shoulder', 'leftover steak', 'plantains', 'fermented bean paste', 'yellow chives', 'golden brown sugar', 'vietnamese fish sauce', 'seasoning', 'arugula', 'frozen peas', 'century eggs', 'chili powder', 'ground nutmeg', 'chili sauce', 'whole peppercorn', 'groundnut', 'bone-in chicken breasts', 'fronds', 'spinach leaves', 'milk', 'hand', 'low sodium stock', 'walnuts', 'curry powder', 'chicken stock cubes', 'minced chicken', 'puff pastry sheets', 'coarse kosher salt', 'stem ginger in syrup', 'mushrooms', 'roasted hazelnuts', 'tree ears', 'gyoza', 'bai cai', 'ground white pepper', 'chinese pancakes', 'dumplings', 'chinese mustard', 'rotisserie chicken', 'asian barbecue sauce', 'hot pepper', 'oysters', 'corn starch', 'skinless chicken breasts', 'fresh chicken stock', 'shrimp heads', 'peaches', 'green cardamom', 'pak choi', 'buns', 'top sirloin steak', 'orange peel', 'baby portobello mushrooms', 'orange', 'pork spareribs', 'beef stock', 'halibut fillets', 'fresh thyme leaves', 'liquorice', 'tarragon', 'large egg yolks', 'chicken thigh fillets', 'chinese black vinegar', 'chilli bean sauce', 'serrano chile', 'fresh tomatoes', 'ketchup', 'pears', 'rub', 'coriander seeds', 'side pork', 'Chinese rose wine', 'iceberg lettuce', 'hoisin sauce', 
 'wide rice noodles', 'freshly ground pepper', 'caramel sauce', 'onion salt', 'fish paste', 'gluten free soy sauce', 'cracker crumbs', 'curly kale', 'nuts', 'lemongrass', 'fresh chili', 'Lipton Sparkling Diet Green Tea with Strawberry Kiwi', 'konbu', 'flavored oil', 'salted roast peanuts', 'fresh pork fat', 'top round steak', 'sweet corn', 'grated carrot', 'green onions', 'red chile sauce', 'peeled prawns', 'boiled ham', 'won ton skins', 'wine vinegar', 'chile paste with garlic', 'crushed pineapples in juice', 'vegetable broth', 'red radishes', 'beef sirloin', 'frozen broccoli', 'lower sodium soy sauce', 'sliced cucumber', 'low sodium teriyaki sauce', 'roasted sesame seeds', 'medium egg noodles', 'peanut sauce', 'Argo Corn Starch', 'dumpling wrappers', 'chicken', 'turbinado', 'pinenuts', 'fat-free chicken broth', 'yolk', 'red snapper', 'sweet and sour sauce', 'adobo', 'beef', 'serrano chilies', 'white bread', 'long grain white rice', 'meat bones', 'lobster', 'frozen shelled edamame', 'chinese red rice vinegar', 'ghee', 'beans', 'black vinegar', 'cayenne pepper', 'spring roll skins', 'dried prawns', 'reduced fat creamy peanut butter', 'glutinous rice flour', 'hot mustard', 'cabbage', 'long green chilies', 'extra large shrimp', 'beef consomme', 'wheat flour', 'salad greens', 'beef stew meat', 'fresh mushrooms', 'condensed milk', 'white rum', 'cayenne', 'curing salt', 'fresh mint', 'beef bones', 'hamburger', 'cane vinegar', 'grapeseed oil', 'jalapeno chilies', 'regular sour cream', 'black moss', 'imitation crab meat', 'soy sauce', 'peeled fresh ginger', 'chinese radish', 'Soy VayÂ® Hoisin Garlic Marinade & Sauce', 'reduced-fat sour cream', 
 'honey', 'ground chicken', 'pork cutlets', 'haricots verts', 'filet', 'low sodium store bought chicken stock', 'rice stick noodles', 'vegan chicken flavored bouillon', 'marsala wine', 'cranberries', 'active dry yeast', 'medium shrimp', 'red vinegar', 'granulated sugar', 'goma', 'chopped cilantro', 'self raising flour', 'rice vermicelli', 'Thai chili garlic sauce', 'medium firm tofu', 'beaten eggs', 'cold water', 'calamari steak', 'squid', 'cooking oil', 'lean beef', 'fresh chile', 'eggplant', 'boneless sirloin steak', 'jasmine rice', 'chinese hot mustard', 'chow mein noodles', 'lemon juice', 'chenpi', 'bicarbonate of soda', 'fruit', 'tahini', 'finely chopped onion', 'white vinegar', 'white mushrooms', 'fresh udon', 'greater yam', 'chinese roast pork', 'reduced sodium soy sauce', 'tea cake', 'fresh lemon juice', 'sweet potato starch', 'soba noodles', 'starch', 'poppy seeds', 'crosswise', 'dates', 'chopped walnuts', 'black bean stir fry sauce', 'sweet bean sauce', 'spareribs', 'bamboo shoots', 'Japanese soy sauce', 'cut up chicken', 'pineapple', 'black pepper', 'shredded lettuce', 'peeled tomatoes', 'flavoring', 'cooked long-grain brown rice', 'white truffle oil', "I Can't Believe It's Not Butter!Â® Spread", 'baking potatoes', 'fish sauce', 'large garlic cloves', 'comice pears', 'deveined shrimp', 'green leaf lettuce', 'mung bean sprouts', 'dried Thai chili', 'free-range eggs', 'wax beans', 'lamb chops', 'clove', 'diced green chilies', 'carrots', 'roasted cashews', 'coconut flour', 'chicken stock', 'country crock calcium plus vitamin d', 'liqueur', 'fresh cilantro', 'cream', 'beets', 'rooster', 'corn oil', 'chopped garlic', 'pineapple rings', 'jujube', 'spam', 'corn kernels', 'rice vinegar', 'vegetable oil spray', 'coconut', 'ramen soup mix', 'black peppercorns', 
-'chiles', 'mint', 'low sodium chicken broth', 'San Marzano tomatoes', 'lemon zest', 'skim milk', 'chili pepper flakes', 'red preserved bean curd', 'ground cinnamon', 'asparagus spears', 'butter', 'rice noodles', 'yellow squash', 'chinese cabbage', 'free-range chickens', 'meat sauce', 'salt water', 'all purpose unbleached flour', 'tri-tip roast', 'hong kong-style noodles', 'broccoli slaw', 'bean curd', 'coconut aminos', 'all potato purpos', 'chillies', 'chilegarlic sauce', 'white peppercorns', 'green chile', 'won ton wrappers', 'udon', 'deep-fried tofu', 'clams', 'jicama', 'beef gravy', 'diced ham', 'plum tomatoes', 'less sodium beef broth', 'orange juice', 'bell pepper', 'whitefish fillets', 'braising beef', 'mo hanh', 'king prawns', 'smoked salmon', 'roast red peppers, drain', 'french fried onions', 'low-sodium fat-free chicken broth', 'kirby cucumbers', 'black sesame seeds', 'tea bags', 'dried udon', 'panko breadcrumbs', 'Tyson Crispy Chicken Strips', 'se']
+'chiles', 'mint', 'low sodium chicken broth', 'San Marzano tomatoes', 'lemon zest', 'skim milk', 'chili pepper flakes', 'red preserved bean curd', 'ground cinnamon', 'asparagus spears', 'butter', 'rice noodles', 'yellow squash', 'chinese cabbage', 'free-range chickens', 'meat sauce', 'salt water', 'all purpose unbleached flour', 'tri-tip roast', 'hong kong-style noodles', 'broccoli slaw', 'bean curd', 'coconut aminos', 'all potato purpos', 'chillies', 'chilegarlic sauce', 'white peppercorns', 'green chile', 'won ton wrappers', 'udon', 'deep-fried tofu', 'clams', 'jicama', 'beef gravy', 'diced ham', 'plum tomatoes', 'less sodium beef broth', 'orange juice', 'bell pepper', 'whitefish fillets', 'braising beef', 'mo hanh', 'king prawns', 'smoked salmon', 'roast red peppers, drain', 'french fried onions', 'low-sodium fat-free chicken broth', 'kirby cucumbers', 'black sesame seeds', 'tea bags', 'dried udon', 'panko breadcrumbs', 'Tyson Crispy Chicken Strips', 'se', 'salt', 'water']
         self.chinese_food_embeddings = self.model.encode(self.chinese_foods)
+        self.indian_foods = ['asafetida (powder)', 'hing (powder)', 'besan (flour)', 'chicken bones', 'buns', 'gravy', 'lemon grass', 'ancho powder', 'cracked black pepper', 'fresh peas', 'arhar dal', 'dried chickpeas', 'baking potatoes', 'ground blanched almonds', 'ground turkey', 'canned chopped tomatoes', 'roast beef', 'radishes', 'broad beans', 'waxy potatoes', 'boneless, skinless chicken breast', 'fresh ginger root', 'breast', 'white kidney beans', 'chicken tenderloin', 'fresh chile', 'curry', 'cooking spray', 'bread flour', 'flat leaf parsley', 'evaporated cane juice', 'strong white bread flour', 'baguette', 'curry sauce', 'fresno chiles', 
+'ground chicken breast', 'chat masala', 'boneless rib eye steaks', 'onion rings', 'frozen mixed vegetables', 'moong dal', 'anise', 'kashmiri chile', 'brown rice', 'tamarind water', 'mixed bell peppers', 'kaffir lime leaves', 'low-fat buttermilk', 'Italian parsley leaves', 'coarse sea salt', 'chicken bouillon granules', 'half & half', 'lime zest', 'rice stick noodles', 'water', 'crushed red pepper', 'homemade chicken stock', 'pinenus', 'fruit juice', 'acorn squash', 'dry mustard', 'paneer cheese', 'mung beans', 'vegetables', 'rotisserie chicken', 'diced celery', 'salted peanuts', , 'turmeric root', 'self rising flour', 'fresh lime juice', 'yellow mustard seeds', 'softened butter', 'red capsicum', 'toasted sesame seeds', 'ice', 'spring onions', 'boneless skinless chicken breasts', 'chapati flour', 'lite coconut milk', 'black salt', 'lower sodium chicken broth', 'whole wheat flour', 'salted butter', 'paste tomato', 'cooking cream', 'phyllo', 'golden raisins', 'fresh prawn', 'green onions', 'white fleshed fish', 'plain yogurt', 'yellow lentils', 'biscuit dough', 'onion soup mix', 'ground cardamom', 'chopped almonds', 'minced meat', 'diced tomatoes', 'shoulder lamb chops', 'plain soy yogurt', 'fresh spinach', 'white wine vinegar', 'mustard powder', 'garlic cloves', 'amba', 'bengal gram', 'meat', 'beef sirloin', 'chicken breast tenders', 'candied ginger', 'non dairy milk', 'capsicum', 'grated cauliflower', 'frozen chopped spinach', 'marjoram', 'tomato paste', 'sourdough bread', 'pink lentil', 'palm sugar', 'skinless chicken thighs', 'Elmlea single', 'brown cardamom', 'green chile', 'tea leaves', 'Himalayan salt', 'scallops', 'cilantro stems', 'heavy whipping cream', 'yoghurt', 'trout fillet', 'double concentrate tomato paste', 'large tomato', 'granny smith apples', 'maida flour', 'sooji', 'canned tomatoes', 'diced lamb', 'lemon slices', 'head cauliflower', 'tomato juice', 'smoked haddock', 'minced beef', 'hot red pepper flakes', 'fresh basil', 'coarse salt', 'lamb leg steaks', 'chopped garlic', 'Vadouvan curry', 'lamb stock', 'small red potato', 'lemongrass', 'peaches', 'dates', 'fresh lemon juice', 'bread crumbs', 'mango chutney', 'serrano', 'roasted peanuts', 'cubed potatoes', 'mahimahi', 'celery root', 'yellow peppers', 'orange flower water', 'low sodium chicken stock', 'small tomatoes', 'cooking sherry', 'purple onion', 'chili paste', 'brown mustard', 'large garlic cloves', 'center cut loin pork chop', 'vegetable stock', 'nonfat greek yogurt', 'ground ginger', 'pearl couscous', 'crimini mushrooms', 'king prawns', 'idli', 'oil', 'tapioca pearls', 'puff pastry', 'garlic', 'red pepper', 'roasted cashews', 'chicken strips', 'peppermint', 'rice', 'white mushrooms', 'Thai red curry paste', 'cumin', 'ginger root', 'chopped celery', 'salmon fillets', 'taro', 'cooked rice', 'raita', 'ground cinnamon', 'buckwheat flour', 'dried red chile peppers', 'green chilies', 'catfish fillets', 'cucumber', 'lime slices', 'lamb shoulder', 'almond extract', 'papad', 'mussels', 'pickling spices', 'yellow summer squash', 'hot curry powder', 'chile de arbol', 'meat tenderizer', 'soy', 'sliced almonds', 'herbs', 'green lentil', 'boiled eggs', 'unsweetened soymilk', 'loin pork chops', 'passata', 'steamed white rice', 'whole wheat pastry flour', 'cooked turkey', 'arbol chile', 'arrowroot flour', 'english cucumber', 'raw almond', 'clove garlic, fine chop', 'red food coloring', 'red chili powder', 'frozen green beans', 'pistachios', 'fresh red chili', 'tea bags', 'chile pepper', 'boiling potatoes', 'cooking fat', 'granulated garlic', 'ground mustard', 'rock salt', 'instant rice', 'ground turmeric', 'yellow corn meal', 'plain whole-milk yogurt', 'sliced green onions', 'chile paste', 'diced red onions', 'paratha', 'gooseberries', 'roast red peppers, drain', 'nutmeg', 'masur dal', 'powdered milk', 'lamb shoulder chops', 'dried cranberries', 'plain flour', 'noodles', 'natural yogurt', 'crushed ice', 'yogurt cheese', 'habanero powder', 'hot pepper', 'basmati', 'snappers', 'lemon pepper', 'black sesame seeds', 'tomatoes with juice', 'fresh thyme', 'all-purpose flour', 'vermicelli noodles', 'active dry yeast', 'chana dal', 'cream yogurt', 'pork butt', 'olives', 'silver', 'melted butter', 'pomegranate seeds', 'frozen pastry puff sheets', 'tandoori paste', 'panko breadcrumbs', 'coconut', 'citrus juice', 'whole milk', 'balsamic vinegar', 'cilantro sprigs', 'cooked white rice', 'fresh basil leaves', 'sirloin steak', 'strawberry syrup', 'fat-free mayonnaise', 'curry paste', 'plums', 'ground nutmeg', 'clarified butter', 'wheat bread', 'grated lemon zest', 'chicken broth low fat', 'mung bean sprouts', 'flat leaf spinach', 'turkey breast', 'jalape', 'bitter gourd', 'squid', 'cheese', 'cardamom', 'star anise', 'chipotle chile', 'fresh pineapple', 'port wine', 'corn kernel whole', 'grated orange peel', 'ground almonds', 'pappadams', 'finely chopped onion', 'oyster sauce', "Quorn Chik''n Tenders", 'arrowroot powder', 'whole peeled tomatoes', 'bone in skin on chicken thigh', 'cod', 'apple juice', 'orange zest', 'crust', 'fillets', 'toasted buns', 'butternut squash', 'dried Thai chili', 'apricots', 'wafer', 'swordfish', 'lotus roots', 'tofu', 'white cake mix', 'pork loin chops', 'sherry vinegar', 'beef tenderloin', 'crÃ¨me fraÃ®che', 'red chile powder', 'chicken breast halves', 'peas', 'keema', 'full-fat plain yogurt', 'tapioca flour', 'mushrooms', 'green bell pepper', 'chicken fingers', 'seasoned rice wine vinegar', 'mooli', 'pork tenderloin', 'cauliflower flowerets', 'chicken', 'parsley flakes', 'pie dough', '(14 oz.) sweetened condensed milk', 'steamer', 'semolina', 'red curry paste', 'black peppercorns', 'frozen peas', 'sole fillet', 'sourdough starter', 'orange juice', 'nut oil', 'finely chopped fresh parsley', 'nonfat evaporated milk', 'fennel seeds', 'black lentil', 'currant', 'oregano', 'anise seed', 'lemon wedge', 'curry powder', 'fresh dill', 'chili', 'whole garam masala', 'cream', 'gin', 'khoa', 'raisins', 'saffron threads', 'white onion', 'bone in chicken thighs', 'unsalted roasted peanuts', 'strawberries', 'stone flower', 'extra firm tofu', 'ground peanut', 'chili powder', 'boneless chicken', 'bhaji', 'urad dal split', 'reduced fat creamy peanut butter', 'halibut', 'tamarind extract', 'frozen spinach', 'fresh curry', 'kirby cucumbers', 'heavy cream', 'mild green chiles', 'fresh yeast', 'lamb fillet', 'pickled carrots', 'chicken stock cubes', 'yoghurt natural low fat', 'ceylon cinnamon', 'caster sugar', 'white button mushrooms', 'new potatoes', 'hard-boiled egg', 'string beans', 'salt and ground black pepper', 'pita bread', 'sea salt', 'seeds', 'figs', 'juice', 'granular sucrolose sweetener', 'tofu sour cream', 'cubed mango', 'asafetida', 'portabello mushroom', 'diced bell pepper', 'shrimp', 'naan', 'shredded zucchini', 'vegetable oil', 'onions', 'roast', 'chopped fresh mint', 'yellow curry paste', 'salami', 'white flour', 'mini marshmallows', 'vinegar', 'cuminseed', 'Turkish bay leaves', 'tomato soup', 'reduced sodium chicken broth', 'red snapper', 'edamame', 'hothouse cucumber', 'gold potatoes', 'baby spinach', 'mixed nuts', 'wholemeal flour', 'spices', 'center-cut salmon fillet', 'chicken fillets', 'asafoetida powder', 'whole almonds', 'medium tomatoes', 'potato flakes', 
+'slivered almonds', 'garden peas', 'frying oil', 'sultana', 'sun-dried tomatoes', 'fire roasted diced tomatoes', 'chapatti flour', 'low salt chicken broth', 'toasted cashews', 'ground cumin', 'chopped green chilies', 'bone-in chicken', 'unsulphured molasses', 'garbonzo bean', 'greens', 'dried parsley', 'black gram', 'greek yogurt', 'deveined shrimp', 'spanish onion', 'cane sugar', 
+'apples', 'almond meal', 'salt water', 'pumpkin', 'whipping cream', 'split yellow lentils', 'clotted cream', 'yellow squash', 'short-grain rice', 'crushed red pepper flakes', 'wheat crackers', 'batter', 'kingfish', 'dried arbol chile', 'lamb stew meat', 'mulato chiles', 'green pepper', 'iceberg lettuce', 'lamb', 'chunky peanut butter', 'puffed rice', 'stewed tomatoes', 'avocado oil', 'methi', 'glaze', 'chow mein noodles', 'firmly packed light brown sugar', 'chili oil', 'japanese eggplants', 'bird chile', 'sweet corn', 'meat bones', 'jalapeno chilies', 'chicken thighs', 'roasted sesame seeds', 'channa dal', 'minced onion', 'dried thyme', 'semolina flour', 'idaho potatoes', 'chicken drumsticks', 'candlenuts', 'dried kidney beans', 'firmly packed brown sugar', 
+'fresh green bean', 'serrano chilies', 'splenda', 'rockfish', 'aleppo pepper', 'coffee granules', 'sun-dried tomatoes in oil', 'zucchini', 'mint', 'golden delicious apples', 'nonfat milk powder', 'curry mix', 'pepper flakes', 'kasuri methi', 'chopped parsley', 'cooking oil', 'garlic naan', 'canned low sodium chicken broth', 'nuts', 'soda', 'runny honey', 'corn kernels', 'vine tomatoes', 'tahini', 'cremini mushrooms', 'chickpea flour', 'ginger purÃ©e', 'plantains', 'carrots', 'kewra water', 'poha', 'baby spinach leaves', 'lamb chops', 'nonfat yogurt', 'frozen spring roll wrappers', 'Manischewitz Matzo Meal', 'fruit', 'soy yogurt', 'minced chicken', 'cornish game hens', 'mustard seeds', 'whipped cream', 'chicken thigh fillets', 'coconut cream', 'aioli', 'chile paste with garlic', 'cut up chicken', 'hot dog bun', 'lime wedges', 'leg of lamb', 'kosher salt', 'burger buns', 'less sodium beef broth', 'fat free milk', 'dry bread crumbs', 'cauliflower florets', 'top sirloin steak', 'yellow mustard', 'toasted sesame oil', 'corn tortillas', 'demerara sugar', 'chicken broth', 'rosewater', 'dry yeast', 'gluten free all purpose flour', 'korma paste', 'asafetida powder', 'cooked vegetables', 'black pepper', 'reduced fat mayonnaise', 'yellow heirloom tomatoes', 'salted mixed nuts', 'cardamom pods', 'kabuli channa', '2% reduced-fat milk', 'fat-free buttermilk', 'and fat free half half', 'whole nutmegs', 'fresh cilantro', 'reduced fat firm tofu', 'large shrimp', 'poppyseeds', 'dried minced onion', 'organic coconut milk', 'dry milk powder', 'margarine', 'baby greens', 'creamed coconut', 'dry coconut', 'cantaloupe', 'fresh veget', 'couscous', 'fish', 'butter beans', 'non-fat sour cream', 'leeks', 'pork meat', 'cilantro leaves', 'hamburger buns', 'French lentils', 'natural low-fat yogurt', 'whey', 'jasmine rice', 'corn', 'toasted unsweetened coconut', 'raw sugar', 'shredded cabbage', 'coarse kosher salt', 'kiwi', 'CURRY GUY Smoked Garam Masala', 'fine sea salt', 'fresh green peas', 'garlic chili sauce', 'free range egg', 'cream cheese, soften', 'molasses', 'asafoetida', 'egg whites', 'seitan', 'haddock fillets', 'sugarcane juice', 'skinless chicken breasts', 'red pepper flakes', 'lamb cutlet', 'soft fresh goat cheese', 'salted cashews', 'bone broth', 'chicken wing drummettes', 'finely ground coffee', 'condensed milk', 'malt vinegar', 'hot chili sauce', 'Nakano Seasoned Rice Vinegar', 'alphabet pasta', 'red apples', 'yeast', 'vanilla yogurt', 'tomato sauce', 'yellow food coloring', 'seasoning', 'potato chips', 'dal', 'yeast extract', 'skinless chicken pieces', 'unsalted butter', 'chaat masala', 'serrano chile', 'green tomatoes', 'low sodium chicken broth', 'white vinegar', 'store bought low sodium chicken broth', 'champagne vinegar', 'black cumin seeds', 'tandoori seasoning', 'horseradish root', 'methi leaves', 'unsalted almonds', 'light molasses', 'Spring! Water', 'red chili peppers', 'roasted salted cashews', 
+'halibut fillets', 'monkfish fillets', 'tamarind juice', 'french fried onions', 'pepitas', 'farina', 'whole wheat pita', 'hot green chile', 'soft-boiled egg', 'cake flour', 'dry roasted peanuts', 'lettuce leaves', 'instant yeast', 'diced potatoes', 'vegetable bouillon', 'canned beef broth', 'roast turkey', 'bittersweet chocolate chips', 'mint sprigs', 'eggplant', 'butter', 'drummettes', 'cashew milk', 'garlic paste', 'coriander seeds', 'barley', 'baton', 'rib eye steaks', 'unsweetened coconut milk', 'bread crumb fresh', 'medium curry powder', 'unsweetened almond milk', 'raw pistachios', 'whole grain mustard', 'cardamom seeds', 'unsweetened shredded dried coconut', 'pork loin', 'nonfat dry milk powder', 'smoked paprika', 'tandoori spices', 'ground lamb', 'pitted date', 'atta', 'cauliflower', 'corn husks', 'fat free yogurt', 'sour cream', 'Flora Buttery', 'cooked quinoa', 'tikka masala curry paste', 'teas', 'coconut sugar', 'pita bread rounds', 'syrup', 'corn oil', 'petite peas', 'Lipton Lemon Iced Tea Mix', 'vegetable shortening', 'coriander', 'dill weed', 'basmati rice', 'nonfat yogurt plain', 'canned chicken broth', 'pumpkin purÃ©e', 'chinese five-spice powder', 'Massaman curry paste', 'scallions', 'adobo sauce', 'hungarian paprika', 'winter melon', 'pork chops', 'beef boneless meat stew', 'orange', 'green bell pepper, slice', 'beef', 'chili sauce', 'cream of coconut', 'rice noodles', 'crabmeat', 'reduced fat coconut milk', 'lemon juice', 'red swiss chard', 'papaya', 'red wine', 'salt', 
+'water', 'beef broth']
+        self.indian_food_embeddings = self.model.encode(self.indian_foods)
 
     def _clean_ingredient(self, ingredient):
         
@@ -467,22 +475,7 @@ class Recipe:
         best_substitute_idx = similarities.argmax()
         return Ingredient(random.choice([1, 2, 3, 4]), random.choice(['cups', 'ounces']), non_veg_substitutes[best_substitute_idx])
 
-    def _get_indian_ingredient(self):
-        indian_spice = ['tikka-masala', 'garam-masala', 'red-chilli-powder', 'turmeric-powder', 'ginger',
-                        'fennel','ajwain', 'tamarind-sauce', 'gooseberry', 'mustard',
-                        'curry-powder']
 
-        # if 'soy' in toReplace.split(' '):
-        #     return (gen for gen in ['tamarind sauce']+random.shuffle(indian_spice))
-        # if 'olive oil' == toReplace:
-        #     return (gen for gen in ['ghee']+random.shuffle(indian_spice))
-        random.shuffle(indian_spice)
-        lst_to_return = ['ghee']+ indian_spice
-        # indian_oil = {'ghee'}
-        # indian_meat = {'goat', 'lamb', 'chicken'}
-        # indian_cream = ['amla milk', 'gopi cream']
-        # indian_spice = {'tikka', 'masala', 'milk', 'gopi cream', 'red chilli powder', 'turmeric', 'ginger'}
-        return (n for n in lst_to_return)
 
     
 
@@ -529,30 +522,44 @@ class Recipe:
         return self
 
 
-    def transform_to_indian(self):  # REQUIRED
-        food_with_cusine_map = KBLoader.get_kaggle_food_with_cusine()
-        print('print ingredients that are indian')
-        gen = self._get_indian_ingredient()
+    def transform_to_indian(self):
+        print('Transforming recipe to indian cuisine')
+        
+        # Iterate through the ingredients to find non-indian ones
         for i in range(len(self.ingredients)):
-            if self.ingredients[i].ingr in food_with_cusine_map:
-                if 'indian' in food_with_cusine_map[self.ingredients[i].ingr]:
-                    print('--', self.ingredients[i].ingr)
-                else:
-                    print('--------- not indian: ', self.ingredients[i].ingr)
-                    try:
-                        repl = next(gen)
-                    except StopIteration:
-                        repl = 'ghee'
-                    ingredient_to_replace = self.ingredients[i].ingr
-                    self.ingredients[i].ingr = repl
-                    for j in range(len(self.recipe_steps)):
-                        key_search = ingredient_to_replace.split(' ')
-                        # print('REPLACE: ', key_search)
-                        # for k in range(len(key_search)):
-                        self.recipe_steps[j] = re.sub(ingredient_to_replace, repl, self.recipe_steps[j])
-                            # break;
-                        self.recipe_steps[j] = self._clean_dup_step(self.recipe_steps[j])
+            ingredient = self.ingredients[i].ingr.lower()  # Convert to lowercase for matching
+            
+            # If ingredient is not indian, replace it with the most similar indian ingredient
+            if ingredient not in self.indian_foods:
+                print(f'Ingredient "{self.ingredients[i].ingr}" is not indian.')
+                
+                # Find the most similar indian ingredient
+                repl = self.get_most_similar_indian_ingredient(ingredient)
+                
+                # Replace the ingredient in the recipe
+                ingredient_to_replace = self.ingredients[i].ingr
+                self.ingredients[i].ingr = repl
+                
+                # Replace ingredient in recipe steps
+                for j in range(len(self.recipe_steps)):
+                    self.recipe_steps[j] = re.sub(ingredient_to_replace, repl, self.recipe_steps[j])
+                    self.recipe_steps[j] = self._clean_dup_step(self.recipe_steps[j])
+                    
         return self
+
+    def get_most_similar_indian_ingredient(self, non_indian_ingredient):
+        # Encode the non-indian ingredient and all indian ingredients using Sentence-BERT
+        non_indian_embedding = self.model.encode(non_indian_ingredient, convert_to_tensor=True)
+        indian_embeddings = self.model.encode(self.indian_foods, convert_to_tensor=True)
+        
+        # Compute cosine similarities between the non-indian ingredient and all indian ingredients
+        similarities = util.pytorch_cos_sim(non_indian_embedding, indian_embeddings)[0]
+        
+        # Get the index of the most similar indian ingredient
+        most_similar_index = similarities.argmax().item()
+        
+        # Return the most similar indian ingredient
+        return self.indian_foods[most_similar_index]
 
     def transform_to_chinese(self):
         print('Transforming recipe to Chinese cuisine')
@@ -593,230 +600,8 @@ class Recipe:
         # Return the most similar Chinese ingredient
         return self.chinese_foods[most_similar_index]
     
-    def transform_to_healthy(self):  # REQUIRED
+    
 
-        dic = {frozenset({'chicken','turkey'}):{'meat', 'beef', 'brisket','pork','steak','lamb', 'bacon', 'ham'},
-               frozenset({'avocado oil', 'olive oil', 'coconut oil'}):{'vegetable oil', 'canola oil', 'bacon fat', 'peanut oil' , 'lard'},
-               frozenset({'maple sugar','substitute low-kcal sugar', 'coconut sugar'}):{'white sugar', 'icing sugar', 'castor sugar'},
-               frozenset({'oat flour', 'almond flour', 'whole-wheat flour', 'coconut flour', 'spelt flour'}):{'bread flour', 'all-purpose flour', 'self-raising flour', 'maida'},
-               frozenset({'whole-wheat pasta', 'spinach pasta'}):{'pasta'},
-               frozenset({'fat-free milk', 'skimmed milk', '2% milk', 'almond milk', 'coconut milk', 'soy milk'}):{'milk'},
-               frozenset({'cheese (low-fat)', 'cheese (low-sodium)'}):{'cheese'},
-               frozenset({'butter (low-fat)', 'coconut butter', 'unsalted butter', 'butter (dairy-free)'}):{'butter' , 'lard'},
-               frozenset({'light cream'}):{'heavy cream'}
-                        }
-        applied_new = {''}
-        for ing in self.ingredients:
-            for key,val in dic.items():
-                for inx in val:
-                    if re.search(inx, ing.ingr):
-                        new_ingr_sel = random.sample(key,1)[0]
-                        new_ingr = re.sub(inx,new_ingr_sel,ing.ingr)
-                        print("----------Changing ingredient " + ing.ingr + " with " + new_ingr)
-                        ing.ingr = new_ingr
-                        if new_ingr_sel == 'chicken' or new_ingr_sel == 'turkey':
-                            self.meats = {new_ingr_sel}
-                        # if new_ingr_sel+inx in applied_new:
-                        #     continue
-
-                        split_list = list([inx]+ [inx.split()[-1]])
-                        # print (split_list)
-                        for chunk in split_list:
-                            if chunk not in applied_new and any(re.search(chunk,step) for step in self.recipe_steps):
-                                print (applied_new)
-                                self.recipe_steps = [re.sub(chunk,new_ingr_sel,step) for step in self.recipe_steps]
-                                applied_new.add(chunk)
-                                break
-
-                        break
-        # for ing in self.ingredients:
-        #     print(ing)
-        return self
-
-    def _get_unhealthy_ingredient(self):
-        amount = random.choice([1,2,3,4])
-        type_ingr = random.choice(['cups', 'ounces'])
-        meat = random.choice(['pan-fried bacon','cooked sausages', 'bacon-bits'])
-        amount_f = random.choice([1,2,3,4])
-        type_ingr_f = random.choice(['cups', 'ounces'])
-        fat = random.choice(['butter', 'bacon fat', 'lard'])
-        return Ingredient(amount, type_ingr, meat),Ingredient(amount_f, type_ingr_f,fat)
-
-    def transform_to_unhealthy(self):
-        dic = {
-               frozenset({'vegetable oil', 'canola oil'}):{'avocado oil', 'olive oil', 'coconut oil'},
-               frozenset({'white sugar', 'castor sugar'}):{'substitute low-kcal sugar', 'coconut sugar', 'honey', 'maple sugar'},
-               frozenset({'bread flour', 'all-purpose flour', 'self-raising flour', 'maida'}):{'oat flour', 'almond flour', 'whole-wheat flour', 'coconut flour', 'spelt flour'},
-               frozenset({'pasta'}):{'whole-wheat pasta', 'spinach pasta'},
-               frozenset({'full-fat milk'}):{'fat-free milk', 'skimmed milk', '2% milk', 'almond milk', 'coconut milk', 'soy milk', 'milk'},
-               frozenset({'full-fat cheese'}):{'cheese (low-fat)', 'cashew cheese', 'cheese (low-sodium)', 'low-sodium cheese', 'low-fat cheese', 'cheese'},
-               frozenset({'whole butter','lard'}):{'butter (low-fat)', 'coconut butter', 'unsalted butter', 'butter (dairy-free)'}
-               }
-        applied_new = {''}
-        for ing in self.ingredients:
-            for key,val in dic.items():
-                for inx in val:
-                    if re.search(inx, ing.ingr):
-                        new_ingr_sel = random.sample(key,1)[0]
-                        new_ingr = re.sub(inx,new_ingr_sel,ing.ingr)
-                        print("----------Changing ingredient " + ing.ingr + " with " + new_ingr)
-                        ing.ingr = new_ingr
-                        # if new_ingr_sel+inx in applied_new:
-                        #     continue
-
-                        split_list = list([inx]+ [inx.split()[-1]])
-                        # print (split_list)
-                        for chunk in split_list:
-                            if chunk not in applied_new and any(re.search(chunk,step) for step in self.recipe_steps):
-                                print (applied_new)
-                                self.recipe_steps = [re.sub(chunk,new_ingr_sel,step) for step in self.recipe_steps]
-                                applied_new.add(chunk)
-                                break
-
-                        break
-        ingr, _ = self._get_unhealthy_ingredient()
-
-        if len(self.meats) == 0:
-            self.ingredients.append(ingr)
-            lhs_ingredient = self.ingredients[0].ingr
-            repl_string = lhs_ingredient + ', ' + ingr.ingr
-            print ("Adding in some:", ingr.ingr)
-            for j in range(len(self.recipe_steps)):
-                for strn in list([lhs_ingredient] + [lhs_ingredient.split()[-1]]):
-                    self.recipe_steps[j], n_rep = re.subn(strn, repl_string, self.recipe_steps[j])
-                    if n_rep > 0:
-                        break
-
-        i = 0
-        q = False
-        db = False
-
-        from fractions import Fraction
-        while q != True:
-            _, fat = self._get_unhealthy_ingredient()
-            for j,ing in enumerate(self.ingredients):
-                if ing.ingr != fat.ingr:
-                    q=True
-                else:
-                    q=False
-                    if db != True:
-                        self.ingredients[j].amount = float(sum(Fraction(s) for s in self.ingredients[j].amount.split()))*2
-                        print ("Doubling amount of ", ing.ingr)
-                        db = True
-                    break
-            i += 1
-            if i == 7 and q != True:
-                fat = None
-                q = True
-
-
-        if fat != None:
-            self.ingredients.append(fat)
-
-            lhs_ingredient = self.ingredients[0].ingr
-            repl_string = lhs_ingredient + ', ' + fat.ingr
-            print ("Adding in some:", fat.ingr)
-            for j in range(len(self.recipe_steps)):
-                for strn in list([lhs_ingredient] + [lhs_ingredient.split()[-1]]):
-                    self.recipe_steps[j], n_rep = re.subn(strn, repl_string, self.recipe_steps[j])
-                    if n_rep > 0:
-                        break
-
-        # for ing in self.ingredients:
-        #     print(ing)
-        # print("----------------------------------------------- Method Ends Here -----------------------------------------------")
-        return self
-
-    def transform_to_stirfry(self):  # OPTIONAL
-        random.seed(10)
-        liquid = ''
-        method = ['stir-fry', 'cook']
-        cook = random.choice(method)
-        for i in self.recipe_ingredients:
-            if re.match(".*oil.*", i):
-                liquid = 'with oil as required'
-                break;
-            if re.match(".*butter.*", i):
-                liquid = 'with butter as required'
-                break;
-            if re.match(".*ghee.*", i):
-                liquid = 'with ghee as required'
-                break;
-        change_cooking = dict([
-            (
-                "place the (aluminum roasting pan|aluminium pan|roasting pan|pan|baking dish) on the (grill's grate|grills grate|grill grate|grill|grate|oven)",
-                "place the pan on the stovetop"),
-            ("place the pan on the .* grill .* grate", "place the pan on the stovetop"),
-            ("in a pot style grill.* the bottom of grill", ""),
-            ("in a lightly greased .* baking dish", "in a lightly greased skillet"),
-            ("in a greased .* baking dish", "in a greased skillet"),
-            ("line a baking sheet with aluminum foil", ""),
-            ("prepare an outdoor grill with coals about [0-9] inches from the grate", "preheat the skillet " + liquid),
-            ("preheat.*oven to (300|[0-2][0-9]?[0-9]?) degree(s|) f.*c[/)]",
-             "preheat the skillet " + liquid + "  in low heat"),
-            ("preheat.*oven to (400|[3][0-9][0-9]) degree(s|) f.*c[/)]",
-             "preheat the skillet " + liquid + "  in medium heat"),
-            ("preheat.*oven to ([4-9][0-9][0-9]) degree(s|) f.*c[/)]",
-             "preheat the skillet " + liquid + " in high heat"),
-            ("(preheat|heat).*oven to (300|[0-2][0-9]?[0-9]?) degree(s|).",
-             "preheat the skillet " + liquid + "  in low heat"),
-            ("(preheat|heat).*oven to (400|[3][0-9][0-9]) degree(s|).",
-             "preheat the skillet " + liquid + "  in medium heat"),
-            ("(preheat|heat).*oven to ([4-9][0-9][0-9]) degree(s|).",
-             "preheat the skillet " + liquid + "  in high heat"),
-            ("preheat your oven's broiler", "preheat the skillet " + liquid + " "),
-            ("reduce heat to ([0-9][0-9][0-9]) degree(s|) f [/(]([0-9][0-9][0-9]) degree(s|) c[/)]", "reduce heat"),
-            ("reduce heat to ([0-9][0-9][0-9]) degree(s|)", "reduce heat"),
-            ("increase heat to ([0-9][0-9][0-9]) degree(s|) f [/(]([0-9][0-9][0-9]) degree(s|) c[/)]", "increase heat"),
-            ("increase heat to ([0-9][0-9][0-9]) degree(s|)", "increase heat"),
-            ("preheat.*grill.*medium-low heat", "preheat the skillet " + liquid + "  in medium-low heat"),
-            ("preheat.*grill.*low-medium heat", "preheat the skillet " + liquid + "  in low-medium heat"),
-            ("preheat.*grill.*medium-high heat", "preheat the skillet " + liquid + "  in medium-high heat"),
-            ("preheat.*grill.*high-medium heat", "preheat the skillet " + liquid + "  in high-medium heat"),
-            ("preheat.*grill.*medium heat", "preheat the skillet " + liquid + "  in medium heat"),
-            ("preheat.*grill.*low heat", "preheat the skillet " + liquid + "  in low heat"),
-            ("preheat.*grill.*high heat", "preheat the skillet " + liquid + "  in high heat"),
-            ("place (on|in)( the|) (top|middle|center)( oven|) rack", "place on stove"),
-            ("(lightly|) grease.*baking dish", " "),
-            (
-                "((and |)lightly oil the grill grate|(and |)lightly oil grill grate|(and |)lightly oil the grate|(and |)lightly oil grate|(and |)lightly oil the grill|(and |)lightly oil grill)",
-                " "),
-            ("grease a broiling pan or line pan with aluminum foil", ""),
-            ("with (foil|aluminum foil)", "with lid"),
-            ("remove (foil|aluminum foil)", "remove lid"),
-            ("preheat oven.*c[/)][/.]", ' '),
-            ("grease.*baking pan[., ]", " "),
-            ("preheat.*grill.*heat[., ]", " "),
-            ("cover the grill with the lid and open the vents.", ' '),
-            ("[0-9](-| )quart", ""),
-            ("adjust oven rack to lowest position", ""),
-            ("[0-9](-| )inch(es|) from coal(s|)", ''),
-            ("(outdoor|charcoals|charcoal)", ""),
-            ("(preheated oven|preheated grill grate|preheated grill)", "preheated skillet"),
-            (
-                '([0-9](-| )inch round baking dish|[0-9][0-9]?x[0-9][0-9]?(-| )inch baking dish|round baking dish|baking dish|baking sheet)',
-                'skillet'),
-            ("(grilled|baked|roasted|broiled|barbequed|smoked)", "stir-fried"),
-            ("(grilling|baking|roasting|broiling|barbequing|smoking)", "cooking"),
-            ("(deep-fryer|slow cooker)", "skillet"),
-            ("(grill the|^grill|[/.] grill|[/.]  grill|broil[., ]|bake|barbeque|smoke)", " " + cook),
-            ("(grill's grate|grill grate|grate|grill)", "skillet"),
-            ("large skillet or dutch oven", "large skillet"),
-            ('oven', 'stove')
-        ])
-        for r in range(len(self.recipe_steps)):
-            cook = random.choice(method)
-            for i, j in change_cooking.items():
-                self.recipe_steps[r] = re.sub(i, j, self.recipe_steps[r])
-        self.tools = set()
-        self.primary_methods = set()
-        self.secondary_methods = set()
-        self._populate_methods_and_tools()
-
-        if len(self.primary_methods) == 0:
-            self.primary_methods = {'stir-fry'}
-
-        return self
 
     def pretty_print_ingredients(self):
         for ingr in self.ingredients:
