@@ -21,11 +21,11 @@ def main():
          log_file.flush()
     finally:
          log_file.close()
-
+    recipe = copy.deepcopy(og_recipe)
     while user_input != 0:
         os.system("clear")
         
-        recipe = copy.deepcopy(og_recipe)
+        
 
         if scaled:
             print(scaled_recipe)
@@ -40,7 +40,7 @@ def main():
         print('5 to convert to Indian')
         print('6 to convert to Chinese')
         print('7 to convert the scale')
-        print('8 to convert to Stir-Fry')
+        print('8 to revert to original')
         print('9 to enter new url')
         try:
             user_input = input(":")
@@ -48,23 +48,23 @@ def main():
             if user_input == '0':
                 break
             elif user_input == '1':
-                veg_recipe = recipe.transform_to_vegetarian()
-                print(veg_recipe)
+                recipe = recipe.transform_to_vegetarian()
+                
             elif user_input == '2':
-                nonveg_recipe = recipe.transform_to_nonvegetarian()
-                print(nonveg_recipe)
+                recipe = recipe.transform_to_nonvegetarian()
+                
             elif user_input == '3':
-                healthy_recipe = recipe.transform_to_healthy()
-                print(healthy_recipe)
+                recipe = recipe.transform_to_healthy()
+                
             elif user_input == '4':
-                unhealthy_recipe = recipe.transform_to_unhealthy()
-                print(unhealthy_recipe)
+                recipe = recipe.transform_to_unhealthy()
+                
             elif user_input == '5':
-                indian_recipe = recipe.transform_to_indian()
-                print(indian_recipe)
+                recipe = recipe.transform_to_indian()
+                
             elif user_input == '6':
-                chinese_recipe = recipe.transform_to_chinese()
-                print(chinese_recipe)
+                recipe = recipe.transform_to_chinese()
+                
             elif user_input == '7':
                 print('enter a factor by which you would like to transform the recipe scale:')
                 factor_input = input()
@@ -73,11 +73,17 @@ def main():
                 #print(scaled_recipe)
                 scaled = True
             elif user_input == '8':
-                sf_recipe = recipe.transform_to_stirfry()
-                print(sf_recipe)
+                recipe = copy.deepcopy(og_recipe)
+                scaled = False
+                scaled_recipe = None
+                os.system("clear")
+                print(recipe)
             elif user_input == '9':
                 url = input("URL -> ")
                 og_recipe = scrape(url)
+                recipe  = copy.deepcopy(og_recipe)
+                scaled = False
+                scaled_recipe = None
         except Exception as inst:
             print('Something went wrong. Please try again:')
             msg = "Failed for user input - {0}: {1}\n".format(str(user_input), str(inst.with_traceback()))

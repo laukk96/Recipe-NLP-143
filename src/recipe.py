@@ -111,6 +111,8 @@ class Recipe:
                         if len(amount_quan_list) > 2:
                             ingredient_type = ' '.join(amount_quan_list[2:])
 
+                        
+                    
                     print(f"Parsed Details - Amount: {amount}, Measure Type: {measure_type}, Ingredient Type: {ingredient_type}")  # Debug
 
                     # Step 6: Add the parsed ingredient to the ingredients list
@@ -204,36 +206,57 @@ class Recipe:
 
     def transform_to_vegetarian(self):  # REQUIRED
         print('############', [str(ing) for ing in self.ingredients], self.meats)
+        print('in transform to veg')
+        
         if len(self.meats) > 0:
             for i in range(len(self.ingredients)):
-                search_list = self.ingredients[i].ingr.split(' ')
+                # Split the ingredient into words for matching
+                search_list = self.ingredients[i].ingr.lower().split(' ')
+                
+                # Check if any word in the ingredient matches an item in self.meats
                 if any(k in self.meats for k in search_list):
                     tmp_ingr = self.ingredients[i].ingr
-                    print('--------------',tmp_ingr)
+                    print('-------------- Found meat ingredient:', tmp_ingr)
+                    
+                    # Get a vegetarian substitute
                     repl = self._get_meat_substitute(tmp_ingr)
+                    if not repl:
+                        print("No substitute found for", tmp_ingr)
+                        continue  # Skip if no substitute is found
+                    
+                    # Replace the ingredient with its substitute
                     self.ingredients[i].ingr = repl
+                    
+                    # Update recipe steps with the substitute
                     for j in range(len(self.recipe_steps)):
-                        look_up_phrase = tmp_ingr.split(' ')
-                        matched_word = None
-                        for u in range(len(look_up_phrase)):
-                            key_word_search = ' '.join(look_up_phrase[u:len(look_up_phrase)])
-                            print('##keywordsearch: ',key_word_search)
-                            self.recipe_steps[j] = re.sub(key_word_search, repl, self.recipe_steps[j])
-                            self.recipe_steps[j] = re.sub(r' meat\.', ' '+repl+'.', self.recipe_steps[j])
-                            self.recipe_steps[j] = re.sub(r' meat','',self.recipe_steps[j])
-                            self.recipe_steps[j] = re.sub(r' no longer pink and', '',self.recipe_steps[j])
-                            self.recipe_steps[j] = re.sub(r'skin and bones', 'veggie scraps', self.recipe_steps[j])
-                            self.recipe_steps[j] = re.sub(look_up_phrase[u], repl , self.recipe_steps[j])
-                            self.recipe_steps[j] = re.sub(r'bones', repl , self.recipe_steps[j])
-                            self.recipe_steps[j] = re.sub(r'skin', repl , self.recipe_steps[j])
-                            self.recipe_steps[j] = re.sub(r' fat', '', self.recipe_steps[j])
-                        new_step = self._clean_dup_step(self.recipe_steps[j])
+                        step = self.recipe_steps[j]
+                        
+                        # Replace all occurrences of the meat ingredient in the step
+                        print(f"## Updating step: {step}")
+                        for k in search_list:
+                            if k in self.meats:
+                                step = re.sub(rf'\b{k}\b', repl, step, flags=re.IGNORECASE)
+                        
+                        # Handle general phrases related to meat
+                        step = re.sub(r' meat\.', f' {repl}.', step, flags=re.IGNORECASE)
+                        step = re.sub(r' meat\b', '', step, flags=re.IGNORECASE)
+                        step = re.sub(r' no longer pink and', '', step, flags=re.IGNORECASE)
+                        step = re.sub(r'skin and bones', 'veggie scraps', step, flags=re.IGNORECASE)
+                        step = re.sub(r'bones', repl, step, flags=re.IGNORECASE)
+                        step = re.sub(r'skin', repl, step, flags=re.IGNORECASE)
+                        step = re.sub(r' fat\b', '', step, flags=re.IGNORECASE)
+                        
+                        # Clean duplicate words introduced by replacements
+                        new_step = self._clean_dup_step(step)
                         self.recipe_steps[j] = new_step
-                            # break;
+                        print(f"Updated step: {self.recipe_steps[j]}")
+            
+            # Clear the meats set after transformation
             self.meats = set()
             return self
+        
         else:
-            print("ELSE")
+            print("ELSE: No meats found to transform.")
             return self
 
     def _get_nonveg_ingredient(self):
