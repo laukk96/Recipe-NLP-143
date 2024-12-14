@@ -3,6 +3,7 @@ import re
 from unicodedata import numeric
 from fractions import Fraction
 import KBLoader
+import string
 
 class Ingredient:
     def __init__(self, amount, measure_type, ingr, ingredient_type=None):
@@ -29,6 +30,15 @@ class Recipe:
         self.KBmeats = KBLoader.get_all_meats()
         self._populate_ingredients()
         self._populate_methods_and_tools()
+        #self._kbfoodschecker()
+
+    def _kbfoodschecker(self):
+        print("=========KBCHECKER===============")
+        for i in self.KBfoods:
+            if i == "onions":
+                print(i)
+            if i == "celery":
+                print(i)
 
     def _clean_ingredient(self, ingredient):
         
@@ -36,6 +46,7 @@ class Recipe:
         for word in list_bad_words:
             ingredient = re.sub(word, ' ', ingredient)
         return ingredient
+    
     def _populate_ingredients(self):
         print(self.recipe_ingredients)
         
@@ -52,6 +63,7 @@ class Recipe:
 
                     # Step 3: Tokenize the ingredient string
                     lst_key_words = ingredient.lower().split()
+                    lst_key_words = [word.replace(',', '') for word in lst_key_words]
                     print(f"Tokenized Keywords: {lst_key_words}")  # Debug
 
                     # Initialize variables for parsing
