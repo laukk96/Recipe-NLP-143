@@ -30,15 +30,6 @@ class Recipe:
         self.KBmeats = KBLoader.get_all_meats()
         self._populate_ingredients()
         self._populate_methods_and_tools()
-        #self._kbfoodschecker()
-
-    def _kbfoodschecker(self):
-        print("=========KBCHECKER===============")
-        for i in self.KBfoods:
-            if i == "onions":
-                print(i)
-            if i == "celery":
-                print(i)
 
     def _clean_ingredient(self, ingredient):
         
