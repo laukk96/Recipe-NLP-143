@@ -23,7 +23,7 @@ def main():
          log_file.close()
 
     while user_input != 0:
-        os.system("clear")
+        #os.system("clear")
         
         recipe = copy.deepcopy(og_recipe)
 
