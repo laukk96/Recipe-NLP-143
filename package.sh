@@ -9,3 +9,6 @@ pip3 install sentence_transformers
 
 echo "Installing Scikit-learn Requirement"
 pip3 install scikit-learn
+
+echo "Installing pytorch Requirement"
+pip3 install torch
