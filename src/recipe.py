@@ -4,6 +4,8 @@ from unicodedata import numeric
 from fractions import Fraction
 import KBLoader
 import string
+from sentence_transformers import SentenceTransformer, util
+
 
 class Ingredient:
     def __init__(self, amount, measure_type, ingr, ingredient_type=None):
@@ -30,6 +32,7 @@ class Recipe:
         self.KBmeats = KBLoader.get_all_meats()
         self._populate_ingredients()
         self._populate_methods_and_tools()
+        self.model = SentenceTransformer('paraphrase-MiniLM-L6-v2')
 
     def _clean_ingredient(self, ingredient):
         
@@ -172,42 +175,40 @@ class Recipe:
                 new_ingredients.append(self.ingredients[i])
         self.ingredients = new_ingredients
 
-    def _get_meat_substitute(self, name):
-        meat_dict = {
-            'lamb':['tofu', 'tempeh', 'seitan'],
-            'chicken': ['potatoes', 'tempeh', 'jackfruit'],
-            'goat': ['jackfruit', 'tempeh', 'seitan'],
-            'pork': ['tofu', 'tempeh', 'seitan'],
-            'meat': ['tofu', 'tempeh', 'seitan'],
-            'buffalo': ['tofu', 'tempeh', 'seitan'],
-            'salmon': ['seitan', 'tempeh'],
-            'beef': ['seitan', 'tempeh', 'jackfruit'],
-            'shrimp': ['tofu','jackfruit'],
-            'sausage': ['tofu','seitan', 'potatoes']
-        }
-        for val in name.split(' '):
-            if val in meat_dict:
-                return random.choice(meat_dict[val])
-            else:
-                return random.choice(['tofu','seitan', 'potatoes'])
-    def _clean_dup_step(self,step):
-        filtered_list = []
-        search = step.split(' ')
-        for i in range(len(search)-1):
-            lhs = search[i]
-            rhs = search[i+1]
-            search_vallhs = re.sub(r'[^\w\s]', '', lhs)
-            search_valrhs = re.sub(r'[^\w\s]', '', rhs)
-            if search_vallhs != search_valrhs:
-                filtered_list.append(lhs)
-        if re.sub(r'[^\w\s]', '', filtered_list[-1]) != re.sub(r'[^\w\s]', '', search[-1]):
-            filtered_list.append(search[-1])
-        return ' '.join(filtered_list)
+    def _get_best_meat_substitute(self, ingredient, vegetarian_substitutes):
+        """
+        This function finds the best vegetarian substitute by computing cosine similarity
+        between the ingredient embedding and each substitute.
+        """
+        # Get the embedding for the ingredient
+        ingredient_embedding = self.model.encode(ingredient, convert_to_tensor=True)
+        
+        # Get the embeddings for the vegetarian substitutes
+        substitute_embeddings = self.model.encode(vegetarian_substitutes, convert_to_tensor=True)
+        
+        # Compute cosine similarities between the ingredient and all substitutes
+        similarities = util.pytorch_cos_sim(ingredient_embedding, substitute_embeddings)[0]
+        
+        # Find the index of the most similar substitute
+        best_substitute_idx = similarities.argmax()
+        return vegetarian_substitutes[best_substitute_idx]
+    def _clean_dup_step(self, step):
+        """
+        Clean duplicate words from recipe steps introduced by replacements.
+        """
+        words = step.split()
+        return ' '.join(sorted(set(words), key=words.index))  # Removes duplicates while keeping order
 
     def transform_to_vegetarian(self):  # REQUIRED
         print('############', [str(ing) for ing in self.ingredients], self.meats)
         print('in transform to veg')
-        
+
+        # Predefined list of vegetarian substitutes
+        vegetarian_substitutes = [
+            'tofu', 'seitan', 'jackfruit', 'tempeh', 'lentils', 'mushrooms', 'portobello mushroom',
+            'tempeh bacon', 'veggie sausage', 'tofurkey', 'veggie ham', 'tofu or tempeh'
+        ]
+
         if len(self.meats) > 0:
             for i in range(len(self.ingredients)):
                 # Split the ingredient into words for matching
@@ -217,9 +218,9 @@ class Recipe:
                 if any(k in self.meats for k in search_list):
                     tmp_ingr = self.ingredients[i].ingr
                     print('-------------- Found meat ingredient:', tmp_ingr)
-                    
-                    # Get a vegetarian substitute
-                    repl = self._get_meat_substitute(tmp_ingr)
+
+                    # Get a vegetarian substitute using Sentence-BERT
+                    repl = self._get_best_meat_substitute(tmp_ingr, vegetarian_substitutes)
                     if not repl:
                         print("No substitute found for", tmp_ingr)
                         continue  # Skip if no substitute is found
@@ -250,7 +251,7 @@ class Recipe:
                         new_step = self._clean_dup_step(step)
                         self.recipe_steps[j] = new_step
                         print(f"Updated step: {self.recipe_steps[j]}")
-            
+
             # Clear the meats set after transformation
             self.meats = set()
             return self
